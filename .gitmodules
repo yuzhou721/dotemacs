@@ -1,0 +1,12 @@
+[submodule "lisp/extensions/magit"]
+	path = lisp/extensions/magit
+	url = https://github.com/magit/magit.git
+[submodule "lisp/extensions/auto-save"]
+	path = lisp/extensions/auto-save
+	url = https://github.com/manateelazycat/auto-save.git
+[submodule "lisp/extensions/evil"]
+	path = lisp/extensions/evil
+	url = https://github.com/emacs-evil/evil.git
+[submodule "lisp/extensions/use-package"]
+	path = lisp/extensions/use-package
+	url = https://github.com/jwiegley/use-package.git

@@ -1,7 +1,15 @@
-Warning (initialization): An error occurred while loading ‘/home/yuzhou/.emacs.d/init.el’:
+(require 'auto-save)
+(auto-save-enable)
 
-File is missing: Cannot open load file, 没有那个文件或目录, auto-save
+(setq auto-save-silent t)   ; quietly save
+(setq auto-save-delete-trailing-whitespace t)  ; automatically delete spaces at the end of the line when saving
 
-To ensure normal operation, you should investigate and remove the
-cause of the error in your initialization file.  Start Emacs with
-the ‘--debug-init’ option to view a complete error backtrace.
+;;; custom predicates if you don't want auto save.
+;;; disable auto save mode when current filetype is an gpg file.
+(setq auto-save-disable-predicates
+      '((lambda ()
+      (string-suffix-p
+      "gpg"
+      (file-name-extension (buffer-name)) t))))
+
+(provide 'init-auto-save)
