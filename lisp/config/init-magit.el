@@ -15,7 +15,6 @@
 
 (use-package magit
   :load-path extension-magit-dir
-  :after compat
   )
 
 (provide 'init-magit)
