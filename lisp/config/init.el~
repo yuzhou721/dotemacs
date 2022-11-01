@@ -1,5 +1,0 @@
-
-(require 'init-packages)
-(require 'init-evil)
-
-(provide 'init)
