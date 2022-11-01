@@ -29,9 +29,9 @@
                    ;; 不是目录的文件都移除
                    (not (file-directory-p (concat dir subdir)))
                    ;; 父目录、 语言相关和版本控制目录都移除
-                   (member subdir '("." ".." 
-                                    "dist" "node_modules" "__pycache__" 
-                                    "RCS" "CVS" "rcs" "cvs" ".git" ".github")))) 
+                   (member subdir '("." ".."
+                                    "dist" "node_modules" "__pycache__"
+                                    "RCS" "CVS" "rcs" "cvs" ".git" ".github"))))
               (directory-files dir)))
       (let ((subdir-path (concat dir (file-name-as-directory subdir))))
         ;; 目录下有 .el .so .dll 文件的路径才添加到 `load-path' 中，提升Emacs启动速度
@@ -57,7 +57,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(evil)))
+ '(package-selected-packages '(with-editor transient dash compat evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
