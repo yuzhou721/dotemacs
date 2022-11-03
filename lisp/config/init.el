@@ -5,5 +5,6 @@
 (require 'init-auto-save)
 (require 'init-magit)
 (require 'init-lsp-bridge)
+(require 'init-org)
 
 (provide 'init)

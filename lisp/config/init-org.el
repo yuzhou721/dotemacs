@@ -1,4 +1,4 @@
--*- lexical-binding: t; -*-
+;; -*- lexical-binding: t; -*-
 
 (use-package org
   :pin melpa
@@ -31,7 +31,7 @@
            "NO(n)"))))
 
 (use-package org-attach
-  :ensure t
+  :ensure nil
     :commands (org-attach-new
                org-attach-open
                org-attach-open-in-emacs
@@ -47,14 +47,49 @@
 
 ;; TODO Move to +encrypt flag
 (use-package org-crypt ; built-in
-  :ensure t
+  :ensure nil
   :commands org-encrypt-entries org-encrypt-entry org-decrypt-entries org-decrypt-entry
   :hook (org-reveal-start . org-decrypt-entry)
   :preface
   ;; org-crypt falls back to CRYPTKEY property then `epa-file-encrypt-to', which
   ;; is a better default than the empty string `org-crypt-key' defaults to.
   (defvar org-crypt-key nil)
-  (after! org
-    (add-to-list 'org-tags-exclude-from-inheritance "crypt")
-    (add-hook 'org-mode-hook
-      (add-hook 'before-save-hook 'org-encrypt-entries nil t))))
+  (add-to-list 'org-tags-exclude-from-inheritance "crypt")
+  (add-hook 'org-mode-hook
+  (add-hook 'before-save-hook 'org-encrypt-entries nil t)))
+
+;; Write codes in org-mode
+(use-package org-src
+  :ensure nil
+  :hook (org-babel-after-execute . org-redisplay-inline-images)
+  :bind (:map org-src-mode-map
+         ;; consistent with separedit/magit
+         ("C-c C-c" . org-edit-src-exit))
+  :custom
+  (org-confirm-babel-evaluate nil)
+  (org-src-fontify-natively t)
+  (org-src-tab-acts-natively t)
+  (org-src-preserve-indentation t)
+  (org-src-window-setup 'other-window)
+  (org-src-lang-modes '(("C"      . c)
+                        ("C++"    . c++)
+                        ("bash"   . sh)
+                        ("cpp"    . c++)
+                        ("dot"    . graphviz-dot) ;; was `fundamental-mode'
+                        ("elisp"  . emacs-lisp)
+                        ("ocaml"  . tuareg)
+                        ("shell"  . sh)))
+  (org-babel-load-languages '((C          . t)
+                              (dot        . t)
+                              (emacs-lisp . t)
+                              (eshell     . t)
+                              (python     . t)
+                              (shell      . t))))
+
+
+(use-package evil-org
+  :ensure t
+  )
+
+
+(provide 'init-org)

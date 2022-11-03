@@ -3,8 +3,6 @@
 (use-package posframe
   :ensure t)
 
-
-
 (use-package yasnippet
   :ensure nil
   :config
