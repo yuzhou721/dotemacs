@@ -109,7 +109,6 @@
   (tab-bar-tab-name-function 'tab-bar-tab-name-all)
   (tab-bar-format '(tab-bar-format-tabs tab-bar-separator)))
 
-
 (use-package newcomment
   :ensure nil
   :bind ([remap comment-dwim] . comment-or-uncomment)

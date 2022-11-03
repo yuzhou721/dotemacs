@@ -11,9 +11,16 @@
   (yas-global-mode 1)
   )
 
-
 ;; markdown
 (use-package markdown-mode
   :ensure t
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
+
+(use-package lsp-bridge
+  :ensure nil
+  :config
+  (global-lsp-bridge-mode)
+  )
+
+(provide 'init-lsp-bridge)

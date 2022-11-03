@@ -4,5 +4,6 @@
 (require 'init-evil)
 (require 'init-auto-save)
 (require 'init-magit)
+(require 'init-lsp-bridge)
 
 (provide 'init)
