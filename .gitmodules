@@ -10,3 +10,12 @@
 [submodule "lisp/extensions/use-package"]
 	path = lisp/extensions/use-package
 	url = https://github.com/jwiegley/use-package.git
+[submodule "lisp/extensions/projectile"]
+	path = lisp/extensions/projectile
+	url = https://github.com/bbatsov/projectile.git
+[submodule "lisp/extensions/lsp-bridge"]
+	path = lisp/extensions/lsp-bridge
+	url = https://github.com/manateelazycat/lsp-bridge.git
+[submodule "lisp/extensions/yasnippet"]
+	path = lisp/extensions/yasnippet
+	url = https://github.com/joaotavora/yasnippet
