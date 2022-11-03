@@ -19,3 +19,9 @@
 [submodule "lisp/extensions/yasnippet"]
 	path = lisp/extensions/yasnippet
 	url = https://github.com/joaotavora/yasnippet
+[submodule "lisp/extensions/org-roam"]
+	path = lisp/extensions/org-roam
+	url = https://github.com/org-roam/org-roam.git
+[submodule "lisp/extensions/emacsql"]
+	path = lisp/extensions/emacsql
+	url = https://github.com/magit/emacsql.git
