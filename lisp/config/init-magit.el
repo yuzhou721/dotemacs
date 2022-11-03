@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t -*-
 (defvar extension-magit-dir (concat emacs-extensions-dir "/magit"))
 
 (use-package compat

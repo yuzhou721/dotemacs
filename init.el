@@ -1,18 +1,4 @@
 (require 'cl-lib)
-;; 关闭工具栏，tool-bar-mode 即为一个 Minor Mode
-(tool-bar-mode -1)
-
-;; 关闭文件滑动控件
-(scroll-bar-mode -1)
-
-;; 显示行号
-(global-linum-mode 1)
-
-;; 更改光标的样式（不能生效，解决方案见第二集）
-(setq cursor-type 'bar)
-
-(icomplete-mode 1)
-
 
 (defvar emacs-root-dir (file-truename "~/.emacs.d/lisp"))
 (defvar emacs-config-dir (concat emacs-root-dir "/config"))
@@ -49,20 +35,10 @@
         (add-subdirs-to-load-path subdir-path)))))
 
 
+(setq custom-file (locate-user-emacs-file "custom.el"))
+;; (when (file-exists-p custom-file)
+;;   (load custom-file))
+
 (add-subdirs-to-load-path emacs-root-dir)
 
 (require 'init)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ispell-dictionary nil)
- '(package-selected-packages
-   '(dashboard all-the-icons doom-themes doom-modeline keycast with-editor transient dash compat evil)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

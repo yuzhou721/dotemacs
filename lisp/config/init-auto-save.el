@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t -*-
 (require 'auto-save)
 (auto-save-enable)
 
