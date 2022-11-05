@@ -12,5 +12,20 @@
   )
 
 
+(use-package auto-save
+  :custom
+  (auto-save-idle 60)
+  :config
+  (setq auto-save-silent t)   ; quietly save
+  (setq auto-save-delete-trailing-whitespace t)
+  (setq auto-save-disable-predicates
+      '((lambda ()
+      (string-suffix-p
+      "gpg"
+      (file-name-extension (buffer-name)) t))))
+  )
+
+(use-package restart-emacs
+  :ensure t)
 
 (provide 'init-tools)

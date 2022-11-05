@@ -21,4 +21,7 @@
   (global-lsp-bridge-mode)
   )
 
+(use-package clojure-mode
+  )
+
 (provide 'init-lsp-bridge)

@@ -16,21 +16,19 @@
 
 (use-package all-the-icons
   :ensure t
-  :when (display-graphic-p)
   :demand t)
 
 (use-package doom-themes
   :ensure t
-  :when (display-graphic-p)
   :config
   (load-theme 'doom-one t)
   (doom-themes-org-config))
 
-(use-package emacs
-  :ensure nil
-  :unless (display-graphic-p)
-  :config
-  (load-theme 'leuven t))
+;; (use-package emacs
+;;   :ensure nil
+;;   :unless (display-graphic-p)
+;;   :config
+;;   (load-theme 'leuven t))
 
 (use-package dashboard
   :ensure t
@@ -62,56 +60,5 @@
                      (bookmarks . 5))))
 
 
-;; Enable vertico
-(use-package vertico
-  :ensure t
-  :init
-  (vertico-mode)
-  :custom
-  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
-  (vertico-cycle t)
-  ;; Different scroll margin
-  ;; (vertico-scroll-margin 0)
-
-  ;; Show more candidates
-  ;; (vertico-count 20)
-
-  ;; Grow and shrink the Vertico minibuffer
-  ;; (vertico-resize t)
-  )
-
-(use-package orderless
-  :ensure t
-  :custom
-  (completion-styles '(orderless)))
-
-(use-package marginalia
-  :ensure t
-  :init
-  (marginalia-mode t)
-  )
-
-(use-package embark
-  :ensure t
-  :bind
-  (("C-." . embark-act)         ;; pick some comfortable binding
-   ("C-;" . embark-dwim)        ;; good alternative: M-.
-   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
-  :init
-  ;; Optionally replace the key help with a completing-read interface
-  (setq prefix-help-command #'embark-prefix-help-command)
-  )
-
-(use-package consult
-  :ensure t
-  :bind
-  ("C-s" . consult-line)
-  )
-
-;; Consult users will also want the embark-consult package.
-(use-package embark-consult
-  :ensure t ; only need to install it, embark loads it after consult if found
-  :hook
-  (embark-collect-mode . consult-preview-at-point-mode))
 
 (provide 'init-ui)

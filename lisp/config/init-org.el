@@ -32,6 +32,7 @@
 
 (use-package org-attach
   :ensure nil
+  :after org
     :commands (org-attach-new
                org-attach-open
                org-attach-open-in-emacs
@@ -49,19 +50,22 @@
 ;; TODO Move to +encrypt flag
 (use-package org-crypt ; built-in
   :ensure nil
+  :after org
   :commands org-encrypt-entries org-encrypt-entry org-decrypt-entries org-decrypt-entry
   :hook (org-reveal-start . org-decrypt-entry)
+  :config
+  (defvar org-crypt-key "shoper2@163.com")
   :preface
   ;; org-crypt falls back to CRYPTKEY property then `epa-file-encrypt-to', which
   ;; is a better default than the empty string `org-crypt-key' defaults to.
-  (defvar org-crypt-key "shoper2@163.com")
   (add-to-list 'org-tags-exclude-from-inheritance "crypt")
-  (add-hook 'org-mode-hook
-  (add-hook 'before-save-hook 'org-encrypt-entries nil t)))
+  (with-eval-after-load 'org
+    (add-hook 'before-save-hook 'org-encrypt-entries nil t)))
 
 ;; Write codes in org-mode
 (use-package org-src
   :ensure nil
+  :after org
   :hook (org-babel-after-execute . org-redisplay-inline-images)
   :bind (:map org-src-mode-map
          ;; consistent with separedit/magit
@@ -87,6 +91,15 @@
                               (python     . t)
                               (shell      . t))))
 
+(use-package simple-httpd
+  :ensure t
+  :after org-roam)
+
+;;org-roam-ui
+(use-package websocket
+  :ensure t
+  :after org-roam)
+
 (use-package org-roam
   :ensure t
   :custom
@@ -109,7 +122,6 @@
   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
   (org-roam-db-autosync-mode)
   ;; If using org-roam-protocol
-  (require 'org-roam-protocol)
   (require 'org-roam-dailies)
 
   (setq org-roam-capture-ref-templates
@@ -146,11 +158,12 @@
         org-roam-ui-open-on-start nil))
 
 (use-package org-protocol
-  :ensure nil
-  )
+  :ensure nil)
+
+(use-package org-roam-protocol
+  :after org-protocol)
 
 (use-package evil-org
-  :ensure t
-  )
+  :ensure t)
 
 (provide 'init-org)

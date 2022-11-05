@@ -28,3 +28,12 @@
 [submodule "lisp/extensions/org-roam-ui"]
 	path = lisp/extensions/org-roam-ui
 	url = https://github.com/org-roam/org-roam-ui.git
+[submodule "fanyi"]
+	path = lisp/extensions/fanyi
+	url = https://github.com/condy0919/fanyi.el.git
+[submodule "corfu"]
+	path = lisp/extensions/corfu
+	url = https://github.com/minad/corfu.git
+[submodule "clojure"]
+	path = lisp/extensions/clojure
+	url = https://github.com/clojure-emacs/clojure-mode.git
