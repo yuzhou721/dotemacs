@@ -37,3 +37,6 @@
 [submodule "clojure"]
 	path = lisp/extensions/clojure
 	url = https://github.com/clojure-emacs/clojure-mode.git
+[submodule "pyim"]
+	path = lisp/extensions/pyim
+	url = https://github.com/tumashu/pyim.git
