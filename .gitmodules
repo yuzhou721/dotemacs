@@ -40,3 +40,6 @@
 [submodule "pyim"]
 	path = lisp/extensions/pyim
 	url = https://github.com/tumashu/pyim.git
+[submodule "ligature"]
+	path = lisp/extensions/ligature
+	url = https://github.com/mickeynp/ligature.el.git
