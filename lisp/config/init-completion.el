@@ -52,7 +52,6 @@
   (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package pyim
-  :ensure t
   :config
   (defun eh-orderless-regexp (orig_func component)
     (let ((result (funcall orig_func component)))
