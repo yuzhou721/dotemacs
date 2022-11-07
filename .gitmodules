@@ -37,9 +37,12 @@
 [submodule "clojure"]
 	path = lisp/extensions/clojure
 	url = https://github.com/clojure-emacs/clojure-mode.git
-[submodule "pyim"]
-	path = lisp/extensions/pyim
-	url = https://github.com/tumashu/pyim.git
 [submodule "ligature"]
 	path = lisp/extensions/ligature
 	url = https://github.com/mickeynp/ligature.el.git
+[submodule "emacs-rime"]
+	path = lisp/extensions/emacs-rime
+	url = https://github.com/DogLooksGood/emacs-rime.git
+[submodule "treemacs"]
+	path = lisp/extensions/treemacs
+	url = https://github.com/Alexander-Miller/treemacs.git

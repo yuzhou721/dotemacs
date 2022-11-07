@@ -52,27 +52,31 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
-(use-package pyim
-  :config
-  (defun eh-orderless-regexp (orig_func component)
-    (let ((result (funcall orig_func component)))
-      (pyim-cregexp-build result)))
+;; (use-package pyim
+;;   :ensure t
+;;   :pin gnu
+;;   :config
+;;   (require 'pyim-cregexp-utils)
+;;   (defun eh-orderless-regexp (orig_func component)
+;;     (let ((result (funcall orig_func component)))
+;;       (pyim-cregexp-build result)))
 
-  (defun toggle-chinese-search ()
-    (interactive)
-    (if (not (advice-member-p #'eh-orderless-regexp 'orderless-regexp))
-	(advice-add 'orderless-regexp :around #'eh-orderless-regexp)
-      (advice-remove 'orderless-regexp #'eh-orderless-regexp)))
+;;   (defun toggle-chinese-search ()
+;;     (interactive)
+;;     (if (not (advice-member-p #'eh-orderless-regexp 'orderless-regexp))
+;; 	(advice-add 'orderless-regexp :around #'eh-orderless-regexp)
+;;       (advice-remove 'orderless-regexp #'eh-orderless-regexp)))
 
-  (defun disable-py-search (&optional args)
-    (if (advice-member-p #'eh-orderless-regexp 'orderless-regexp)
-	(advice-remove 'orderless-regexp #'eh-orderless-regexp)))
+;;   (defun disable-py-search (&optional args)
+;;     (if (advice-member-p #'eh-orderless-regexp 'orderless-regexp)
+;; 	(advice-remove 'orderless-regexp #'eh-orderless-regexp)))
 
-  ;; (advice-add 'exit-minibuffer :after #'disable-py-search)
-  :hook
-  ('minibuffer-exit-hook 'disable-py-search)
-  )
+;;   ;; (advice-add 'exit-minibuffer :after #'disable-py-search)
+;;   :hook
+;;   ('minibuffer-exit-hook 'disable-py-search)
+;;   )
 
+;;和lsp-bridge冲突
 ;; (use-package corfu
 ;; ;; Optional customizations
 ;;   :custom
