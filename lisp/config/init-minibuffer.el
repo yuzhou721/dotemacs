@@ -102,4 +102,4 @@
 ;;   :config
 ;;   (global-corfu-mode)
 ;;   )
-(provide 'init-completion)
+(provide 'init-minibuffer)

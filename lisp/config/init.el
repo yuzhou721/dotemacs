@@ -3,7 +3,7 @@
 (require 'init-ui)
 (require 'init-evil)
 (require 'init-rime)
-(require 'init-completion)
+(require 'init-minibuffer)
 (require 'init-magit)
 (require 'init-lsp-bridge)
 (require 'init-tools)
