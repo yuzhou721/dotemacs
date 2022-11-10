@@ -46,3 +46,6 @@
 [submodule "treemacs"]
 	path = lisp/extensions/treemacs
 	url = https://github.com/Alexander-Miller/treemacs.git
+[submodule "lisp/extensions/emacs-which-key"]
+	path = lisp/extensions/emacs-which-key
+	url = https://github.com/justbur/emacs-which-key.git

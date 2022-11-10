@@ -2,6 +2,7 @@
 (require 'init-better-defaults)
 (require 'init-ui)
 (require 'init-evil)
+(require 'init-keybindings)
 (require 'init-rime)
 (require 'init-minibuffer)
 (require 'init-magit)

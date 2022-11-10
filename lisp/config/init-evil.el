@@ -3,6 +3,7 @@
   :init
   (setq evil-disable-insert-state-bindings t)
   (setq evil-want-Y-yank-to-eol t)
+  (setq evil-want-keybinding nil)
   :hook (after-init . evil-mode)
   :config
   (evil-mode 1)
@@ -30,15 +31,20 @@
 
 (use-package evil-surround
   :ensure t
+  :after evil
   :hook (after-init . global-evil-surround-mode))
 
 (use-package evil-collection
+  :after evil
   :ensure t
-  :hook (evil-mode . evil-collection-init)
   :custom
   (evil-collection-setup-debugger-keys nil)
   (evil-collection-calendar-want-org-bindings t)
-  (evil-collection-unimpaired-want-repeat-mode-integration t))
+  (evil-collection-unimpaired-want-repeat-mode-integration t)
+  :config
+  (evil-collection-init))
+
+
 
 ;; 文件末尾
 (provide 'init-evil)
