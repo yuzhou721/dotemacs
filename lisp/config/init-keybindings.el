@@ -6,27 +6,61 @@
   (setq which-key-popup-type 'side-window)
   )
 
+
+   (defun define-leader-key (state map localleader &rest bindings)
+      "Define leader key in MAP when STATE, a wrapper for
+`evil-define-key*'. All BINDINGS are prefixed with \"<leader>\"
+if LOCALLEADER is nil, otherwise \"<localleader>\"."
+      (cl-assert (cl-evenp (length bindings)))
+      (let ((prefix (if localleader "<localleader>" "<leader>"))
+            wk-replacements)
+        (while bindings
+          (let ((key (pop bindings))
+                (def (pop bindings)))
+            (when (symbolp def)
+              (evil-define-key* state map (kbd (concat prefix key)) def))
+            ;; Save which-key (key . replacement).
+            (pcase def
+              (`(:wk ,replacement)
+               (push (cons (concat prefix key) replacement) wk-replacements)))))
+        ;; which-key integration.
+        ;; XXX: replacement for localleader NOT supported.
+        (with-eval-after-load 'which-key
+          (cl-loop for (key . replacement) in wk-replacements
+                   unless localleader
+                   do (which-key-add-key-based-replacements key replacement)))))
+
 (use-package evil
   :config
+
   (evil-set-leader 'normal (kbd "SPC"))
   (evil-set-leader 'normal (kbd "<leader>m") :localleader)
 
-  (evil-global-set-key 'normal (kbd "<leader>SPC") 'keyboard-escape-quit)
+  
+  (define-leader-key 'normal 'global nil
+    "SPC" 'keyboard-escape-quit
 
-  ;;文件相關
-  (which-key-add-key-based-replacements "<leader>f" "files")
-  (evil-global-set-key 'normal (kbd "<leader>ff") 'find-file)
-  (evil-global-set-key 'normal (kbd "<leader>fF") 'find-file-other-window)
+    ;;文件相關
+    "f" '(:wk "file")
+    "ff" 'find-file
+    "fF" 'find-file-other-window
 
   ;搜索
-  (which-key-add-key-based-replacements "<leader>s" "search")
-  (evil-global-set-key 'normal (kbd "<leader>sp") 'consult-ripgrep)
-  (evil-global-set-key 'normal (kbd "<leader>ss") 'consult-line)
-
-  (evil-global-set-key 'normal (kbd "<leader>p") 'projectile-command-map)
+    "s" '(:wk "search")
+    "sp" 'consult-ripgrep
+    "ss" 'consult-line
+    "sj" 'evil-show-jumps
+    "sm" 'evil-show-marks
+    "sr" 'evil-show-registers
+    "si" 'imenu
 
   ;magit
-  (which-key-add-key-based-replacements "<leader>g" "search")
+    "g" '(:wk "magit")
+    "gb" 'magit-blame
+    "gc" 'magit-clone
+
+    )
+
   )
 
 
