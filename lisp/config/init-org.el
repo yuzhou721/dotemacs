@@ -28,7 +28,10 @@
            "|"
            "OKAY(o)"
            "YES(y)"
-           "NO(n)"))))
+           "NO(n)")))
+  :bind (:map org-mode-map
+	      ("C-RET" . org-insert-subheading)
+	      ("C-M-RET" . org-insert-todo-subheading)))
 
 (use-package org-attach
   :ensure nil
