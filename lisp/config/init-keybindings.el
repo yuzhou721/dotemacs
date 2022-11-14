@@ -44,6 +44,7 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
     "f" '(:wk "file")
     "ff" 'find-file
     "fF" 'find-file-other-window
+    "fs" 'save-buffer
 
   ;搜索
     "s" '(:wk "search")
@@ -58,8 +59,36 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
     "g" '(:wk "magit")
     "gb" 'magit-blame
     "gc" 'magit-clone
+    "gg" 'magit
 
+  ;;buffer
+    "b" '(:wk "buffer")
+    "bb" 'consult-buffer
+    "bB" 'consult-buffer-other-window
+    "bz" 'bury-buffer
+
+    ;;window
+    "w" 'evil-window-map
+    "wx" 'kill-buffer-and-window
+    "w/" 'split-window-horizontally
+    "w-" 'split-window-vertically
     )
+  (with-eval-after-load 'org
+    (define-leader-key 'normal org-mode-map :localleader
+        "." 'org-goto
+        "a" 'org-archive-subtree
+        "d" 'org-deadline
+        "e" 'org-set-effort
+        "f" 'org-footnote-action
+        "l" 'org-lint
+        "o" 'org-toggle-ordered-property
+        "p" 'org-set-property
+        "q" 'org-set-tags-command
+        "r" 'org-refile
+        "s" 'org-schedule
+        "t" 'org-todo
+        "T" 'org-todo-list
+      ))
 
   )
 
