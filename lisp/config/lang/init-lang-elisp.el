@@ -22,4 +22,8 @@
   :ensure nil
   :hook (ielm-mode . company-mode))
 
+(use-package pretty-lambdada
+  :hook
+  (pretty-lambda . elisp-mode))
+
 (provide 'init-lang-elisp)

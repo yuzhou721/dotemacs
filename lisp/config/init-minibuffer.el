@@ -31,9 +31,10 @@
 (use-package embark
   :ensure t
   :bind
-  (("C-." . embark-act)         ;; pick some comfortable binding
-   ("C-;" . embark-dwim)        ;; good alternative: M-.
-   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+  (:map minibuffer-local-map
+   ("M-o" . embark-act)         ;; pick some comfortable binding
+   ("C-c C-c" . embark-export)        ;; good alternative: M-.
+   ("C-c C-o" . embark-collect)) ;; alternative for `describe-bindings'
   :init
   ;; Optionally replace the key help with a completing-read interface
   (setq prefix-help-command #'embark-prefix-help-command)
@@ -41,9 +42,12 @@
 
 (use-package consult
   :ensure t
-  :bind
-  ("C-s" . consult-line)
-  )
+  :bind (([remap imenu]                  . consult-imenu)
+         ([remap goto-line]              . consult-goto-line)
+         ([remap bookmark-jump]          . consult-bookmark)
+         ([remap evil-show-marks]        . consult-mark)
+         ([remap recentf-open-files]     . consult-recent-file)
+         ([remap repeat-complex-command] . consult-complex-command)))
 
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult
