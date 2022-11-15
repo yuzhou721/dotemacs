@@ -60,7 +60,8 @@
   ;; is a better default than the empty string `org-crypt-key' defaults to.
   (add-to-list 'org-tags-exclude-from-inheritance "crypt")
   (with-eval-after-load 'org
-    (add-hook 'before-save-hook 'org-encrypt-entries nil t)))
+    (add-hook 'org-mode-hook
+	      (add-hook 'before-save-hook 'org-encrypt-entries nil t))))
 
 ;; Write codes in org-mode
 (use-package org-src
