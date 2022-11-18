@@ -54,6 +54,18 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
     "sm" 'evil-show-marks
     "sr" 'evil-show-registers
     "si" 'imenu
+;; tab
+    "t" '(:wk "tab")
+    "t9" 'tab-bar-switch-to-last-tab
+    "tc" 'tab-bar-close-tab
+    "tC" 'tab-bar-close-group-tabs
+    "tg" 'tab-bar-change-tab-group
+    "ti" 'tab-switcher
+    "tn" 'tab-bar-new-tab
+    "to" 'tab-bar-close-other-tabs
+    "tt" 'tab-bar-switch-to-tab
+    "tp" 'tab-bar-switch-to-recent-tab
+    "tr" 'tab-bar-rename-tab
 
   ;magit
     "g" '(:wk "magit")
@@ -66,6 +78,9 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
     "bb" 'consult-buffer
     "bB" 'consult-buffer-other-window
     "bz" 'bury-buffer
+
+    ;; projectile
+    "p" 'projectile-command-map
 
     ;;window
     "w" 'evil-window-map

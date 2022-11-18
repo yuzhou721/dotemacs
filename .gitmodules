@@ -49,3 +49,6 @@
 [submodule "lisp/extensions/emacs-which-key"]
 	path = lisp/extensions/emacs-which-key
 	url = https://github.com/justbur/emacs-which-key.git
+[submodule "lisp/extensions/flycheck"]
+	path = lisp/extensions/flycheck
+	url = https://github.com/flycheck/flycheck.git

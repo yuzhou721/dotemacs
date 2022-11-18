@@ -58,10 +58,10 @@
   :hook (org-reveal-start . org-decrypt-entry)
   :config
   (defvar org-crypt-key "shoper2@163.com")
+  (add-to-list 'org-tags-exclude-from-inheritance "crypt")
   :preface
   ;; org-crypt falls back to CRYPTKEY property then `epa-file-encrypt-to', which
   ;; is a better default than the empty string `org-crypt-key' defaults to.
-  (add-to-list 'org-tags-exclude-from-inheritance "crypt")
   (with-eval-after-load 'org
     (add-hook 'org-mode-hook
 	      (add-hook 'before-save-hook 'org-encrypt-entries nil t))))

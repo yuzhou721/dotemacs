@@ -18,7 +18,6 @@
 
 ;; Lint tool
 (use-package flycheck
-  :ensure t
   :hook (prog-mode . flycheck-mode)
   :custom
   (flycheck-temp-prefix ".flycheck")
@@ -38,6 +37,11 @@
              (or "automount" "busname" "link" "mount" "netdev" "network"
                  "path" "service" "slice" "socket" "swap" "target" "timer")
              string-end) . conf-toml-mode))
+
+(use-package projectile
+  :ensure nil
+  :hook (after-init . projectile-mode)
+  )
 
 
 (require 'init-lang-elisp)

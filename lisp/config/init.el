@@ -3,6 +3,7 @@
 (require 'init-ui)
 (require 'init-evil)
 (require 'init-keybindings)
+(require 'init-dev)
 (require 'init-rime)
 (require 'init-minibuffer)
 (require 'init-magit)
