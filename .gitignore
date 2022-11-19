@@ -1,2 +1,13 @@
 elpa
 auto-save-list
+/.org-id-locations
+/bookmarks
+/custom.el
+/eln-cache/
+/history
+/org-roam.db
+/places
+/projectile-bookmarks.eld
+/recentf
+/session.*
+/transient/
