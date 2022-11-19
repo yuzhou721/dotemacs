@@ -1,4 +1,5 @@
-;; Highlight TODO
+;; -*- lexical-binding: t -*-
+;;; Code: Highlight TODO
 (use-package hl-todo
   :ensure t
   :hook (after-init . global-hl-todo-mode)

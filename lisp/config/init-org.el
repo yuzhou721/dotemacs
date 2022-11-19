@@ -1,5 +1,5 @@
 ;; -*- lexical-binding: t; -*-
-
+;;; Code:
 (use-package org
   :pin melpa
   :ensure t
@@ -50,21 +50,16 @@
     ;; (add-to-list 'projectile-globally-ignored-directories org-attach-id-dir)
     )
 
-;; TODO Move to +encrypt flag
 (use-package org-crypt ; built-in
   :ensure nil
-  :after org
-  :commands org-encrypt-entries org-encrypt-entry org-decrypt-entries org-decrypt-entry
+  :commands (org-encrypt-entries org-encrypt-entry org-decrypt-entries org-decrypt-entry)
   :hook (org-reveal-start . org-decrypt-entry)
   :config
-  (defvar org-crypt-key "shoper2@163.com")
-  (add-to-list 'org-tags-exclude-from-inheritance "crypt")
-  :preface
   ;; org-crypt falls back to CRYPTKEY property then `epa-file-encrypt-to', which
   ;; is a better default than the empty string `org-crypt-key' defaults to.
-  (with-eval-after-load 'org
-    (add-hook 'org-mode-hook
-	      (add-hook 'before-save-hook 'org-encrypt-entries nil t))))
+  (setq org-crypt-key "shoper2@163.com")
+  (add-to-list 'org-tags-exclude-from-inheritance "crypt" t)
+  )
 
 ;; Write codes in org-mode
 (use-package org-src
@@ -108,6 +103,7 @@
   :ensure t
   :custom
   (org-roam-directory "~/org/roam/")
+  (org-roam-dailies-directory "~/org/roam/daily/")
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert)
@@ -122,6 +118,8 @@
   :bind-keymap
   ("C-c n d" . org-roam-dailies-map)
   :config
+  ;; crypt encode
+  (org-crypt-use-before-save-magic)
   ;; If you're using a vertical completion framework, you might want a more informative completion interface
   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
   (org-roam-db-autosync-mode)
@@ -177,4 +175,8 @@
 (use-package evil-org
   :ensure t)
 
+(use-package org-modern
+  :hook (org-mode . org-modern-mode)
+  )
 (provide 'init-org)
+;;; init-org.el ends here

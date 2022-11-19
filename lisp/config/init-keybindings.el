@@ -54,6 +54,7 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
     "sm" 'evil-show-marks
     "sr" 'evil-show-registers
     "si" 'imenu
+    "sf" 'consult-find
 ;; tab
     "t" '(:wk "tab")
     "t9" 'tab-bar-switch-to-last-tab
@@ -87,6 +88,11 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
     "wx" 'kill-buffer-and-window
     "w/" 'split-window-horizontally
     "w-" 'split-window-vertically
+
+    ;;open
+    "o" '(:wk "open")
+    "of" 'make-frame
+    "oa" 'org-agenda
     )
   (with-eval-after-load 'org
     (define-leader-key 'normal org-mode-map :localleader

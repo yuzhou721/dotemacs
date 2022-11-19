@@ -1,3 +1,6 @@
+;;; package --- Summary -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:
 (use-package elisp-mode
   :ensure nil
   :bind (:map emacs-lisp-mode-map
@@ -23,7 +26,9 @@
   :hook (ielm-mode . company-mode))
 
 (use-package pretty-lambdada
+  :ensure nil
   :hook
   (pretty-lambda . elisp-mode))
 
 (provide 'init-lang-elisp)
+;;; init-lang-elisp.el ends here

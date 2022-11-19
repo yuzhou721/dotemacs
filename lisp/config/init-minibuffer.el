@@ -32,12 +32,12 @@
   :ensure t
   :bind
   (:map minibuffer-local-map
-   ("M-o" . embark-act)         ;; pick some comfortable binding
-   ("C-c C-c" . embark-export)        ;; good alternative: M-.
-   ("C-c C-o" . embark-collect)) ;; alternative for `describe-bindings'
-  :init
+   ("M-o" . 'embark-act)         ;; pick some comfortable binding
+   ("C-c C-c" . 'embark-export)        ;; good alternative: M-.
+   ("C-c C-o" . 'embark-collect)) ;; alternative for `describe-bindings'
+  ;;:init
   ;; Optionally replace the key help with a completing-read interface
-  (setq prefix-help-command #'embark-prefix-help-command)
+  ;;(setq #'embark-prefix-help-command)
   )
 
 (use-package consult

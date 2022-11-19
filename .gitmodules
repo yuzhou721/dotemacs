@@ -52,3 +52,6 @@
 [submodule "lisp/extensions/flycheck"]
 	path = lisp/extensions/flycheck
 	url = https://github.com/flycheck/flycheck.git
+[submodule "lisp/extensions/org-modern"]
+	path = lisp/extensions/org-modern
+	url = https://github.com/minad/org-modern.git
