@@ -44,6 +44,12 @@
   :hook (after-init . projectile-mode)
   )
 
+(use-package rainbow-delimiters
+  :ensure nil
+  :hook (prog-mode . rainbow-delimiters-mode))
+
 
 (require 'init-lang-elisp)
+;; (require 'init-javascript)
+(require 'init-tree-sitter)
 (provide 'init-dev)

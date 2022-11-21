@@ -55,3 +55,21 @@
 [submodule "lisp/extensions/org-modern"]
 	path = lisp/extensions/org-modern
 	url = https://github.com/minad/org-modern.git
+[submodule "lisp/extensions/rainbow-delimiters"]
+	path = lisp/extensions/rainbow-delimiters
+	url = https://github.com/Fanael/rainbow-delimiters.git
+[submodule "lisp/extensions/elisp-tree-sitter"]
+	path = lisp/extensions/elisp-tree-sitter
+	url = https://github.com/emacs-tree-sitter/elisp-tree-sitter
+[submodule "lisp/extensions/grammatical-edit"]
+	path = lisp/extensions/grammatical-edit
+	url = https://github.com/manateelazycat/grammatical-edit.git
+[submodule "lisp/extensions/typescript-mode"]
+	path = lisp/extensions/typescript-mode
+	url = https://github.com/emacs-typescript/typescript.el.git
+[submodule "lisp/extensions/web-mode"]
+	path = lisp/extensions/web-mode
+	url = https://github.com/fxbois/web-mode.git
+[submodule "lisp/extensions/js2-mode"]
+	path = lisp/extensions/js2-mode
+	url = https://github.com/mooz/js2-mode.git
