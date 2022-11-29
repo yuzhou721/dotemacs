@@ -36,7 +36,6 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
   (evil-set-leader 'normal (kbd "SPC"))
   (evil-set-leader 'normal (kbd "<leader>m") :localleader)
 
-  
   (define-leader-key 'normal 'global nil
     "SPC" 'keyboard-escape-quit
 
@@ -55,6 +54,7 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
     "sr" 'evil-show-registers
     "si" 'imenu
     "sf" 'consult-find
+    "sd" 'consult-dir
 ;; tab
     "t" '(:wk "tab")
     "t9" 'tab-bar-switch-to-last-tab
@@ -93,6 +93,7 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
     "o" '(:wk "open")
     "of" 'make-frame
     "oa" 'org-agenda
+    "ot" 'treemacs
     )
   (with-eval-after-load 'org
     (define-leader-key 'normal org-mode-map :localleader
@@ -110,6 +111,10 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
         "t" 'org-todo
         "T" 'org-todo-list
       ))
+  (with-eval-after-load 'lsp-bridge
+    (define-leader-key 'normal lsp-bridge-mode-map :localleader
+      "a" 'lsp-bridge-code-action
+      "d" 'lsp-bridge-find-define))
 
   )
 

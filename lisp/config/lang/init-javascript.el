@@ -3,9 +3,7 @@
 ;;; Code:
 (use-package js-mode
   :ensure nil
-  :mode "\\.[mc]?js\\'"
-  :mode "\\.es6\\'"
-  :mode "\\.pac\\'"
+  :mode "\\.jsx\\'"
   )
 
 (use-package js2-mode
@@ -28,24 +26,27 @@
         js2-idle-timer-delay 0.15)
   )
 
-;; (use-package rjsx-mode
-;;   :ensure nil
-;;   :requires js2-mode
-;;   :interpreter "node"
-;;   :hook (rjsx-mode . js2-minor-mode)
-;;   :init
-;;   ;; Parse node stack traces in the compilation buffer
-;;   ;; (with-eval-after-load compilation
-;;   ;;   (add-to-list 'compilation-error-regexp-alist 'node)
-;;   ;;   (add-to-list 'compilation-error-regexp-alist-alist
-;;   ;;                '(node "^[[:blank:]]*at \\(.*(\\|\\)\\(.+?\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\)"
-;;   ;;                       2 3 4)))
-;;   )
+(use-package rjsx-mode
+  :ensure nil
+  :mode "\\.[mc]?js\\'"
+  :mode "\\.es6\\'"
+  :mode "\\.pac\\'"
+  :requires js2-mode
+  :interpreter "node"
+  :hook (rjsx-mode . js2-minor-mode)
+  :init
+  ;; Parse node stack traces in the compilation buffer
+  ;; (with-eval-after-load compilation
+  ;;   (add-to-list 'compilation-error-regexp-alist 'node)
+  ;;   (add-to-list 'compilation-error-regexp-alist-alist
+  ;;                '(node "^[[:blank:]]*at \\(.*(\\|\\)\\(.+?\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\)"
+  ;;                       2 3 4)))
+  )
 
 (use-package typescript-mode
   :ensure nil
-  :hook (typescript-mode . rainbow-delimiters-mode)
-  :hook (typescript-tsx-mode . rainbow-delimiters-mode)
+  :hook (typescript-mode . js2-minor-mode)
+  :hook (typescript-tsx-mode . js2-minor-mode)
   )
 
 (use-package web-mode

@@ -3,6 +3,8 @@
 ;;; Code:
 (use-package tree-sitter
   :ensure nil
+  :config
+  (global-tree-sitter-mode)
   )
 (use-package tree-sitter-hl
   :ensure nil
@@ -50,6 +52,17 @@
                'typescript-mode-hook
                ))
   (add-hook hook '(lambda () (grammatical-edit-mode 1))))
+  :bind
+  (:map grammatical-edit-mode-map
+	("(" . 'grammatical-edit-open-round)
+	(")" . 'grammatical-edit-close-round)
+	("[" . 'grammatical-edit-open-bracket)
+	("]" . 'grammatical-edit-close-bracket)
+	("{" . 'grammatical-edit-open-curly)
+	("}" . 'grammatical-edit-close-curly)
+
+	("%" . 'grammatical-edit-match-paren)
+	)
   )
 
 (provide 'init-tree-sitter)

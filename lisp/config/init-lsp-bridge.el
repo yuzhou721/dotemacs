@@ -19,6 +19,7 @@
   :ensure nil
   :config
   (global-lsp-bridge-mode)
+  (setq acm-enable-icon t)
   )
 
 (use-package clojure-mode

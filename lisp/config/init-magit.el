@@ -6,10 +6,10 @@
   )
 
 (use-package transient
-  :ensure t)
+  :ensure nil)
 
 (use-package dash
-  :ensure t)
+  :ensure nil)
 
 (use-package with-editor
   :ensure t)
@@ -37,6 +37,10 @@
 (use-package magit
   :ensure nil
   :load-path extension-magit-dir
+  :custom
+  (magit-diff-refine-hunk t)
+  (magit-module-sections-nested nil)
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
   )
 
 ;; Setup gitignore mode

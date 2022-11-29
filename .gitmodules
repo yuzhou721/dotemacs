@@ -73,3 +73,12 @@
 [submodule "lisp/extensions/js2-mode"]
 	path = lisp/extensions/js2-mode
 	url = https://github.com/mooz/js2-mode.git
+[submodule "lisp/extensions/s"]
+	path = lisp/extensions/s
+	url = https://github.com/magnars/s.el.git
+[submodule "lisp/extensions/dart-mode"]
+	path = lisp/extensions/dart-mode
+	url = https://github.com/bradyt/dart-mode.git
+[submodule "lisp/extensions/dap-mode"]
+	path = lisp/extensions/dap-mode
+	url = https://github.com/emacs-lsp/dap-mode.git

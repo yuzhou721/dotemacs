@@ -10,5 +10,6 @@
 (require 'init-lsp-bridge)
 (require 'init-tools)
 (require 'init-org)
+(require 'init-treemacs)
 
 (provide 'init)

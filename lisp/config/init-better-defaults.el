@@ -27,6 +27,18 @@
 (setq select-enable-primary t
       select-enable-clipboard t)
 
+;;设置
+(fset 'yes-or-no-p 'y-or-n-p)           ;以 y/n代表 yes/no
+(setq ring-bell-function 'ignore)       ;关闭烦人的出错时的提示声
+(setq default-major-mode 'text-mode)    ;设置默认地主模式为TEXT模式
+(setq mouse-yank-at-point t)            ;粘贴于光标处,而不是鼠标指针处
+(setq x-select-enable-clipboard t)      ;支持emacs和外部程序的粘贴
+(setq split-width-threshold nil)        ;分屏的时候使用上下分屏
+(setq inhibit-compacting-font-caches t) ;使用字体缓存，避免卡顿
+(setq confirm-kill-processes nil)       ;退出自动杀掉进程
+(setq async-bytecomp-allowed-packages nil) ;避免magit报错
+(setq word-wrap-by-category t)             ;按照中文折行
+
 (setq display-line-numbers-type 'relative)
 
 (use-package savehist
@@ -279,6 +291,11 @@ Else, call `comment-or-uncomment-region' on the current line."
 (use-package try
   :ensure t
   :commands try try-and-refresh)
+
+(with-eval-after-load 'ediff
+  (setq ediff-diff-options "-w" ; turn off whitespace checking
+	ediff-split-window-function #'split-window-horizontally
+	ediff-window-setup-function #'ediff-setup-windows-plain))
 
 
 (provide 'init-better-defaults)
