@@ -82,3 +82,6 @@
 [submodule "lisp/extensions/dap-mode"]
 	path = lisp/extensions/dap-mode
 	url = https://github.com/emacs-lsp/dap-mode.git
+[submodule "lisp/extensions/consult-org-roam"]
+	path = lisp/extensions/consult-org-roam
+	url = https://github.com/jgru/consult-org-roam.git
