@@ -94,6 +94,7 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
     "of" 'make-frame
     "oa" 'org-agenda
     "ot" 'treemacs
+    "oo" 'olivetti-mode
     )
   (with-eval-after-load 'org
     (define-leader-key 'normal org-mode-map :localleader

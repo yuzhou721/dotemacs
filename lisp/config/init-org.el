@@ -3,6 +3,8 @@
 (use-package org
   :pin melpa
   :ensure t
+  :custom
+  (org-startup-indented t)
   :config
   (setq-default org-directory "~/org")
   (setq-default org-agenda-files (list org-directory))
@@ -31,7 +33,8 @@
            "NO(n)")))
   :bind (:map org-mode-map
 	      ("C-RET" . org-insert-subheading)
-	      ("C-M-RET" . org-insert-todo-subheading)))
+	      ("C-M-RET" . org-insert-todo-subheading)
+	      ))
 
 (use-package org-attach
   :ensure nil
@@ -173,7 +176,11 @@
   :after org-protocol)
 
 (use-package evil-org
-  :ensure t)
+  :ensure t
+  :hook (org-mode . evil-org-mode)
+  :hook (org-capture-mode . evil-insert-state)
+  :after org
+  )
 
 (use-package org-modern
   :hook (org-mode . org-modern-mode)
@@ -205,6 +212,9 @@
    ("C-c n b" . consult-org-roam-backlinks)
    ("C-c n l" . consult-org-roam-forward-links)
    ("C-c n s" . consult-org-roam-search))
+
+(use-package olivetti
+  :ensure t)
 
 (provide 'init-org)
 ;;; init-org.el ends here

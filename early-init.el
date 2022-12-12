@@ -16,5 +16,8 @@
 ;; larger than the system default.
 (setq frame-inhibit-implied-resize t)
 
+(setq gc-cons-threshold (* 100 1024 1024)
+      read-process-output-max (* 1024 1024))
+
 (provide 'early-init)
 ;;; early-init.el ends here
