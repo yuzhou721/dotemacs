@@ -49,3 +49,4 @@
 
 ;; 文件末尾
 (provide 'init-evil)
+;;; init-evil.el ends here

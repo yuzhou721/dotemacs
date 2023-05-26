@@ -85,3 +85,6 @@
 [submodule "lisp/extensions/consult-org-roam"]
 	path = lisp/extensions/consult-org-roam
 	url = https://github.com/jgru/consult-org-roam.git
+[submodule "emacs-smart-input-source"]
+	path = lisp/extensions/emacs-smart-input-source
+	url = https://github.com/laishulu/emacs-smart-input-source.git
