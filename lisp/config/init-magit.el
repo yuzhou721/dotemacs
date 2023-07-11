@@ -1,5 +1,5 @@
 ;; -*- lexical-binding: t -*-
-(defvar extension-magit-dir (concat emacs-extensions-dir "/magit"))
+;; (defvar extension-magit-dir (concat emacs-extensions-dir "/magit"))
 
 (use-package compat
   :ensure t
@@ -35,8 +35,8 @@
     (diff-hl-margin-mode)))
 
 (use-package magit
-  :ensure nil
-  :load-path extension-magit-dir
+  :ensure t
+  ;; :load-path extension-magit-dir
   :custom
   (magit-diff-refine-hunk t)
   (magit-module-sections-nested nil)
