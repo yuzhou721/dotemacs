@@ -95,6 +95,11 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
     "oa" 'org-agenda
     "ot" 'treemacs
     "oo" 'olivetti-mode
+
+    ;;quit
+    "q" '(:wk "quit")
+    "qr" 'restart-emacs
+    "qq" 'evil-quit-all
     )
   (with-eval-after-load 'org
     (define-leader-key 'normal org-mode-map :localleader
