@@ -18,11 +18,11 @@
 (use-package lsp-bridge
   :ensure nil
   :config
+  ;; lombok support
+  (setq lombok-path (substitute-in-file-name "$HOME/dotfiles/private/libraries/lombok.jar"))
+  (setq lsp-bridge-jdtls-jvm-args (format "%s%s" "-javaagent:" lombok-path))
   (global-lsp-bridge-mode)
   (setq acm-enable-icon t)
-  )
-
-(use-package clojure-mode
   )
 
 (provide 'init-lsp-bridge)
