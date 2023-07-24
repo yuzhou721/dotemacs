@@ -88,3 +88,12 @@
 [submodule "lisp/extensions/compat"]
 	path = lisp/extensions/compat
 	url = https://github.com/emacs-compat/compat.git
+[submodule "lisp/extensions/ht"]
+	path = lisp/extensions/ht
+	url = https://github.com/Wilfred/ht.el.git
+[submodule "pfuture"]
+	path = lisp/extensions/pfuture
+	url = https://github.com/Alexander-Miller/pfuture.git
+[submodule "lisp/extensions/dump-jump"]
+	path = lisp/extensions/dump-jump
+	url = https://github.com/jacktasia/dumb-jump.git
