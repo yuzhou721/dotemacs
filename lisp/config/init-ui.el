@@ -14,7 +14,7 @@
   :init
   (doom-modeline-mode t))
 
-(use-package all-the-icons
+(use-package nerd-icons
   :ensure t
   :demand t)
 
