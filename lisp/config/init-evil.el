@@ -10,6 +10,8 @@
   (when (< emacs-major-version 28)
     (use-package undo-fu
       :ensure t))
+  ;; Fix mouse-left click error
+  (define-key evil-motion-state-map [down-mouse-1] nil)
   ;; Silence line out of range error.
   :custom
 ;; undo will never freeze my Emacs
