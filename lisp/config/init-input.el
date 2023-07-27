@@ -28,6 +28,8 @@
   (cond ((string= (getenv "GTK_IM_MODULE") "ibus")
          (sis-ism-lazyman-config "xkb:us::eng" "libpinyin" 'ibus))
         ((string= (getenv "GTK_IM_MODULE") "fcitx")
+         (sis-ism-lazyman-config "1" "2" 'fcitx))
+        ((string= (getenv "GTK_IM_MODULE") "fcitx5")
          (sis-ism-lazyman-config "1" "2" 'fcitx5))
         (IS-MAC
          (sis-ism-lazyman-config "com.apple.keylayout.ABC" "com.sogou.inputmethod.sogou.pinyin" 'macism )))
