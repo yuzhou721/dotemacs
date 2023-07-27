@@ -97,3 +97,6 @@
 [submodule "lisp/extensions/dump-jump"]
 	path = lisp/extensions/dump-jump
 	url = https://github.com/jacktasia/dumb-jump.git
+[submodule "lisp/extensions/popup-el"]
+	path = lisp/extensions/popup-el
+	url = https://github.com/auto-complete/popup-el.git
