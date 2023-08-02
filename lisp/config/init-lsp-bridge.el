@@ -23,11 +23,11 @@
 
 (use-package lsp-bridge
   :ensure nil
-  :init
-  ;; lombok support
-  (setq lombok-path (substitute-in-file-name "$HOME/dotfiles/private/libraries/lombok.jar"))
-  (setq lsp-bridge-jdtls-jvm-args (format "%s%s" "-javaagent:" lombok-path))
   :config
+  ;; lombok support
+  (setq lombok-path (expand-file-name "plugins/lombok/lombok.jar" user-emacs-directory))
+  (setq jvm-lombok-args (format "%s%s" "-javaagent:" lombok-path))
+  (setq lsp-bridge-jdtls-jvm-args (list jvm-lombok-args))
   ;; evil
   (setq-local evil-goto-definition-functions '(lsp-bridge-jump))
   ;; 全局启用
@@ -50,7 +50,7 @@
 	("ge" . lsp-bridge-diagnostic-list)
 	:map lsp-bridge-mode-map
 	("s-j" . lsp-bridge-popup-documentation-scroll-down)
-	("s-k" . lsp-bridge-popup-documentation-scroll-down)
+	("s-k" . lsp-bridge-popup-documentation-scroll-up)
 	:map acm-mode-map
 	("C-j" . acm-select-next)
 	("C-k" . acm-select-prev))
