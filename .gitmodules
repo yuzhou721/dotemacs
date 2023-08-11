@@ -103,3 +103,6 @@
 [submodule "lisp/extensions/combobulate"]
 	path = lisp/extensions/combobulate
 	url = https://github.com/mickeynp/combobulate.git
+[submodule "lisp/extensions/evil-nerd-commenter"]
+	path = lisp/extensions/evil-nerd-commenter
+	url = https://github.com/redguardtoo/evil-nerd-commenter.git
