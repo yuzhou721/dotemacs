@@ -1,6 +1,6 @@
 (require 'cl-lib)
 
-(defvar emacs-root-dir (file-truename "~/.config/emacs/lisp"))
+(defvar emacs-root-dir (expand-file-name "lisp" user-emacs-directory))
 (defvar emacs-config-dir (concat emacs-root-dir "/config"))
 (defvar emacs-extensions-dir (concat emacs-root-dir "/extensions"))
 
