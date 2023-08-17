@@ -45,6 +45,6 @@
 
 (require 'init-lang-elisp)
 (require 'init-javascript)
-;;(require 'init-tree-sitter)
+(require 'init-tree-sitter)
 (require 'init-dart)
 (provide 'init-dev)

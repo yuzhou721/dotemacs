@@ -22,7 +22,6 @@
   :init (setq markdown-command "multimarkdown"))
 
 (use-package lsp-bridge
-  :ensure nil
   :config
   ;; lombok support
   (setq lombok-path (expand-file-name "plugins/lombok/lombok.jar" user-emacs-directory))

@@ -11,6 +11,5 @@
 (require 'init-tools)
 (require 'init-org)
 (require 'init-treemacs)
-(require 'init-tree-sitter)
 
 (provide 'init)

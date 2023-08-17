@@ -138,10 +138,10 @@
   :ensure nil
   :hook (after-init . tab-bar-mode)
   :custom
-  (tab-bar-show nil)
+  (tab-bar-show t)
   (tab-bar-tab-hints t)
   (tab-bar-close-button-show nil)
-  (tab-bar-tab-name-function 'tab-bar-tab-name-all)
+  (tab-bar-tab-name-function 'tab-bar-tab-name-current-with-count)
   (tab-bar-format '(tab-bar-format-tabs tab-bar-separator)))
 
 (use-package newcomment
