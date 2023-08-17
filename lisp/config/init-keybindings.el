@@ -6,47 +6,26 @@
   (setq which-key-popup-type 'side-window)
   )
 
+(use-package general)
 
-   (defun define-leader-key (state map localleader &rest bindings)
-      "Define leader key in MAP when STATE, a wrapper for
-`evil-define-key*'. All BINDINGS are prefixed with \"<leader>\"
-if LOCALLEADER is nil, otherwise \"<localleader>\"."
-      (cl-assert (cl-evenp (length bindings)))
-      (let ((prefix (if localleader "<localleader>" "<leader>"))
-            wk-replacements)
-        (while bindings
-          (let ((key (pop bindings))
-                (def (pop bindings)))
-            (when (symbolp def)
-              (evil-define-key* state map (kbd (concat prefix key)) def))
-            ;; Save which-key (key . replacement).
-            (pcase def
-              (`(:wk ,replacement)
-               (push (cons (concat prefix key) replacement) wk-replacements)))))
-        ;; which-key integration.
-        ;; XXX: replacement for localleader NOT supported.
-        (with-eval-after-load 'which-key
-          (cl-loop for (key . replacement) in wk-replacements
-                   unless localleader
-                   do (which-key-add-key-based-replacements key replacement)))))
+(general-create-definer global-definer
+    :keymaps 'override
+    :states '(insert emacs normal hybrid motion visual operator)
+    :prefix "SPC"
+    :non-normal-prefix "C-SPC")
+(general-create-definer global-leader
+    :keymaps 'override
+    :states '(emacs normal hybrid motion visual operator)
+    :prefix ","
+    "" '(:ignore t :which-key (lambda (arg) `(,(cadr (split-string (car arg) " ")) . ,(replace-regexp-in-string "-mode$" "" (symbol-name major-mode))))))
 
-(use-package evil
-  :config
-
-  (evil-set-leader 'normal (kbd "SPC"))
-  (evil-set-leader 'normal (kbd "<leader>m") :localleader)
-
-  (define-leader-key 'normal 'global nil
-    "SPC" 'keyboard-escape-quit
-
-    ;;文件相關
-    "f" '(:wk "file")
-    "ff" 'find-file
+(with-eval-after-load 'evil
+  (global-definer
+    "f" '(:ignore t :which-key "file")
     "fF" 'find-file-other-window
     "fs" 'save-buffer
-
-  ;搜索
-    "s" '(:wk "search")
+    "ff" 'find-file
+    "s" '(:ignore t :which-key "search")
     "sp" 'consult-ripgrep
     "ss" 'consult-line
     "sj" 'evil-show-jumps
@@ -55,54 +34,25 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
     "si" 'imenu
     "sf" 'consult-find
     "sd" 'consult-dir
-;; tab
-    "t" '(:wk "tab")
-    "t9" 'tab-bar-switch-to-last-tab
-    "tc" 'tab-bar-close-tab
-    "tC" 'tab-bar-close-group-tabs
-    "tg" 'tab-bar-change-tab-group
-    "ti" 'tab-switcher
-    "tn" 'tab-bar-new-tab
-    "to" 'tab-bar-close-other-tabs
-    "tt" 'tab-bar-switch-to-tab
-    "tp" 'tab-bar-switch-to-recent-tab
-    "tr" 'tab-bar-rename-tab
-
-  ;magit
-    "g" '(:wk "magit")
+    "g" '(:ignore t :which-key "magit")
     "gb" 'magit-blame
     "gc" 'magit-clone
     "gg" 'magit
-
-  ;;buffer
-    "b" '(:wk "buffer")
+    "b" '(:ignore t :which-key "buffer")
     "bb" 'consult-buffer
     "bB" 'consult-buffer-other-window
     "bz" 'bury-buffer
-
-    ;; projectile
-    "p" 'projectile-command-map
-
-    ;;window
-    "w" 'evil-window-map
-    "wx" 'kill-buffer-and-window
-    "w/" 'split-window-horizontally
-    "w-" 'split-window-vertically
-
-    ;;open
-    "o" '(:wk "open")
     "of" 'make-frame
     "oa" 'org-agenda
     "ot" 'treemacs
     "oo" 'olivetti-mode
-
-    ;;quit
-    "q" '(:wk "quit")
+    "p" '(projectile-command-map :which-key "projectile")
+    "q" '(:ignore t :wk "quit")
     "qr" 'restart-emacs
-    "qq" 'evil-quit-all
-    )
+    "qq" 'evil-quit-all))
+
   (with-eval-after-load 'org
-    (define-leader-key 'normal org-mode-map :localleader
+    (global-leader 'org-mode
         "." 'org-goto
         "a" 'org-archive-subtree
         "d" 'org-deadline
@@ -118,11 +68,9 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
         "T" 'org-todo-list
       ))
   (with-eval-after-load 'lsp-bridge
-    (define-leader-key 'normal lsp-bridge-mode-map :localleader
+    (global-leader 'lsp-bridge-mode-map
       "a" 'lsp-bridge-code-action
       "d" 'lsp-bridge-find-define))
-
-  )
 
 
 
