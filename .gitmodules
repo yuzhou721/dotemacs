@@ -109,3 +109,6 @@
 [submodule "lisp/extensions/evil-nerd-commenter"]
 	path = lisp/extensions/evil-nerd-commenter
 	url = https://github.com/redguardtoo/evil-nerd-commenter.git
+[submodule "lisp/extensions/treesit-auto"]
+	path = lisp/extensions/treesit-auto
+	url = https://github.com/renzmann/treesit-auto.git

@@ -40,6 +40,12 @@
 	'((java-mode . java-ts-mode)
 	  (js-json-mode . json-ts-mode))))
 
+(use-package treesit-auto
+  :config
+  (setq treesit-auto-install 'prompt)
+  (global-treesit-auto-mode)
+  )
+
 (use-package combobulate
     :preface
     ;; You can customize Combobulate's key prefix here.
