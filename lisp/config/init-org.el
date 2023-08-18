@@ -31,6 +31,21 @@
            "OKAY(o)"
            "YES(y)"
            "NO(n)")))
+  (global-leader 'org-mode
+        "." 'org-goto
+        "a" 'org-archive-subtree
+        "d" 'org-deadline
+        "e" 'org-set-effort
+        "f" 'org-footnote-action
+        "l" 'org-lint
+        "o" 'org-toggle-ordered-property
+        "p" 'org-set-property
+        "q" 'org-set-tags-command
+        "r" 'org-refile
+        "s" 'org-schedule
+        "t" 'org-todo
+        "T" 'org-todo-list
+      )
   :bind (:map org-mode-map
 	      ("C-RET" . org-insert-subheading)
 	      ("C-M-RET" . org-insert-todo-subheading)
@@ -132,17 +147,17 @@
         '(
           ("r" "ref" plain
            "* %?"
-           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}][${title}]]\n -----\n")
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}][${title}]]\n -----\n")
            :unnarrowed t)
           ("a" "Annotation" plain
            "#+begin_quote \n ${body}\n #+end_quote \n %?"
-           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}]][${title}]\n -----\n")
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}]][${title}]\n -----\n")
            :immediate-finish t
            :empty-lines 1
            :unnarrowed t)
           ("o" "Copy from clipboard" plain
            "%x"
-           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}]][${title}]\n -----\n")
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}]][${title}]\n -----\n")
            :immediate-finish t
            :empty-lines 1
            :unnarrowed t)

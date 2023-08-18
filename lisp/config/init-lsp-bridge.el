@@ -30,10 +30,15 @@
   ;; evil
   (setq-local evil-goto-definition-functions '(lsp-bridge-jump))
   ;; 全局启用
-  (global-lsp-bridge-mode)
+  ;; (global-lsp-bridge-mode)
   (setq acm-enable-icon t)
   ;; evil使用lsp-bridge-jump
   (evil-add-command-properties #'lsp-bridge-jump)
+  (global-leader )
+  (global-leader 'lsp-bridge-mode-map
+      "a" 'lsp-bridge-code-action
+      "d" 'lsp-bridge-find-define
+      "p" 'lsp-bridge-peek)
   :bind
   (:map evil-motion-state-map
 	("gR" . lsp-bridge-rename)

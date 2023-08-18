@@ -109,3 +109,6 @@
 [submodule "lisp/extensions/evil-nerd-commenter"]
 	path = lisp/extensions/evil-nerd-commenter
 	url = https://github.com/redguardtoo/evil-nerd-commenter.git
+[submodule "lisp/extensions/cape"]
+	path = lisp/extensions/cape
+	url = https://github.com/minad/cape.git
