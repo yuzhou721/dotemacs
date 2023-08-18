@@ -112,3 +112,6 @@
 [submodule "lisp/extensions/treesit-auto"]
 	path = lisp/extensions/treesit-auto
 	url = https://github.com/renzmann/treesit-auto.git
+[submodule "lisp/extensions/cape"]
+	path = lisp/extensions/cape
+	url = https://github.com/minad/cape.git

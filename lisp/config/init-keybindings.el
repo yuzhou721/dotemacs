@@ -19,8 +19,7 @@
     :prefix ","
     "" '(:ignore t :which-key (lambda (arg) `(,(cadr (split-string (car arg) " ")) . ,(replace-regexp-in-string "-mode$" "" (symbol-name major-mode))))))
 
-(with-eval-after-load 'evil
-  (global-definer
+(global-definer
     "f" '(:ignore t :which-key "file")
     "fF" 'find-file-other-window
     "fs" 'save-buffer
@@ -42,6 +41,7 @@
     "bb" 'consult-buffer
     "bB" 'consult-buffer-other-window
     "bz" 'bury-buffer
+    "o" '(:ignore t :which-key "open")
     "of" 'make-frame
     "oa" 'org-agenda
     "ot" 'treemacs
@@ -49,29 +49,6 @@
     "p" '(projectile-command-map :which-key "projectile")
     "q" '(:ignore t :wk "quit")
     "qr" 'restart-emacs
-    "qq" 'evil-quit-all))
-
-  (with-eval-after-load 'org
-    (global-leader 'org-mode
-        "." 'org-goto
-        "a" 'org-archive-subtree
-        "d" 'org-deadline
-        "e" 'org-set-effort
-        "f" 'org-footnote-action
-        "l" 'org-lint
-        "o" 'org-toggle-ordered-property
-        "p" 'org-set-property
-        "q" 'org-set-tags-command
-        "r" 'org-refile
-        "s" 'org-schedule
-        "t" 'org-todo
-        "T" 'org-todo-list
-      ))
-  (with-eval-after-load 'lsp-bridge
-    (global-leader 'lsp-bridge-mode-map
-      "a" 'lsp-bridge-code-action
-      "d" 'lsp-bridge-find-define))
-
-
+    "qq" 'evil-quit-all)
 
 (provide 'init-keybindings)

@@ -5,7 +5,7 @@
 (require 'init-evil)
 (require 'init-keybindings)
 (require 'init-dev)
-(require 'init-minibuffer)
+(require 'init-completion)
 (require 'init-magit)
 (require 'init-lsp-bridge)
 (require 'init-tools)
