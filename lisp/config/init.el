@@ -7,7 +7,7 @@
 (require 'init-dev)
 (require 'init-completion)
 (require 'init-magit)
-(require 'init-lsp-bridge)
+(require 'init-lsp)
 (require 'init-tools)
 (require 'init-org)
 (require 'init-treemacs)
