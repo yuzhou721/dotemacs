@@ -115,3 +115,6 @@
 [submodule "lisp/extensions/cape"]
 	path = lisp/extensions/cape
 	url = https://github.com/minad/cape.git
+[submodule "lisp/extensions/evil-org-mode"]
+	path = lisp/extensions/evil-org-mode
+	url = https://github.com/Somelauw/evil-org-mode.git

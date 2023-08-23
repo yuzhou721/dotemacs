@@ -40,21 +40,19 @@
       "d" 'lsp-bridge-find-define
       "p" 'lsp-bridge-peek)
   :bind
-  (:map evil-motion-state-map
-	("gR" . lsp-bridge-rename)
-	("gr" . lsp-bridge-find-references)
-	("gd" . lsp-bridge-jump)
-	("gs" . lsp-bridge-restart-process)
-	:map evil-normal-state-map
+  (:map lsp-bridge-mode-map
+	("s-j" . lsp-bridge-popup-documentation-scroll-down)
+	("s-k" . lsp-bridge-popup-documentation-scroll-up)
 	("gi" . lsp-bridge-find-impl)
 	("gh" . lsp-bridge-popup-documentation)
 	("gn" . lsp-bridge-diagnostic-jump-next)
 	("gp" . lsp-bridge-diagnostic-jump-prev)
 	("ga" . lsp-bridge-code-action)
 	("ge" . lsp-bridge-diagnostic-list)
-	:map lsp-bridge-mode-map
-	("s-j" . lsp-bridge-popup-documentation-scroll-down)
-	("s-k" . lsp-bridge-popup-documentation-scroll-up)
+	("gR" . lsp-bridge-rename)
+	("gr" . lsp-bridge-find-references)
+	("gd" . lsp-bridge-jump)
+	("gs" . lsp-bridge-restart-process)
 	:map acm-mode-map
 	("C-j" . acm-select-next)
 	("C-k" . acm-select-prev))
@@ -71,5 +69,13 @@
     (require 'dumb-jump)
     (dumb-jump-go))))
 
+(use-package eglot
+  :bind
+  (:map eglot-mode-map
+  ("gR" . #'eglot-rename)
+  ("gr" . #'xref-find-references)
+  ("gi" . #'eglot-find-implementation)
+  ("gh" . #'eldoc)
+  ("ga" . #'eglot-code-actions)))
 
-(provide 'init-lsp-bridge)
+(provide 'init-lsp)
