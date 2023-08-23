@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t -*-
 (use-package evil
   :init
+  (setq evil-want-integration t)
   (setq evil-disable-insert-state-bindings t)
   (setq evil-want-Y-yank-to-eol t)
   (setq evil-want-keybinding nil)
@@ -23,7 +24,6 @@
   (evil-ex-interactive-search-highlight 'selected-window)
  ;; when `visual-line-mode' enabled, exchange j/k with gj/gk
   (evil-respect-visual-line-mode t)
-  (evil-want-integration t)
   (evil-want-keybinding nil)
   (evil-want-fine-undo t)
   (evil-want-C-g-bindings t)
@@ -43,7 +43,7 @@
   :custom
   (evil-collection-setup-minibuffer t)
   (evil-collection-setup-debugger-keys nil)
-  (evil-collection-calendar-want-org-bindings t)
+  (evil-collection-calendar-want-org-bindings t) 
   (evil-collection-unimpaired-want-repeat-mode-integration t)
   :config
   (evil-collection-init))
