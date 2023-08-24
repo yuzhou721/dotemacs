@@ -4,6 +4,7 @@
 (require 'init-input)
 (require 'init-evil)
 (require 'init-keybindings)
+(require 'init-window)
 (require 'init-dev)
 (require 'init-completion)
 (require 'init-magit)

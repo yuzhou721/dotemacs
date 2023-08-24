@@ -11,6 +11,9 @@
     (global-linum-mode 1)
     )
 
+;;开启像素滚动
+(pixel-scroll-mode 1)
+
 
 ;; 更改光标的样式（不能生效，解决方案见第二集）
 ;;(setq cursor-type 'bar)
@@ -43,7 +46,8 @@
 (setq async-bytecomp-allowed-packages nil) ;避免magit报错
 (setq word-wrap-by-category t)             ;按照中文折行
 
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'relative) ;显示相对行号
+(setq show-paren-context-when-offscreen 'child-frame) ;当光标在右括号时，如果左括号不在屏幕时，会在 echo area 中展示相关信息，在 GUI 中，可以设置成 overlay 或 child-frame
 
 (use-package savehist
   :ensure nil

@@ -38,7 +38,8 @@
         (zig . ("https://github.com/GrayJack/tree-sitter-zig"))))
   (setq major-mode-remap-alist
 	'((java-mode . java-ts-mode)
-	  (js-json-mode . json-ts-mode))))
+	  (js-json-mode . json-ts-mode))
+	treesit-font-lock-level 4))
 
 (use-package treesit-auto
   :demand t
