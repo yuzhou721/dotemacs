@@ -118,3 +118,6 @@
 [submodule "lisp/extensions/evil-org-mode"]
 	path = lisp/extensions/evil-org-mode
 	url = https://github.com/Somelauw/evil-org-mode.git
+[submodule "lisp/extensions/popper"]
+	path = lisp/extensions/popper
+	url = https://github.com/karthink/popper.git
