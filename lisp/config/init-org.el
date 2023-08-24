@@ -51,6 +51,29 @@
 	      ("C-M-RET" . org-insert-todo-subheading)
 	      ))
 
+(defun org-apperance-evil-hack ()
+  (add-hook 'evil-insert-state-entry-hook #'org-appear-manual-start nil t)
+  (add-hook 'evil-insert-state-exit-hook #'org-appear-manual-stop nil t))
+
+;; 显示自动隐藏的元素
+(use-package org-appear
+  :after org
+  :hook (org-mode . org-appear-mode)
+  :init
+  (setq org-appear-trigger 'manual)
+  (add-hook 'org-mode-hook 'org-apperance-evil-hack))
+
+;; 中国日历
+(use-package cal-china-x
+  :demand t
+  :config
+  (setq mark-holidays-in-calendar t)
+  (setq cal-china-x-important-holidays cal-china-x-chinese-holidays)
+  (setq cal-china-x-general-holidays '((holiday-lunar 1 15 "元宵节")))
+  (setq calendar-holidays
+	(append cal-china-x-important-holidays
+		cal-china-x-general-holidays)))
+
 (use-package org-attach
   :ensure nil
   :after org

@@ -71,8 +71,10 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
     "hr" 'desmond/reload-config
     "hp" 'desmond/open-config-dir)
   )
+
 (defun desmond/reload-config ()
-    "Reload config")
+  "Reload config" 
+  (add-subdirs-to-load-path emacs-root-dir))
 
 (defun desmond/open-config-dir ()
     "Open config dired")

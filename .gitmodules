@@ -121,3 +121,9 @@
 [submodule "lisp/extensions/popper"]
 	path = lisp/extensions/popper
 	url = https://github.com/karthink/popper.git
+[submodule "lisp/extensions/org-appear"]
+	path = lisp/extensions/org-appear
+	url = https://github.com/awth13/org-appear.git
+[submodule "lisp/extensions/cal-china-x"]
+	path = lisp/extensions/cal-china-x
+	url = https://github.com/xwl/cal-china-x.git
