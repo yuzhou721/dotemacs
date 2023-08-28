@@ -57,8 +57,8 @@
 
 (use-package evil-nerd-commenter
   :config
-  (define-key evil-normal-state-map (kbd ",/") 'evilnc-comment-or-uncomment-lines)
-  (define-key evil-visual-state-map (kbd ",/") 'evilnc-comment-or-uncomment-lines)
+  (define-key evil-normal-state-map (kbd "gc") 'evilnc-comment-or-uncomment-lines)
+  (define-key evil-visual-state-map (kbd "gc") 'evilnc-comment-or-uncomment-lines)
   ;; (evilnc-default-hotkeys)
   )
 ;; 文件末尾
