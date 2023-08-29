@@ -11,8 +11,8 @@
     (global-linum-mode 1)
     )
 
-;;开启像素滚动
-(pixel-scroll-mode 1)
+;;开启像素滚动 pgtk 
+;;(pixel-scroll-mode 1)
 
 
 ;; 更改光标的样式（不能生效，解决方案见第二集）
@@ -133,20 +133,6 @@
          ("C-c C-n" . reb-next-match))
   :custom
   (reb-re-syntax 'string))
-
-;; window layout manager
-;;
-;; gt next-tab
-;; gT prev-tab
-(use-package tab-bar
-  :ensure nil
-  :hook (after-init . tab-bar-mode)
-  :custom
-  (tab-bar-show t)
-  (tab-bar-tab-hints t)
-  (tab-bar-close-button-show nil)
-  (tab-bar-tab-name-function 'tab-bar-tab-name-current-with-count)
-  (tab-bar-format '(tab-bar-format-tabs tab-bar-separator)))
 
 (use-package newcomment
   :ensure nil
