@@ -7,9 +7,6 @@
 [submodule "lisp/extensions/use-package"]
 	path = lisp/extensions/use-package
 	url = https://github.com/jwiegley/use-package.git
-[submodule "lisp/extensions/projectile"]
-	path = lisp/extensions/projectile
-	url = https://github.com/bbatsov/projectile.git
 [submodule "lisp/extensions/lsp-bridge"]
 	path = lisp/extensions/lsp-bridge
 	url = https://github.com/manateelazycat/lsp-bridge.git
@@ -127,3 +124,6 @@
 [submodule "lisp/extensions/cal-china-x"]
 	path = lisp/extensions/cal-china-x
 	url = https://github.com/xwl/cal-china-x.git
+[submodule "lisp/extensions/tabspaces"]
+	path = lisp/extensions/tabspaces
+	url = https://github.com/mclear-tools/tabspaces.git
