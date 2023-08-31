@@ -1,47 +1,47 @@
 ;; -*- lexical-binding: t -*-
-;; (use-package rime
-;;   :config
-;;   (setq default-input-method "rime"
-;;       rime-show-candidate 'posframe)
-;;   (setq rime-disable-predicates
-;;       '(rime-predicate-evil-mode-p
-;;         rime-predicate-after-alphabet-char-p
-;;         rime-predicate-prog-in-code-p))
-;;   ;;; support shift-l, shift-r, control-l, control-r
-;;   (setq rime-inline-ascii-trigger 'shift-l)
-;;   )
+(use-package rime
+  :config
+  (setq default-input-method "rime"
+      rime-show-candidate 'posframe)
+  (setq rime-disable-predicates
+      '(rime-predicate-evil-mode-p
+        rime-predicate-after-alphabet-char-p
+        rime-predicate-prog-in-code-p))
+  ;;; support shift-l, shift-r, control-l, control-r
+  (setq rime-inline-ascii-trigger 'control-l)
+  )
 
 ;;输入法自动切换
-(use-package sis
-  ;; :disabled (string= (getenv "GTK_IM_MODULE") "ibus")
-  ;; :hook
-  ;; ;; enable the /follow context/ and /inline region/ mode for specific buffers
-  ;; (
-  ;;  ((text-mode prog-mode) . sis-context-mode)
-  ;;  ((text-mode prog-mode) . sis-inline-mode)
-  ;;  )
-  :custom
-  (sis-default-cursor-color "white")
+;; (use-package sis
+;;   ;; :disabled (string= (getenv "GTK_IM_MODULE") "ibus")
+;;   ;; :hook
+;;   ;; ;; enable the /follow context/ and /inline region/ mode for specific buffers
+;;   ;; (
+;;   ;;  ((text-mode prog-mode) . sis-context-mode)
+;;   ;;  ((text-mode prog-mode) . sis-inline-mode)
+;;   ;;  )
+;;   :custom
+;;   (sis-default-cursor-color "white")
 
-  :config
-  ;; For MacOS
-  (cond ((string= (getenv "GTK_IM_MODULE") "ibus")
-         (sis-ism-lazyman-config "xkb:us::eng" "libpinyin" 'ibus))
-        ((string= (getenv "GTK_IM_MODULE") "fcitx")
-         (sis-ism-lazyman-config "1" "2" 'fcitx))
-        ((string= (getenv "GTK_IM_MODULE") "fcitx5")
-         (sis-ism-lazyman-config "1" "2" 'fcitx5))
-        (IS-MAC
-         (sis-ism-lazyman-config "com.apple.keylayout.ABC" "com.sogou.inputmethod.sogou.pinyin" 'macism )))
+;;   :config
+;;   ;; For MacOS
+;;   (cond ((string= (getenv "GTK_IM_MODULE") "ibus")
+;;          (sis-ism-lazyman-config "xkb:us::eng" "libpinyin" 'ibus))
+;;         ((string= (getenv "GTK_IM_MODULE") "fcitx")
+;;          (sis-ism-lazyman-config "1" "2" 'fcitx))
+;;         ((string= (getenv "GTK_IM_MODULE") "fcitx5")
+;;          (sis-ism-lazyman-config "1" "2" 'fcitx5))
+;;         (IS-MAC
+;;          (sis-ism-lazyman-config "com.apple.keylayout.ABC" "com.sogou.inputmethod.sogou.pinyin" 'macism )))
 
-  ;; enable the /cursor color/ mode
-  (sis-global-cursor-color-mode t)
-  ;; enable the /respect/ mode
-  (sis-global-respect-mode t)
+;;   ;; enable the /cursor color/ mode
+;;   (sis-global-cursor-color-mode t)
+;;   ;; enable the /respect/ mode
+;;   (sis-global-respect-mode t)
 
-  (sis-global-context-mode t)
-  ;; enable the /inline english/ mode for all buffers
-  (sis-global-inline-mode t)
-  )
+;;   (sis-global-context-mode t)
+;;   ;; enable the /inline english/ mode for all buffers
+;;   (sis-global-inline-mode t)
+;;   )
 
 (provide 'init-input)

@@ -11,6 +11,7 @@
 (require 'init-lsp)
 (require 'init-tools)
 (require 'init-org)
+(require 'init-workspace)
 (require 'init-treemacs)
 
 (provide 'init)

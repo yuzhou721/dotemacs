@@ -60,6 +60,7 @@ Main data structure of the dispatcher with the form:
 	  "\\*Embark Export:.*\\*"
 	  "\\*Edit Annotation.*\\*"
 	  "\\*Flutter\\*"
+	  "\\*lsp-bridge\\*"
 	  bookmark-bmenu-mode
 	  lsp-bridge-ref-mode
 	  comint-mode
