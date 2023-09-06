@@ -22,25 +22,40 @@
   :init (setq markdown-command "multimarkdown"))
 
 (use-package lsp-bridge
+  :hook
+  (java-ts-mode . lsp-bridge-mode)
+  (python-ts-mode . lsp-bridge-mode)
   :config
-  (corfu-mode -1)
+  ;; Output server logs to `*lsp-bridge*' buffer, required restarting the process
+  (setq lsp-bridge-enable-log t)
+  ;; Show tooltip when cursor under a diagnostic overlay
+  (setq lsp-bridge-enable-hover-diagnostic t)
+  ;; Do not display documentation by default, press `M-d' when needed
+  (setq acm-enable-doc nil)
+  ;; Evil initial state
+  (evil-set-initial-state 'lsp-bridge-ref-mode 'emacs)
+  ;; evil
+  ;; (setq-local evil-goto-definition-functions '(lsp-bridge-jump))
+  ;; 全局启用
+  ;;(global-lsp-bridge-mode)
+  (setq acm-enable-icon t)
+  ;; evil使用 lsp-bridge-jump
+  ;; (evil-add-command-properties #'lsp-bridge-jump)
+  ;; java 配置
   ;; lombok support
   (setq lombok-path (expand-file-name "plugins/lombok/lombok.jar" user-emacs-directory))
   (setq jvm-lombok-args (format "%s%s" "-javaagent:" lombok-path))
   (setq lsp-bridge-jdtls-jvm-args (list jvm-lombok-args))
-  ;; evil
-  (setq-local evil-goto-definition-functions '(lsp-bridge-jump))
-  ;; 全局启用
-  (global-lsp-bridge-mode)
-  (setq acm-enable-icon t)
-  ;; evil使用 lsp-bridge-jump
-  ;; (evil-add-command-properties #'lsp-bridge-jump)
-  (require 'lsp-bridge-jdtls) ;; 根据项目自动生成自定义配置，添加必要的启动参数
-  (setq lsp-bridge-enable-auto-import t) ;; 开启自动导入依赖，目前没有code action。补全时可以通过这个导入相应的依赖，建议开启。
+  ;; (require 'lsp-bridge-jdtls) ;; 根据项目自动生成自定义配置，添加必要的启动参数
+  ;; (setq lsp-bridge-enable-auto-import t) ;; 开启自动导入依赖，目前没有code action。补全时可以通过这个导入相应的依赖，建议开启。
+  ;; 设置按键
   (global-leader 'lsp-bridge-mode-map
       "a" 'lsp-bridge-code-action
       "d" 'lsp-bridge-find-define
-      "p" 'lsp-bridge-peek)
+      "p" 'lsp-bridge-peek
+      "r" 'lsp-bridge-restart-process)
+  ;; corfu 关闭
+  (corfu-mode -1)
   :bind
   (:map lsp-bridge-mode-map
 	("s-j" . lsp-bridge-popup-documentation-scroll-down)
