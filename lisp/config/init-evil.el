@@ -5,6 +5,7 @@
   (setq evil-disable-insert-state-bindings t)
   (setq evil-want-Y-yank-to-eol t)
   (setq evil-want-keybinding nil)
+  (setq evil-want-minibuffer t)
   :hook (after-init . evil-mode)
   :config
   (evil-mode 1)
