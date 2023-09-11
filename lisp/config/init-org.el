@@ -1,12 +1,45 @@
 ;; -*- lexical-binding: t; -*-
 ;;; Code:
+(defvar +org-capture-todo-file "todo.org"
+  "Default target for todo entries.
+
+Is relative to `org-directory', unless it is absolute. Is used in Doom's default
+`org-capture-templates'.")
+
+(defvar +org-capture-changelog-file "changelog.org"
+  "Default target for changelog entries.
+
+Is relative to `org-directory' unless it is absolute. Is used in Doom's default
+`org-capture-templates'.")
+
+(defvar +org-capture-notes-file "notes.org"
+  "Default target for storing notes.
+
+Used as a fall back file for org-capture.el, for templates that do not specify a
+target file.
+
+Is relative to `org-directory', unless it is absolute. Is used in Doom's default
+`org-capture-templates'.")
+
+(defvar +org-capture-journal-file "journal.org"
+  "Default target for storing timestamped journal entries.
+
+Is relative to `org-directory', unless it is absolute. Is used in Doom's default
+`org-capture-templates'.")
+
+(defvar +org-capture-projects-file "projects.org"
+  "Default, centralized target for org-capture templates.")
+
+
 (use-package org
   :pin melpa
   :ensure t
   :custom
   (org-startup-indented t)
+  (org-capture-last-stored nil)
   :config
-  (setq-default org-directory "~/org")
+  ; todo
+  (setq org-directory "~/org")
   (setq-default org-agenda-files (list org-directory))
   (setq org-todo-keywords
         '((sequence
@@ -31,20 +64,64 @@
            "OKAY(o)"
            "YES(y)"
            "NO(n)")))
+  (setq org-default-notes-file
+	(expand-file-name +org-capture-notes-file org-directory)
+	+org-capture-journal-file
+	(expand-file-name +org-capture-journal-file org-directory)
+	org-capture-templates
+	'(("t" "Personal todo" entry
+	   (file+headline +org-capture-todo-file "Inbox")
+	   "* [ ] %?\n%i\n%a" :prepend t)
+	  ("n" "Personal notes" entry
+	   (file+headline +org-capture-notes-file "Inbox")
+	   "* %u %?\n%i\n%a" :prepend t)
+	  ("j" "Journal" entry
+	   (file+olp+datetree +org-capture-journal-file)
+	   "* %U %?\n%i\n%a" :prepend t)))
+  (setq org-refile-targets
+	'((nil :maxlevel . 3)
+	  (org-agenda-files :maxlevel . 3))
+	;; Without this, completers like ivy/helm are only given the first level of
+	;; each outline candidates. i.e. all the candidates under the "Tasks" heading
+	;; are just "Tasks/". This is unhelpful. We want the full path to each refile
+	;; target! e.g. FILE/Tasks/heading/subheading
+	org-refile-use-outline-path 'file
+	org-outline-path-complete-in-steps nil)
   (global-leader 'org-mode
+	"#" 'org-update-statistics-cookies
+        "'" 'org-edit-special
+        "*" 'org-ctrl-c-star
+        "+" 'org-ctrl-c-minus
+        "," 'org-switchb
         "." 'org-goto
-        "a" 'org-archive-subtree
-        "d" 'org-deadline
-        "e" 'org-set-effort
+        "@" 'org-cite-insert
+	"." 'consult-org-heading
+        "/" 'consult-org-agenda
+        "A" 'org-archive-subtree
+        "e" 'org-export-dispatch
         "f" 'org-footnote-action
-        "l" 'org-lint
-        "o" 'org-toggle-ordered-property
-        "p" 'org-set-property
+        "h" 'org-toggle-heading
+        "i" 'org-toggle-item
+        "I" 'org-id-get-create
+        "k" 'org-babel-remove-result
+        "n" 'org-store-link
+        "o" 'org-set-property
         "q" 'org-set-tags-command
-        "r" 'org-refile
-        "s" 'org-schedule
         "t" 'org-todo
         "T" 'org-todo-list
+        "x" 'org-toggle-checkbox
+	"a" '(:ignore t :wk "attachments")
+        "aa" #'org-attach
+        "ad" #'org-attach-delete-one
+        "aD" #'org-attach-delete-all
+        "an" #'org-attach-new
+        "ao" #'org-attach-open
+        "aO" #'org-attach-open-in-emacs
+        "ar" #'org-attach-reveal
+        "aR" #'org-attach-reveal-in-emacs
+        "au" #'org-attach-url
+        "as" #'org-attach-set-directory
+        "aS" #'org-attach-sync
       )
   :bind (:map org-mode-map
 	      ("C-RET" . org-insert-subheading)
