@@ -68,7 +68,8 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
     "qq" 'evil-quit-all
     "h" '(:ignore t :wk "help")
     "hr" 'desmond/reload-config
-    "hp" 'desmond/open-config-dir)
+    "hp" 'desmond/open-config-dir
+    "x" 'org-capture)
   )
 
 (defun desmond/reload-config ()
