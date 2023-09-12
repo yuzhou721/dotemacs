@@ -127,3 +127,6 @@
 [submodule "lisp/extensions/tabspaces"]
 	path = lisp/extensions/tabspaces
 	url = https://github.com/mclear-tools/tabspaces.git
+[submodule "lisp/extensions/evil-textobj-tree-sitter"]
+	path = lisp/extensions/evil-textobj-tree-sitter
+	url = https://github.com/meain/evil-textobj-tree-sitter.git
