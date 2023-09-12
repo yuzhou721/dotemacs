@@ -66,4 +66,26 @@
            (tsx-ts-mode . combobulate-mode))
     )
 
+(use-package fingertip
+  :hook
+  (java-ts-mode . (lambda () (fingertip-mode 1)))
+  :general
+  (:keymaps 'fingertip-mode-map :states 'insert
+	    "(" 'fingertip-open-round
+	    "(" 'fingertip-open-round
+	    "[" 'fingertip-open-bracket
+	    "{" 'fingertip-open-curly
+	    ")" 'fingertip-close-round
+	    "]" 'fingertip-close-bracket
+	    "}" 'fingertip-close-curly
+	    "=" 'fingertip-equal
+	    "（" 'fingertip-open-chinese-round
+	    "「" 'fingertip-open-chinese-bracket
+	    "【" 'fingertip-open-chinese-curly
+	    "）" 'fingertip-close-chinese-round
+	    "」" 'fingertip-close-chinese-bracket
+	    "】" 'fingertip-close-chinese-curly
+	    "\"" 'fingertip-double-quote
+	    "'"  'fingertip-single-quote))
+
 (provide 'init-tree-sitter)

@@ -127,3 +127,6 @@
 [submodule "lisp/extensions/tabspaces"]
 	path = lisp/extensions/tabspaces
 	url = https://github.com/mclear-tools/tabspaces.git
+[submodule "lisp/extensions/fingertip"]
+	path = lisp/extensions/fingertip
+	url = https://github.com/manateelazycat/fingertip.git
