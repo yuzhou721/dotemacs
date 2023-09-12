@@ -130,3 +130,6 @@
 [submodule "lisp/extensions/evil-textobj-tree-sitter"]
 	path = lisp/extensions/evil-textobj-tree-sitter
 	url = https://github.com/meain/evil-textobj-tree-sitter.git
+[submodule "lisp/extensions/fingertip"]
+	path = lisp/extensions/fingertip
+	url = https://github.com/manateelazycat/fingertip.git
