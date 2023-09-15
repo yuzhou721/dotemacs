@@ -63,6 +63,7 @@
            (css-ts-mode . combobulate-mode)
            (yaml-ts-mode . combobulate-mode)
            (typescript-ts-mode . combobulate-mode)
+           (java-ts-mode . combobulate-mode)
            (tsx-ts-mode . combobulate-mode))
     )
 

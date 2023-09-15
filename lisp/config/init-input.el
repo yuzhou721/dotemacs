@@ -22,8 +22,6 @@
 ;;   ;;  )
 ;;   :custom
 ;;   (sis-default-cursor-color "white")
-
-;;   :config
 ;;   ;; For MacOS
 ;;   (cond ((string= (getenv "GTK_IM_MODULE") "ibus")
 ;;          (sis-ism-lazyman-config "xkb:us::eng" "libpinyin" 'ibus))

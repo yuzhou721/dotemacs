@@ -133,3 +133,6 @@
 [submodule "lisp/extensions/fingertip"]
 	path = lisp/extensions/fingertip
 	url = https://github.com/manateelazycat/fingertip.git
+[submodule "lisp/extensions/ts-docstr"]
+	path = lisp/extensions/ts-docstr
+	url = https://github.com/emacs-vs/ts-docstr.git

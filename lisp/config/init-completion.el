@@ -24,7 +24,6 @@
   :init
     (setq cape-dabbrev-min-length 3)
     ;; Add `completion-at-point-functions', used by `completion-at-point'.
-    (add-to-list 'completion-at-point-functions #'cape-file)
     (add-to-list 'completion-at-point-functions #'cape-dabbrev))
 
 ;; Enable vertico
@@ -111,5 +110,14 @@
   :hook
   ('minibuffer-exit-hook 'disable-py-search)
   )
+
+(use-package yasnippet
+  :ensure nil
+  :config
+  (yas-global-mode 1)
+  )
+
+ 
+
 
 (provide 'init-completion)

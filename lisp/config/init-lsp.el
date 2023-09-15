@@ -9,12 +9,6 @@
   (setq dumb-jump-selector 'completion-read)
   )
 
-(use-package yasnippet
-  :ensure nil
-  :config
-  (yas-global-mode 1)
-  )
-
 ;; markdown
 (use-package markdown-mode
   :ensure t

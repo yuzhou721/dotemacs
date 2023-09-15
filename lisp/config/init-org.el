@@ -70,7 +70,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 	(expand-file-name +org-capture-journal-file org-directory)
 	org-capture-templates
 	'(("t" "Personal todo" entry
-	   (file+headline +org-capture-todo-file "Inbox")
+	   (file+headline org-default-notes-file "Inbox")
 	   "* [ ] %?\n%i\n%a" :prepend t)
 	  ("n" "Personal notes" entry
 	   (file+headline +org-capture-notes-file "Inbox")
@@ -207,6 +207,8 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
                               (eshell     . t)
                               (python     . t)
                               (shell      . t))))
+
+
 
 (use-package simple-httpd
   :ensure t
