@@ -200,13 +200,16 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
                         ("dot"    . graphviz-dot) ;; was `fundamental-mode'
                         ("elisp"  . emacs-lisp)
                         ("ocaml"  . tuareg)
-                        ("shell"  . sh)))
+                        ("shell"  . sh)
+			("java" . java)))
   (org-babel-load-languages '((C          . t)
                               (dot        . t)
                               (emacs-lisp . t)
                               (eshell     . t)
                               (python     . t)
-                              (shell      . t))))
+                              (shell      . t)
+			      (java . t)
+			      )))
 
 
 
