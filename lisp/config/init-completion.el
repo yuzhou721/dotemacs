@@ -117,7 +117,9 @@
   (yas-global-mode 1)
   )
 
- 
-
+(use-package yasnippet-capf
+  :after cape
+  :config
+  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
 (provide 'init-completion)
