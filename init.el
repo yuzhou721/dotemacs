@@ -41,4 +41,11 @@
 
 (add-subdirs-to-load-path emacs-root-dir)
 
+(defun dd/reload-emacs-config ()
+  "reload emacs config"
+  (interactive)
+  (add-subdirs-to-load-path emacs-root-dir)
+  (message "Reload config success!")
+  )
+
 (require 'init)

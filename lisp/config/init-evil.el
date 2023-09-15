@@ -34,17 +34,15 @@
   )
 
 (use-package evil-surround
-  :ensure t
   :after evil
   :hook (after-init . global-evil-surround-mode))
 
 (use-package evil-collection
   :after evil
-  :ensure t
   :custom
   (evil-collection-setup-minibuffer t)
   (evil-collection-setup-debugger-keys nil)
-  (evil-collection-calendar-want-org-bindings t) 
+  (evil-collection-calendar-want-org-bindings t)
   (evil-collection-unimpaired-want-repeat-mode-integration t)
   :config
   (evil-collection-init))

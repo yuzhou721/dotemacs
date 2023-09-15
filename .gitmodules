@@ -142,3 +142,9 @@
 [submodule "lisp/extensions/evil-collection"]
 	path = lisp/extensions/evil-collection
 	url = https://github.com/emacs-evil/evil-collection.git
+[submodule "lisp/extensions/annalist"]
+	path = lisp/extensions/annalist
+	url = https://github.com/noctuid/annalist.el.git
+[submodule "lisp/extensions/evil-surround"]
+	path = lisp/extensions/evil-surround
+	url = https://github.com/emacs-evil/evil-surround.git
