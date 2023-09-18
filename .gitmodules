@@ -52,9 +52,6 @@
 [submodule "lisp/extensions/rainbow-delimiters"]
 	path = lisp/extensions/rainbow-delimiters
 	url = https://github.com/Fanael/rainbow-delimiters.git
-[submodule "lisp/extensions/elisp-tree-sitter"]
-	path = lisp/extensions/elisp-tree-sitter
-	url = https://github.com/emacs-tree-sitter/elisp-tree-sitter
 [submodule "lisp/extensions/grammatical-edit"]
 	path = lisp/extensions/grammatical-edit
 	url = https://github.com/manateelazycat/grammatical-edit.git
