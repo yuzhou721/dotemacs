@@ -38,8 +38,9 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 
-(require 'init-lang-elisp)
+(require 'init-lisp)
 (require 'init-javascript)
 (require 'init-tree-sitter)
 (require 'init-dart)
+(require 'init-clojure)
 (provide 'init-dev)
