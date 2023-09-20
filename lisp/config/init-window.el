@@ -92,6 +92,7 @@ Main data structure of the dispatcher with the form:
 	  "\\*tldr\\*$"
 	  "\\*vc-.*\\*$"
 	  "\\*eldoc\\*"
+	  "\\*General Keybindings\\*"
 	  "^\\*elfeed-entry\\*$"
 	  "^\\*macro expansion\\**"
 
