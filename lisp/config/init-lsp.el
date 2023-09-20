@@ -47,12 +47,6 @@
   (setq jvm-lombok-args (format "%s%s" "-javaagent:" lombok-path))
   (setq lsp-bridge-jdtls-jvm-args (list jvm-lombok-args))
   (setq lsp-bridge-enable-auto-import t) ;; 开启自动导入依赖，目前没有code action。补全时可以通过这个导入相应的依赖，建议开启。
-  ;; 设置按键
-  (global-leader 'lsp-bridge-mode-map
-      "a" 'lsp-bridge-code-action
-      "d" 'lsp-bridge-find-define
-      "p" 'lsp-bridge-peek
-      "r" 'lsp-bridge-restart-process)
   :general
   (:states 'normal :keymaps 'lsp-bridge-mode-map
 	   "gi" 'lsp-bridge-find-impl
@@ -71,6 +65,12 @@
   (:keymaps 'lsp-bridge-mode-map
 	    "S-j" 'lsp-bridge-popup-documentation-scroll-down
 	    "S-k" 'lsp-bridge-popup-documentation-scroll-up)
+  ;; 设置按键
+  (global-leader 'lsp-bridge-mode-map
+      "a" 'lsp-bridge-code-action
+      "d" 'lsp-bridge-find-define
+      "p" 'lsp-bridge-peek
+      "r" 'lsp-bridge-restart-process)
 )
 
 ;; 融合 `lsp-bridge' `find-function' 以及 `dumb-jump' 的智能跳转

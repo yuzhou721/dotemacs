@@ -87,7 +87,8 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 	;; target! e.g. FILE/Tasks/heading/subheading
 	org-refile-use-outline-path 'file
 	org-outline-path-complete-in-steps nil)
-  (global-leader 'org-mode
+  :general
+  (global-leader 'org-mode-map
 	"#" 'org-update-statistics-cookies
         "'" 'org-edit-special
         "*" 'org-ctrl-c-star
@@ -111,18 +112,17 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
         "T" 'org-todo-list
         "x" 'org-toggle-checkbox
 	"a" '(:ignore t :wk "attachments")
-        "aa" #'org-attach
-        "ad" #'org-attach-delete-one
-        "aD" #'org-attach-delete-all
-        "an" #'org-attach-new
-        "ao" #'org-attach-open
-        "aO" #'org-attach-open-in-emacs
-        "ar" #'org-attach-reveal
-        "aR" #'org-attach-reveal-in-emacs
-        "au" #'org-attach-url
-        "as" #'org-attach-set-directory
-        "aS" #'org-attach-sync
-      )
+        "aa" 'org-attach
+        "ad" 'org-attach-delete-one
+        "aD" 'org-attach-delete-all
+        "an" 'org-attach-new
+        "ao" 'org-attach-open
+        "aO" 'org-attach-open-in-emacs
+        "ar" 'org-attach-reveal
+        "aR" 'org-attach-reveal-in-emacs
+        "au" 'org-attach-url
+        "as" 'org-attach-set-directory
+        "aS" 'org-attach-sync)
   :bind (:map org-mode-map
 	      ("C-RET" . org-insert-subheading)
 	      ("C-M-RET" . org-insert-todo-subheading)

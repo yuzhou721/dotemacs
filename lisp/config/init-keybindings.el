@@ -10,15 +10,14 @@
 
 (with-eval-after-load 'general
   (general-create-definer global-definer
-    :keymaps 'override
-    :states '(insert emacs normal hybrid motion visual operator)
     :prefix "SPC"
-    :non-normal-prefix "C-SPC")
+    :states 'normal
+    )
+
   (general-create-definer global-leader
-    :keymaps 'override
-    :states '(emacs normal hybrid motion visual operator)
     :prefix ","
-    "" '(:ignore t :which-key (lambda (arg) `(,(cadr (split-string (car arg) " ")) . ,(replace-regexp-in-string "-mode$" "" (symbol-name major-mode))))))
+    :states '(normal motion)
+    "" '(:ignore t :wk "local leader"))
 
   (defmacro +general-global-menu! (name infix-key &rest body)
     "Create a definer named +general-global-NAME wrapping global-definer.
@@ -35,8 +34,8 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
         ,@body)))
 
   (global-definer
+    :keymaps 'override
     "f" '(:ignore t :which-key "file")
-    "fF" 'find-file-other-window
     "fs" 'save-buffer
     "ff" 'find-file
     "fR" 'rename-visited-file
@@ -67,14 +66,10 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
     "qr" 'restart-emacs
     "qq" 'evil-quit-all
     "h" '(:ignore t :wk "help")
-    "hr" 'desmond/reload-config
+    "hr" 'dd/reload-emacs-config
     "hp" 'desmond/open-config-dir
     "x" 'org-capture)
   )
-
-(defun desmond/reload-config ()
-  "Reload config" 
-  (add-subdirs-to-load-path emacs-root-dir))
 
 (defun desmond/open-config-dir ()
     "Open config dired")
