@@ -55,9 +55,6 @@
 [submodule "lisp/extensions/elisp-tree-sitter"]
 	path = lisp/extensions/elisp-tree-sitter
 	url = https://github.com/emacs-tree-sitter/elisp-tree-sitter
-[submodule "lisp/extensions/grammatical-edit"]
-	path = lisp/extensions/grammatical-edit
-	url = https://github.com/manateelazycat/grammatical-edit.git
 [submodule "lisp/extensions/typescript-mode"]
 	path = lisp/extensions/typescript-mode
 	url = https://github.com/emacs-typescript/typescript.el.git
