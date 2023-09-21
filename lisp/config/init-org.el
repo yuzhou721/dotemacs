@@ -209,6 +209,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
                               (python     . t)
                               (shell      . t)
 			      (java . t)
+			      (clojure . t)
 			      )))
 
 
