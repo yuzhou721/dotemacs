@@ -42,10 +42,15 @@
   ;;                                       "Issue" "Report issue" (lambda (&rest _) (browse-url issue-url)) warning)
   ;;                                      (,(if (fboundp 'all-the-icons-material) (all-the-icons-material "update"         :height 1.1 :v-adjust -0.2) "♺")
   ;;                                       "Update" "Update packages synchronously" (lambda (&rest _) (package-update-all nil)) success))))
-  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*"))
+	dashboard-projects-backend 'project-el)
+  (setq dashboard-display-icons-p t) ;; display icons on both GUI and terminal
+  (setq dashboard-icon-type 'nerd-icons) ;; use `nerd-icons' package
+  (setq dashboard-week-agenda t)
+  (setq dashboard-filter-agenda-entry 'dashboard-no-filter-agenda)
   :hook ((after-init . dashboard-setup-startup-hook)
-         (dashboard-mode . (lambda ()
-                             (setq-local global-hl-line-mode nil))))
+	 (dashboard-mode . (lambda ()
+			     (setq-local global-hl-line-mode nil))))
   ;; :config
   ;; (defconst homepage-url "https://github.com/condy0919/.emacs.d")
   ;; (defconst stars-url (concat homepage-url "/stargazers"))
@@ -56,15 +61,18 @@
   (dashboard-set-file-icons t)
   (dashboard-set-init-info t)
   (dashboard-set-navigator t)
-  (dashboard-items '((recents   . 10)
-                     (bookmarks . 5))))
+  (dashboard-items '(
+		     (projects . 5)
+		     (agenda . 5)
+		     (recents . 10)
+		     (bookmarks . 5))))
 
 ;; chinese font set
-(use-package cnfonts
-  :ensure t
-  :config
-  (cnfonts-mode 1)
-  )
+;; (use-package cnfonts
+;;   :ensure t
+;;   :config
+;;   (cnfonts-mode 1)
+;;   )
 
 (use-package ligature
   :config
