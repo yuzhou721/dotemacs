@@ -34,6 +34,9 @@
 (setq select-enable-primary t
       select-enable-clipboard t)
 
+;; tab-width
+(setq-default tab-width 4)
+
 ;;设置
 (fset 'yes-or-no-p 'y-or-n-p)           ;以 y/n代表 yes/no
 (setq ring-bell-function 'ignore)       ;关闭烦人的出错时的提示声
@@ -59,8 +62,7 @@
 					      search-ring
 					      regexp-search-ring
 					      extended-command-history)
-	      savehist-autosave-interval 300)
-  )
+	      savehist-autosave-interval 300))
 
 (use-package saveplace
   :ensure nil
