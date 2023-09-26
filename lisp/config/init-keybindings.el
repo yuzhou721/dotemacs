@@ -10,6 +10,7 @@
   (general-create-definer global-definer
     :prefix "SPC"
     :states 'normal
+   	:keymaps 'override
     )
 
   (general-create-definer global-leader
@@ -32,7 +33,6 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
         ,@body)))
 
   (global-definer
-   :keymaps 'override
    "f" '(:ignore t :which-key "file")
    "fs" 'save-buffer
    "ff" 'find-file
@@ -66,7 +66,9 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
    "h" '(:ignore t :wk "help")
    "hr" 'dd/reload-emacs-config
    "hp" 'desmond/open-config-dir
-   "x" 'org-capture))
+   "x" 'org-capture)
+  (general-define-key :states 'insert
+	"C-;" 'rime-inline-ascii))
 
 
 (defun desmond/open-config-dir ()

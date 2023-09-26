@@ -30,6 +30,7 @@
 ;;   :config
 ;;   (load-theme 'leuven t))
 
+
 (use-package dashboard
   :ensure t
   :init
@@ -47,7 +48,7 @@
   (setq dashboard-display-icons-p t) ;; display icons on both GUI and terminal
   (setq dashboard-icon-type 'nerd-icons) ;; use `nerd-icons' package
   (setq dashboard-week-agenda t)
-  (setq dashboard-filter-agenda-entry 'dashboard-no-filter-agenda)
+  ;; (setq dashboard-filter-agenda-entry 'dashboard-no-filter-agenda)
   :hook ((after-init . dashboard-setup-startup-hook)
 	 (dashboard-mode . (lambda ()
 			     (setq-local global-hl-line-mode nil))))
@@ -66,6 +67,7 @@
 		     (agenda . 5)
 		     (recents . 10)
 		     (bookmarks . 5))))
+
 
 ;; chinese font set
 ;; (use-package cnfonts

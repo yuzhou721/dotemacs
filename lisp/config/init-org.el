@@ -38,95 +38,91 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   (org-startup-indented t)
   (org-capture-last-stored nil)
   :config
-  ; todo
   (setq org-directory "~/org")
   (setq-default org-agenda-files (list org-directory))
   (setq org-todo-keywords
-        '((sequence
-           "TODO(t)"  ; A task that needs doing & is ready to do
-           "PROJ(p)"  ; A project, which usually contains other tasks
-           "LOOP(r)"  ; A recurring task
-           "STRT(s)"  ; A task that is in progress
-           "WAIT(w)"  ; Something external is holding up this task
-           "HOLD(h)"  ; This task is paused/on hold because of me
-           "IDEA(i)"  ; An unconfirmed and unapproved task or notion
-           "|"
-           "DONE(d)"  ; Task successfully completed
-           "KILL(k)") ; Task was cancelled, aborted or is no longer applicable
-          (sequence
-           "[ ](T)"   ; A task that needs doing
-           "[-](S)"   ; Task is in progress
-           "[?](W)"   ; Task is being held up or paused
-           "|"
-           "[X](D)")  ; Task was completed
-          (sequence
-           "|"
-           "OKAY(o)"
-           "YES(y)"
-           "NO(n)")))
+		'((sequence
+		   "TODO(t)"   ; A task that needs doing & is ready to do
+		   "PROJ(p)"   ; A project, which usually contains other tasks
+		   "LOOP(r)"   ; A recurring task
+		   "STRT(s)"   ; A task that is in progress
+		   "WAIT(w)"   ; Something external is holding up this task
+		   "HOLD(h)"   ; This task is paused/on hold because of me
+		   "IDEA(i)"   ; An unconfirmed and unapproved task or notion
+		   "|"
+		   "DONE(d)"					; Task successfully completed
+		   "KILL(k)") ; Task was cancelled, aborted or is no longer applicable
+		  (sequence
+		   "[ ](T)"					 ; A task that needs doing
+		   "[-](S)"					 ; Task is in progress
+		   "[?](W)"					 ; Task is being held up or paused
+		   "|"
+		   "[X](D)")					; Task was completed
+		  ))
   (setq org-default-notes-file
-	(expand-file-name +org-capture-notes-file org-directory)
-	+org-capture-journal-file
-	(expand-file-name +org-capture-journal-file org-directory)
-	org-capture-templates
-	'(("t" "Personal todo" entry
-	   (file+headline org-default-notes-file "Inbox")
-	   "* [ ] %?\n%i\n%a" :prepend t)
-	  ("n" "Personal notes" entry
-	   (file+headline +org-capture-notes-file "Inbox")
-	   "* %u %?\n%i\n%a" :prepend t)
-	  ("j" "Journal" entry
-	   (file+olp+datetree +org-capture-journal-file)
-	   "* %U %?\n%i\n%a" :prepend t)))
+		(expand-file-name +org-capture-notes-file org-directory)
+		+org-capture-journal-file
+		(expand-file-name +org-capture-journal-file org-directory)
+		org-capture-templates
+		'(("t" "Personal todo" entry
+		   (file+headline +org-capture-todo-file "Inbox")
+		   "* TODO %?\n%i\n%a" :prepend t)
+		  ("n" "Personal notes" entry
+		   (file+headline +org-capture-notes-file "Inbox")
+		   "* %u %?\n%i\n%a" :prepend t)
+		  ("j" "Journal" entry
+		   (file+olp+datetree +org-capture-journal-file)
+		   "* %U %?\n%i\n%a" :prepend t)))
   (setq org-refile-targets
-	'((nil :maxlevel . 3)
-	  (org-agenda-files :maxlevel . 3))
-	;; Without this, completers like ivy/helm are only given the first level of
-	;; each outline candidates. i.e. all the candidates under the "Tasks" heading
-	;; are just "Tasks/". This is unhelpful. We want the full path to each refile
-	;; target! e.g. FILE/Tasks/heading/subheading
-	org-refile-use-outline-path 'file
-	org-outline-path-complete-in-steps nil)
+		'((nil :maxlevel . 3)
+		  (org-agenda-files :maxlevel . 3))
+		;; Without this, completers like ivy/helm are only given the first level of
+		;; each outline candidates. i.e. all the candidates under the "Tasks" heading
+		;; are just "Tasks/". This is unhelpful. We want the full path to each refile
+		;; target! e.g. FILE/Tasks/heading/subheading
+		org-refile-use-outline-path 'file
+		org-outline-path-complete-in-steps nil)
+  ;; 周一作为每周开始
+  (setq org-agenda-start-on-weekday 1)
   :general
   (global-leader 'org-mode-map
 	"#" 'org-update-statistics-cookies
-        "'" 'org-edit-special
-        "*" 'org-ctrl-c-star
-        "+" 'org-ctrl-c-minus
-        "," 'org-switchb
-        "." 'org-goto
-        "@" 'org-cite-insert
+	"'" 'org-edit-special
+	"*" 'org-ctrl-c-star
+	"+" 'org-ctrl-c-minus
+	"," 'org-switchb
+	"." 'org-goto
+	"@" 'org-cite-insert
 	"." 'consult-org-heading
-        "/" 'consult-org-agenda
-        "A" 'org-archive-subtree
-        "e" 'org-export-dispatch
-        "f" 'org-footnote-action
-        "h" 'org-toggle-heading
-        "i" 'org-toggle-item
-        "I" 'org-id-get-create
-        "k" 'org-babel-remove-result
-        "n" 'org-store-link
-        "o" 'org-set-property
-        "q" 'org-set-tags-command
-        "t" 'org-todo
-        "T" 'org-todo-list
-        "x" 'org-toggle-checkbox
+	"/" 'consult-org-agenda
+	"A" 'org-archive-subtree
+	"e" 'org-export-dispatch
+	"f" 'org-footnote-action
+	"h" 'org-toggle-heading
+	"i" 'org-toggle-item
+	"I" 'org-id-get-create
+	"k" 'org-babel-remove-result
+	"n" 'org-store-link
+	"o" 'org-set-property
+	"q" 'org-set-tags-command
+	"t" 'org-todo
+	"T" 'org-todo-list
+	"x" 'org-toggle-checkbox
 	"a" '(:ignore t :wk "attachments")
-        "aa" 'org-attach
-        "ad" 'org-attach-delete-one
-        "aD" 'org-attach-delete-all
-        "an" 'org-attach-new
-        "ao" 'org-attach-open
-        "aO" 'org-attach-open-in-emacs
-        "ar" 'org-attach-reveal
-        "aR" 'org-attach-reveal-in-emacs
-        "au" 'org-attach-url
-        "as" 'org-attach-set-directory
-        "aS" 'org-attach-sync)
+	"aa" 'org-attach
+	"ad" 'org-attach-delete-one
+	"aD" 'org-attach-delete-all
+	"an" 'org-attach-new
+	"ao" 'org-attach-open
+	"aO" 'org-attach-open-in-emacs
+	"ar" 'org-attach-reveal
+	"aR" 'org-attach-reveal-in-emacs
+	"au" 'org-attach-url
+	"as" 'org-attach-set-directory
+	"aS" 'org-attach-sync)
   :bind (:map org-mode-map
-	      ("C-RET" . org-insert-subheading)
-	      ("C-M-RET" . org-insert-todo-subheading)
-	      ))
+			  ("C-RET" . org-insert-subheading)
+			  ("C-M-RET" . org-insert-todo-subheading)))
 
 (defun org-apperance-evil-hack ()
   (add-hook 'evil-insert-state-entry-hook #'org-appear-manual-start nil t)
@@ -135,10 +131,15 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 ;; 显示自动隐藏的元素
 (use-package org-appear
   :after org
-  :hook (org-mode . org-appear-mode)
+  :hook
+  (org-mode . org-appear-mode)
+  (org-mode . org-apperace-evil-hack)
   :init
   (setq org-appear-trigger 'manual)
-  (add-hook 'org-mode-hook 'org-apperance-evil-hack))
+  :config
+  (setq org-appear-autoemphasis t
+        org-appear-autosubmarkers t
+        org-appear-autolinks nil))
 
 ;; 中国日历
 (use-package cal-china-x
@@ -180,43 +181,40 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   )
 
 ;; Write codes in org-mode
+(use-package simple-httpd
+  :ensure t
+  :after org-roam)
+
 (use-package org-src
   :ensure nil
   :after org
   :hook (org-babel-after-execute . org-redisplay-inline-images)
   :bind (:map org-src-mode-map
-         ;; consistent with separedit/magit
-         ("C-c C-c" . org-edit-src-exit))
+			  ;; consistent with separedit/magit
+			  ("C-c C-c" . org-edit-src-exit))
   :custom
   (org-confirm-babel-evaluate nil)
   (org-src-fontify-natively t)
   (org-src-tab-acts-natively t)
   (org-src-preserve-indentation t)
   (org-src-window-setup 'other-window)
-  (org-src-lang-modes '(("C"      . c)
-                        ("C++"    . c++)
-                        ("bash"   . sh)
-                        ("cpp"    . c++)
-                        ("dot"    . graphviz-dot) ;; was `fundamental-mode'
-                        ("elisp"  . emacs-lisp)
-                        ("ocaml"  . tuareg)
-                        ("shell"  . sh)
-			("java" . java)))
-  (org-babel-load-languages '((C          . t)
-                              (dot        . t)
-                              (emacs-lisp . t)
-                              (eshell     . t)
-                              (python     . t)
-                              (shell      . t)
-			      (java . t)
-			      (clojure . t)
-			      )))
-
-
-
-(use-package simple-httpd
-  :ensure t
-  :after org-roam)
+  (org-src-lang-modes '(("C" . c)
+						("C++" . c++)
+						("bash" . sh)
+						("cpp" . c++)
+						("dot" . graphviz-dot) ;; was `fundamental-mode'
+						("elisp" . emacs-lisp)
+						("ocaml" . tuareg)
+						("shell" . sh)
+						("java" . java)))
+  (org-babel-load-languages '((C . t)
+							  (dot . t)
+							  (emacs-lisp . t)
+							  (eshell . t)
+							  (python . t)
+							  (shell . t)
+							  (java . t)
+							  (clojure . t))))
 
 ;;org-roam-ui
 (use-package websocket
@@ -336,6 +334,58 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 
 (use-package olivetti
   :ensure t)
+
+(use-package org-super-agenda
+  :ensure t
+  :config
+  (setq org-super-agenda-groups
+		'(;; Each group has an implicit boolean OR operator between its selectors.
+		  (:name "Today"		  ; Optionally specify section name
+				 :time-grid t	  ; Items that appear on the time grid
+				 :anything
+				 (:scheduled "today" :deadline "today")
+				 )
+		  (:name "Important"
+				 ;; Single arguments given alone
+				 ;; :tag "bills"
+				 :priority "A")
+		  ;; Set order of multiple groups at once
+		  (:order-multi (2 (:name "Shopping in town"
+								  ;; Boolean AND group matches items that match all subgroups
+								  :and (:tag "shopping" :tag "@town"))
+						   (:name "Food-related"
+								  ;; Multiple args given in list with implicit OR
+								  :tag ("food" "dinner"))
+						   (:name "Personal"
+								  :habit t
+								  :tag "personal")
+						   (:name "Space-related (non-moon-or-planet-related)"
+								  ;; Regexps match case-insensitively on the entire entry
+								  :and (:regexp ("space" "NASA")
+												;; Boolean NOT also has implicit OR between selectors
+												:not (:regexp "moon" :tag "planet")))))
+		  ;; Groups supply their own section names when none are given
+		  (:name "等待" :todo ("WAITING" "HOLD") :order 8)	; Set order of this section
+		  (:priority<= "B"
+					   ;; Show this section after "Today" and "Important", because
+					   ;; their order is unspecified, defaulting to 0. Sections
+					   ;; are displayed lowest-number-first.
+					   :order 1)
+		  ;; After the last group, the agenda will display items that didn't
+		  ;; match any of these groups, with the default order position of 99
+		  ;; (org-agenda nil "a")
+		  )
+		)
+  (org-super-agenda-mode)
+  ;; Fix agenda header keymap error
+  (setq org-super-agenda-header-map nil))
+
+(use-package pangu-spacing
+  :ensure t
+  :hook (text-mode . pangu-spacing-mode)
+  :config
+  (add-hook 'org-mode-hook (lambda ()
+							 (setq pangu-spacing-real-insert-separtor t))))
 
 (provide 'init-org)
 ;;; init-org.el ends here
