@@ -133,7 +133,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   :after org
   :hook
   (org-mode . org-appear-mode)
-  (org-mode . org-apperace-evil-hack)
+  (org-mode . org-apperance-evil-hack)
   :init
   (setq org-appear-trigger 'manual)
   :config

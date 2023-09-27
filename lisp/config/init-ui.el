@@ -70,11 +70,12 @@
 
 
 ;; chinese font set
-;; (use-package cnfonts
-;;   :ensure t
-;;   :config
-;;   (cnfonts-mode 1)
-;;   )
+(use-package cnfonts
+  :ensure t
+  :config
+  (cnfonts-mode 1)
+  (with-eval-after-load 'evil
+	(evil-set-initial-state 'cnfonts-ui-mode 'emacs)))
 
 (use-package ligature
   :config
