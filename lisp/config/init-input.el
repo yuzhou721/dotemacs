@@ -12,34 +12,34 @@
   )
 
 ;;输入法自动切换
-;; (use-package sis
-;;   ;; :disabled (string= (getenv "GTK_IM_MODULE") "ibus")
-;;   ;; :hook
-;;   ;; ;; enable the /follow context/ and /inline region/ mode for specific buffers
-;;   ;; (
-;;   ;;  ((text-mode prog-mode) . sis-context-mode)
-;;   ;;  ((text-mode prog-mode) . sis-inline-mode)
-;;   ;;  )
-;;   :custom
-;;   (sis-default-cursor-color "white")
-;;   ;; For MacOS
-;;   (cond ((string= (getenv "GTK_IM_MODULE") "ibus")
-;;          (sis-ism-lazyman-config "xkb:us::eng" "libpinyin" 'ibus))
-;;         ((string= (getenv "GTK_IM_MODULE") "fcitx")
-;;          (sis-ism-lazyman-config "1" "2" 'fcitx))
-;;         ((string= (getenv "GTK_IM_MODULE") "fcitx5")
-;;          (sis-ism-lazyman-config "1" "2" 'fcitx5))
-;;         (IS-MAC
-;;          (sis-ism-lazyman-config "com.apple.keylayout.ABC" "com.sogou.inputmethod.sogou.pinyin" 'macism )))
+(use-package sis
+  ;; :disabled (string= (getenv "GTK_IM_MODULE") "ibus")
+  ;; :hook
+  ;; ;; enable the /follow context/ and /inline region/ mode for specific buffers
+  ;; (
+  ;;  ((text-mode prog-mode) . sis-context-mode)
+  ;;  ((text-mode prog-mode) . sis-inline-mode)
+  ;;  )
+  :custom
+  (sis-default-cursor-color "white")
+  ;; For MacOS
+  (cond ((string= (getenv "GTK_IM_MODULE") "ibus")
+         (sis-ism-lazyman-config "xkb:us::eng" "libpinyin" 'ibus))
+        ((string= (getenv "GTK_IM_MODULE") "fcitx")
+         (sis-ism-lazyman-config "1" "2" 'fcitx))
+        ((string= (getenv "GTK_IM_MODULE") "fcitx5")
+         (sis-ism-lazyman-config "1" "2" 'fcitx5))
+        (IS-MAC
+         (sis-ism-lazyman-config "com.apple.keylayout.ABC" "com.sogou.inputmethod.sogou.pinyin" 'macism )))
 
-;;   ;; enable the /cursor color/ mode
-;;   (sis-global-cursor-color-mode t)
-;;   ;; enable the /respect/ mode
-;;   (sis-global-respect-mode t)
+  ;; enable the /cursor color/ mode
+  (sis-global-cursor-color-mode t)
+  ;; enable the /respect/ mode
+  (sis-global-respect-mode t)
 
-;;   (sis-global-context-mode t)
-;;   ;; enable the /inline english/ mode for all buffers
-;;   (sis-global-inline-mode t)
-;;   )
+  (sis-global-context-mode t)
+  ;; enable the /inline english/ mode for all buffers
+  (sis-global-inline-mode t)
+  )
 
 (provide 'init-input)
