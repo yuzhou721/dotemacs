@@ -8,7 +8,7 @@
   (setq corfu-quit-no-match t)
   (setq corfu-preview-current nil)
   (setq corfu-min-width 80)
-  (setq corfu-max-width 100)
+  (setq corfu-max-width 130)
   (setq corfu-auto-delay 0.2)
   (setq corfu-auto-prefix 1)
   (setq corfu-on-exact-match nil)

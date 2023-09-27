@@ -65,7 +65,7 @@
   (dashboard-items '(
 		     (projects . 5)
 		     (agenda . 5)
-		     (recents . 10)
+		     (recents . 5)
 		     (bookmarks . 5))))
 
 
