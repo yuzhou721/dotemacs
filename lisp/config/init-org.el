@@ -30,10 +30,39 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 (defvar +org-capture-projects-file "projects.org"
   "Default, centralized target for org-capture templates.")
 
+(defun org-make-properties-read-only ()
+  "Readonly properties."
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward
+            "^ *:PROPERTIES:\n\\( *:.+?:.*\n\\)+ *:END:\n" nil t)
+      (add-text-properties (- (match-beginning 0) 1) (- (match-end 0) 1) '(read-only t)))))
+
+(defun org-make-logbooks-read-only ()
+  "Read only logbooks."
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward
+            "^ *:LOGBOOK:\n\\( *-.+\n\\)+ *:END:\n" nil t)
+      (add-text-properties (- (match-beginning 0) 1) (- (match-end 0) 1) '(read-only t)))))
+
+(defun org-hide-properties ()
+  "Hide org headline's properties using overlay."
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward
+            "^ *:PROPERTIES:\n\\( *:.+?:.*\n\\)+ *:END:\n" nil t)
+      (overlay-put (make-overlay
+                    (match-beginning 0) (match-end 0))
+                   'display ""))))
 
 (use-package org
   :pin melpa
   :ensure t
+  :hook
+  (org-mode . (lambda () (org-make-properties-read-only)))
+  (org-mode . (lambda () (org-make-logbooks-read-only)))
+  ;; (org-mode . (lambda () (org-hide-properties)))
   :custom
   (org-startup-indented t)
   (org-capture-last-stored nil)
@@ -129,7 +158,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   (add-hook 'evil-insert-state-exit-hook #'org-appear-manual-stop nil t))
 
 ;; 显示自动隐藏的元素
-(use-package org-appear
+(use-package org-appear
   :after org
   :hook
   (org-mode . org-appear-mode)
