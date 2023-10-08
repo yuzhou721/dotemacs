@@ -265,19 +265,20 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   :custom
   (org-roam-directory "~/org/roam/")
   (org-roam-dailies-directory "~/org/roam/daily/")
-  :bind (("C-c n t" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n g" . org-roam-ui-open)
-         ("C-c n c" . org-roam-capture)
-         ;; Dailies
-         :map org-mode-map
-         ("C-M-i" . completion-at-point)
-         :map org-roam-dailies-map
-         ("Y" . org-roam-dailies-capture-yesterday)
-         ("T" . org-roam-dailies-capture-tomorrow))
-  :bind-keymap
-  ("C-c n d" . org-roam-dailies-map)
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+		 ("C-c n f" . org-roam-node-find)
+		 ("C-c n i" . org-roam-node-insert)
+		 ("C-c n c" . org-roam-capture)
+		 ;; Dailies
+		 ("C-c n j" . org-roam-dailies-capture-today)
+		 ;; Dailies
+		 :map org-mode-map
+		 ("C-M-i" . completion-at-point)
+		 :map org-roam-dailies-map
+		 ("Y" . org-roam-dailies-capture-yesterday)
+		 ("T" . org-roam-dailies-capture-tomorrow))
+  ;; :bind-keymap
+  ;; ("C-c n d" . org-roam-dailies-map)
   :config
   ;; crypt encode
   (org-crypt-use-before-save-magic)
@@ -287,33 +288,29 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   ;; If using org-roam-protocol
   (require 'org-roam-dailies)
   (setq org-roam-capture-ref-templates
-        '(
-          ("r" "ref" plain
-           "* %?"
-           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}][${title}]]\n -----\n")
-           :unnarrowed t)
-          ("a" "Annotation" plain
-           "#+begin_quote \n ${body}\n #+end_quote \n %?"
-           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}]][${title}]\n -----\n")
-           :immediate-finish t
-           :empty-lines 1
-           :unnarrowed t)
-          ("o" "Copy from clipboard" plain
-           "%x"
-           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}]][${title}]\n -----\n")
-           :immediate-finish t
-           :empty-lines 1
-           :unnarrowed t)
-          )
-        )
+		'(
+		  ("r" "ref" plain
+		   "* %?"
+		   :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}][${title}]]\n -----\n")
+		   :unnarrowed t)
+		  ("a" "Annotation" plain
+		   "#+begin_quote \n ${body}\n #+end_quote \n %?"
+		   :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}]][${title}]\n -----\n")
+		   :immediate-finish t
+		   :empty-lines 1
+		   :unnarrowed t)
+		  ("o" "Copy from clipboard" plain
+		   "%x"
+		   :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}]][${title}]\n -----\n")
+		   :immediate-finish t
+		   :empty-lines 1
+		   :unnarrowed t)))
   (setq org-roam-dailies-capture-templates
-        `(
-          ("d" "default" entry
-           "* %?"
-           :target (file+head "%<%Y-%m-%d>.org"
-                              "#+title: %<%Y-%m-%d>\n#+filetags: :resource:\n"
-                              ))))
-  )
+		`(
+		  ("d" "default" entry
+		   "* %?"
+		   :target (file+head "%<%Y-%m-%d>.org"
+							  "#+title: %<%Y-%m-%d>\n#+filetags: :resource:\n")))))
 
 (use-package org-roam-ui
   :after org-roam ;; or :after org
@@ -321,11 +318,13 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   ;;         a hookable mode anymore, you're advised to pick something yourself
   ;;         if you don't care about startup time, use
   ;; :hook (after-init . org-roam-ui-mode)
+  :bind
+  ("C-c n g" . org-roam-ui-open)
   :config
   (setq org-roam-ui-sync-theme t
-        org-roam-ui-follow t
-        org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start nil))
+		org-roam-ui-follow t
+		org-roam-ui-update-on-save t
+		org-roam-ui-open-on-start nil))
 
 (use-package org-protocol
   :ensure nil)
