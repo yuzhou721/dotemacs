@@ -94,6 +94,10 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 		  ))
   (setq org-default-notes-file
 		(expand-file-name +org-capture-notes-file org-directory)
+		+org-capture-todo-file
+		(expand-file-name +org-capture-todo-file org-directory)
+		+org-capture-notes-file
+		(expand-file-name +org-capture-notes-file org-directory)
 		+org-capture-journal-file
 		(expand-file-name +org-capture-journal-file org-directory)
 		org-capture-templates
