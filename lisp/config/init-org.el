@@ -30,10 +30,43 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 (defvar +org-capture-projects-file "projects.org"
   "Default, centralized target for org-capture templates.")
 
+(defun org-make-logbooks-read-only ()
+  "Read only logbooks."
+  (save-excursion
+	(goto-char (point-min))
+	(while (re-search-forward
+			"^ *:LOGBOOK:\n\\( *-.+\n\\)+ *:END:\n" nil t)
+	  (add-text-properties (- (match-beginning 0) 1) (- (match-end 0) 1) '(read-only t)))))
+
+(defun org-hide-properties ()
+  "Hide all 'org-mode' headline property drawers in buffer. Could be slow if it has a lot of overlays."
+  (save-excursion
+	(goto-char (point-min))
+	(while (re-search-forward
+			"^ *:properties:\n\\( *:.+?:.*\n\\)+ *:end:\n" nil t)
+	  (let ((ov_this (make-overlay (match-beginning 0) (match-end 0))))
+		(overlay-put ov_this 'display "")
+		(overlay-put ov_this 'hidden-prop-drawer t))))
+  (put 'org-toggle-properties-hide-state 'state 'hidden))
+
+(defun org-show-properties ()
+  "Show all 'org-mode' property drawers hidden by org-hide-properties."
+  (remove-overlays (point-min) (point-max) 'hidden-prop-drawer t)
+  (put 'org-toggle-properties-hide-state 'state 'shown))
+
+(defun org-toggle-properties ()
+  "Toggle visibility of property drawers."
+  (interactive)
+  (if (eq (get 'org-toggle-properties-hide-state 'state) 'hidden)
+	  (org-show-properties)
+	(org-hide-properties)))
 
 (use-package org
   :pin melpa
   :ensure t
+  :hook
+  (org-mode . (lambda () (org-make-logbooks-read-only)))
+  (org-mode . (lambda () (org-hide-properties)))
   :custom
   (org-startup-indented t)
   (org-capture-last-stored nil)
@@ -60,6 +93,10 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 		   "[X](D)")					; Task was completed
 		  ))
   (setq org-default-notes-file
+		(expand-file-name +org-capture-notes-file org-directory)
+		+org-capture-todo-file
+		(expand-file-name +org-capture-todo-file org-directory)
+		+org-capture-notes-file
 		(expand-file-name +org-capture-notes-file org-directory)
 		+org-capture-journal-file
 		(expand-file-name +org-capture-journal-file org-directory)

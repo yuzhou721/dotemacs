@@ -66,7 +66,9 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
    "h" '(:ignore t :wk "help")
    "hr" 'dd/reload-emacs-config
    "hp" 'desmond/open-config-dir
-   "x" 'org-capture)
+   "x" 'org-capture
+   ";" 'dashboard-open)
+
   (general-define-key :states 'insert
 	"C-;" 'rime-inline-ascii))
 
