@@ -17,8 +17,7 @@
 
 (use-package lsp-bridge
   :hook
-  (java-ts-mode . lsp-bridge-mode)
-  (java-mode . lsp-bridge-mode)
+  ((java-ts-mode java-mode) . lsp-bridge-mode)
   ;; 启用 lsp-bridge 时候 关闭 corfu
   (lsp-bridge-mode . (lambda () (corfu-mode -1)))
   ;; (python-ts-mode . lsp-bridge-mode)
@@ -47,6 +46,7 @@
   (setq jvm-lombok-args (format "%s%s" "-javaagent:" lombok-path))
   (setq lsp-bridge-jdtls-jvm-args (list jvm-lombok-args))
   (setq lsp-bridge-enable-auto-import t) ;; 开启自动导入依赖，目前没有code action。补全时可以通过这个导入相应的依赖，建议开启。
+  (setq lsp-bridge-enable-org-babel t)
   :general
   (:states 'normal :keymaps 'lsp-bridge-mode-map
 	   "gi" 'lsp-bridge-find-impl

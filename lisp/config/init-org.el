@@ -84,6 +84,15 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 		org-outline-path-complete-in-steps nil)
   ;; 周一作为每周开始
   (setq org-agenda-start-on-weekday 1)
+  (setq org-babel-load-languages '((C . t)
+							  (dot . t)
+							  (emacs-lisp . t)
+							  (eshell . t)
+							  (python . t)
+							  (shell . t)
+							  (java . t)
+							  (clojure . t)))
+  (setq org-babel-clojure-backend 'cider)
   :general
   (global-leader 'org-mode-map
 	"#" 'org-update-statistics-cookies
@@ -207,14 +216,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 						("ocaml" . tuareg)
 						("shell" . sh)
 						("java" . java)))
-  (org-babel-load-languages '((C . t)
-							  (dot . t)
-							  (emacs-lisp . t)
-							  (eshell . t)
-							  (python . t)
-							  (shell . t)
-							  (java . t)
-							  (clojure . t))))
+  )
 
 ;;org-roam-ui
 (use-package websocket
