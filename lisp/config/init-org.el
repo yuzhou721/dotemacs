@@ -294,13 +294,13 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 		   :unnarrowed t)
 		  ("a" "Annotation" plain
 		   "#+begin_quote \n ${body}\n #+end_quote \n %?"
-		   :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}]][${title}]\n -----\n")
+		   :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}][${title}]]\n -----\n")
 		   :immediate-finish t
 		   :empty-lines 1
 		   :unnarrowed t)
 		  ("o" "Copy from clipboard" plain
 		   "%x"
-		   :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}]][${title}]\n -----\n")
+		   :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :web:resource:\n Original Reference: [[${ref}][${title}]]\n -----\n")
 		   :immediate-finish t
 		   :empty-lines 1
 		   :unnarrowed t)))
