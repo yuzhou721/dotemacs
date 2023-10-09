@@ -180,12 +180,11 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   :hook
   (org-mode . org-appear-mode)
   (org-mode . org-apperance-evil-hack)
-  :init
-  (setq org-appear-trigger 'manual)
   :config
+  (setq org-appear-trigger 'manual)
   (setq org-appear-autoemphasis t
         org-appear-autosubmarkers t
-        org-appear-autolinks nil))
+        org-appear-autolinks t))
 
 ;; 中国日历
 (use-package cal-china-x
@@ -367,7 +366,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
    ;; Define some convenient keybindings as an addition
    ("C-c n F" . consult-org-roam-file-find)
    ("C-c n b" . consult-org-roam-backlinks)
-   ("C-c n l" . consult-org-roam-forward-links)
+   ;; ("C-c n l" . consult-org-roam-forward-links)
    ("C-c n s" . consult-org-roam-search))
 
 (use-package olivetti
@@ -402,6 +401,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 								  :and (:regexp ("space" "NASA")
 												;; Boolean NOT also has implicit OR between selectors
 												:not (:regexp "moon" :tag "planet")))))
+		  (:name "Running" :todo ("STRT" "[-]"))
 		  ;; Groups supply their own section names when none are given
 		  (:name "等待" :todo ("WAITING" "HOLD") :order 8)	; Set order of this section
 		  (:priority<= "B"
