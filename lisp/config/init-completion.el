@@ -26,37 +26,13 @@
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
-(progn
-  (defvar use-package--warning224
-	(function
-	 (lambda
-	   (keyword err)
-	   (let
-		   ((msg
-			 (format "%s/%s: %s" 'cape keyword
-					 (error-message-string err))))
-		 (display-warning 'use-package msg :error)))))
-  (condition-case-unless-debug err
-	  (progn
-		(condition-case-unless-debug err
-			(progn
-			  (setq cape-dabbrev-min-length 3)
-			  (add-to-list 'completion-at-point-functions
-						   (function cape-dabbrev))
-			  (add-to-list 'completion-at-point-functions
-						   (function cape-file))
-			  (add-to-list 'completion-at-point-functions
-						   (function cape-dict)))
-		  (error
-		   (funcall use-package--warning224 :init err)))
-		(if
-			(not
-			 (require 'cape nil t))
-			(display-warning 'use-package
-							 (format "Cannot load %s" 'cape)
-							 :error)))
-	(error
-	 (funcall use-package--warning224 :catch err))))
+(use-package cape
+  :init
+  (setq cape-dabbrev-min-length 3)
+  ;; Add `completion-at-point-functions', used by `completion-at-point'.
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-dict))
 
 ;; Enable vertico
 (use-package vertico
