@@ -145,3 +145,6 @@
 [submodule "lisp/extensions/evil-surround"]
 	path = lisp/extensions/evil-surround
 	url = https://github.com/emacs-evil/evil-surround.git
+[submodule "lisp/extensions/emacs-immersive-translate"]
+	path = lisp/extensions/emacs-immersive-translate
+	url = https://github.com/Elilif/emacs-immersive-translate.git

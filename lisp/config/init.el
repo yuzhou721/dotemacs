@@ -13,5 +13,6 @@
 (require 'init-org)
 (require 'init-workspace)
 (require 'init-treemacs)
+(require 'init-translation)
 
 (provide 'init)
