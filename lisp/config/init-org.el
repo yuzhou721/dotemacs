@@ -387,23 +387,23 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 				 ;; :tag "bills"
 				 :priority "A")
 		  ;; Set order of multiple groups at once
-		  (:order-multi (2 (:name "Shopping in town"
-								  ;; Boolean AND group matches items that match all subgroups
-								  :and (:tag "shopping" :tag "@town"))
-						   (:name "Food-related"
-								  ;; Multiple args given in list with implicit OR
-								  :tag ("food" "dinner"))
-						   (:name "Personal"
-								  :habit t
-								  :tag "personal")
-						   (:name "Space-related (non-moon-or-planet-related)"
-								  ;; Regexps match case-insensitively on the entire entry
-								  :and (:regexp ("space" "NASA")
-												;; Boolean NOT also has implicit OR between selectors
-												:not (:regexp "moon" :tag "planet")))))
+		  ;; (:order-multi (2 (:name "Shopping in town"
+		  ;; 						  ;; Boolean AND group matches items that match all subgroups
+		  ;; 						  :and (:tag "shopping" :tag "@town"))
+		  ;; 				   (:name "Food-related"
+		  ;; 						  ;; Multiple args given in list with implicit OR
+		  ;; 						  :tag ("food" "dinner"))
+		  ;; 				   (:name "Personal"
+		  ;; 						  :habit t
+		  ;; 						  :tag "personal")
+		  ;; 				   (:name "Space-related (non-moon-or-planet-related)"
+		  ;; 						  ;; Regexps match case-insensitively on the entire entry
+		  ;; 						  :and (:regexp ("space" "NASA")
+		  ;; 										;; Boolean NOT also has implicit OR between selectors
+		  ;; 										:not (:regexp "moon" :tag "planet")))))
 		  (:name "Running" :todo ("STRT" "[-]"))
 		  ;; Groups supply their own section names when none are given
-		  (:name "等待" :todo ("WAITING" "HOLD") :order 8)	; Set order of this section
+		  (:name "等待" :todo ("WAIT" "HOLD") :order 8)	; Set order of this section
 		  (:priority<= "B"
 					   ;; Show this section after "Today" and "Important", because
 					   ;; their order is unspecified, defaulting to 0. Sections

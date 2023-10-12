@@ -18,6 +18,7 @@
 (use-package lsp-bridge
   :hook
   ((java-ts-mode java-mode) . lsp-bridge-mode)
+  ((python-ts-mode python-mode) . lsp-bridge-mode)
   ;; 启用 lsp-bridge 时候 关闭 corfu
   (lsp-bridge-mode . (lambda () (corfu-mode -1)))
   ;; (python-ts-mode . lsp-bridge-mode)
@@ -47,6 +48,9 @@
   (setq lsp-bridge-jdtls-jvm-args (list jvm-lombok-args))
   (setq lsp-bridge-enable-auto-import t) ;; 开启自动导入依赖，目前没有code action。补全时可以通过这个导入相应的依赖，建议开启。
   (setq lsp-bridge-enable-org-babel t)
+  ;; python 配置 先安装pyright和ruff
+  (setq lsp-bridge-python-command "python3")
+  (setq lsp-bridge-python-multi-lsp-server "pyright_ruff")
   :general
   (:states 'normal :keymaps 'lsp-bridge-mode-map
 	   "gi" 'lsp-bridge-find-impl
@@ -68,10 +72,9 @@
   ;; 设置按键
   (global-leader 'lsp-bridge-mode-map
       "a" 'lsp-bridge-code-action
-      "d" 'lsp-bridge-find-define
+      "d" 'lsp-bridge-find-def
       "p" 'lsp-bridge-peek
-      "r" 'lsp-bridge-restart-process)
-)
+      "r" 'lsp-bridge-restart-process))
 
 ;; 融合 `lsp-bridge' `find-function' 以及 `dumb-jump' 的智能跳转
 (defun lsp-bridge-jump ()
