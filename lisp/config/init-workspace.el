@@ -48,17 +48,18 @@
   :hook (after-init . tabspaces-mode) ;; use this only if you want the minor-mode loaded at startup.
   :commands (tabspaces-switch-or-create-workspace
 	     tabspaces-open-or-create-project-and-workspace)
-  :custom
-  (tabspaces-use-filtered-buffers-as-default t)
-  (tabspaces-default-tab "Default")
-  (tabspaces-remove-to-default t)
-  (tabspaces-include-buffers '("*scratch*"))
-  ;; maybe slow
-  ;; (tabspaces-session t)
-  ;; (tabspaces-session-auto-restore t)
   :config
+  (setq tab-bar-new-tab-choice "*dashboard*")
+  (setq tabspaces-use-filtered-buffers-as-default t)
+  (setq tabspaces-default-tab "Default")
+  (setq tabspaces-remove-to-default t)
+  (setq tabspaces-include-buffers '("*scratch*" "*dashboard*"))
+  (setq tabspaces-initialize-project-with-todo nil)
+  ;; (tabspaces-todo-file-name "project-todo.org")
+  ;; maybe slow
+  (setq tabspaces-session t)
+  ;; (tabspaces-session-auto-restore t)
   ;; Filter Buffers for Consult-Buffer
-
   (with-eval-after-load 'consult
     ;; hide full buffer list (still available with "b" prefix)
     (consult-customize consult--source-buffer :hidden nil :default nil)

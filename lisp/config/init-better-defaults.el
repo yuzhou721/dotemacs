@@ -7,7 +7,7 @@
 
 ;; 显示行号
 (if (>= emacs-major-version 29)
-  (display-line-numbers-mode)
+  (global-display-line-numbers-mode)
     (global-linum-mode 1)
     )
 

@@ -77,18 +77,18 @@
       "r" 'lsp-bridge-restart-process))
 
 ;; 融合 `lsp-bridge' `find-function' 以及 `dumb-jump' 的智能跳转
-(defun lsp-bridge-jump ()
-  (interactive)
-  (cond
-   ((eq major-mode 'emacs-lisp-mode)
-    (evil-goto-definition))
-   ((eq major-mode 'org-mode)
-    (org-agenda-open-link))
-   (lsp-bridge-mode
-    (lsp-bridge-find-def))
-   (t
-    (require 'dumb-jump)
-    (dumb-jump-go))))
+;; (defun lsp-bridge-jump ()
+;;   (interactive)
+;;   (cond
+;;    ((eq major-mode 'emacs-lisp-mode)
+;;     (evil-goto-definition))
+;;    ((eq major-mode 'org-mode)
+;;     (org-agenda-open-link))
+;;    (lsp-bridge-mode
+;;     (lsp-bridge-find-def))
+;;    (t
+;;     (require 'dumb-jump)
+;;     (dumb-jump-go))))
 ;; (use-package eglot
 ;;   :bind
 ;;   (:map eglot-mode-map

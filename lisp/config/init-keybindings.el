@@ -52,21 +52,27 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
    "gg" 'magit
    "b" '(:ignore t :which-key "buffer")
    "bb" 'consult-buffer
-   "bB" 'consult-buffer-other-window
+   "bB" 'switch-to-buffer
+   "bk" 'previous-buffer
+   "bj" 'next-buffer
    "bz" 'bury-buffer
+   "bd" 'kill-current-buffer
+   "bi" 'ibuffer
+   "bR" 'rename-buffer
+   "bk" 'kill-buffer
    "o" '(:ignore t :which-key "open")
    "of" 'make-frame
    "oa" 'org-agenda
    "ot" 'treemacs
    "oo" 'olivetti-mode
-   "os" 'scratch-buffer
    "q" '(:ignore t :wk "quit")
    "qr" 'restart-emacs
    "qq" 'evil-quit-all
    "h" '(:ignore t :wk "help")
    "hr" 'dd/reload-emacs-config
    "hp" 'desmond/open-config-dir
-   "x" 'org-capture
+   "X" 'org-capture
+   "x" 'scratch-buffer
    ";" 'dashboard-open)
 
   (general-define-key :states 'insert

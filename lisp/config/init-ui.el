@@ -45,8 +45,9 @@
   ;;                                       "Issue" "Report issue" (lambda (&rest _) (browse-url issue-url)) warning)
   ;;                                      (,(if (fboundp 'all-the-icons-material) (all-the-icons-material "update"         :height 1.1 :v-adjust -0.2) "♺")
   ;;                                       "Update" "Update packages synchronously" (lambda (&rest _) (package-update-all nil)) success))))
-  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*"))
-	dashboard-projects-backend 'project-el)
+  ;; 设置首页
+  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+  (setq dashboard-projects-backend 'project-el)
   (setq dashboard-display-icons-p t) ;; display icons on both GUI and terminal
   (setq dashboard-icon-type 'nerd-icons) ;; use `nerd-icons' package
   (setq dashboard-week-agenda t)
