@@ -19,6 +19,11 @@
   :ensure t
   )
 
+(use-package elisp-demos
+  :ensure t
+  :config
+  (advice-add 'describe-function-1 :after #'elisp-demos-advice-describe-function-1))
+
 (use-package pretty-lambdada
   :ensure nil
   :hook
