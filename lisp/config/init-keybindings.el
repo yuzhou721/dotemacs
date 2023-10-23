@@ -39,11 +39,12 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
    "fR" 'rename-visited-file
    "s" '(:ignore t :which-key "search")
    "sp" 'consult-ripgrep
-   "ss" 'consult-line
+   "sk" 'consult-keep-lines
+   "sl" 'consult-focus-lines
    "sj" 'evil-show-jumps
    "sm" 'evil-show-marks
    "sr" 'evil-show-registers
-   "si" 'imenu
+   "si" 'consult-imenu
    "sf" 'consult-find
    "sd" 'consult-dir
    "g" '(:ignore t :which-key "magit")
@@ -78,6 +79,9 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
   (general-define-key :states 'insert
 	"C-;" 'rime-inline-ascii))
 
+(general-define-key
+ :keymaps 'override
+ "C-s" 'consult-line)
 
 (defun desmond/open-config-dir ()
     "Open config dired")
