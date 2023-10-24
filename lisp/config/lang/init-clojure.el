@@ -22,7 +22,8 @@
   (cider-debug-evil-hack)
   ;; Repl-mode evil initial state
   ;; (evil-set-initial-state 'cider-repl-mode 'emacs)
-  (setq cider-repl-history-file (expand-file-name "cider-repl-history" emacs-extension-cache-dir))
+  (setq cider-repl-history-file (expand-file-name "cider-repl-history" emacs-extension-cache-dir)
+		cider-repl-pop-to-buffer-on-connect 'display-only)
   :general
   (global-leader 'clojure-mode-map
 	"'" 'cider-jack-in-clj
