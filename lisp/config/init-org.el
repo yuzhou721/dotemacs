@@ -129,7 +129,10 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 							  (shell . t)
 							  (java . t)
 							  (clojure . t)))
+  ;; 支持clojure
+  (require 'ob-clojure)
   (setq org-babel-clojure-backend 'cider)
+  (require 'cider)
   :general
   (global-leader 'org-mode-map
 	"#" 'org-update-statistics-cookies
