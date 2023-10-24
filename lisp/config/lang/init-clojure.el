@@ -5,11 +5,12 @@
 (use-package clojure-mode
   :ensure t
   :pin melpa
-  :hook
-  ('clojure-mode . 'lispy-mode))
+  ;; :hook
+  ;; ('clojure-mode . 'lispy-mode)
+  )
 
 (defun cider-debug-evil-hack ()
-  "处理 debug 时候 evil 按键冲突问题"
+ "处理 debug 时候 evil 按键冲突问题"
   (with-eval-after-load 'evil
 	(add-hook 'cider--debug-mode (lambda ()
 								   (evil-make-overriding-map cider--debug-mode-map 'normal)
