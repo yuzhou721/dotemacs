@@ -37,6 +37,20 @@
   :ensure nil
   :hook (prog-mode . rainbow-delimiters-mode))
 
+;; 类 lisp 语言结构编辑
+(use-package lispy
+  :hook
+  (emacs-lisp-mode . lispy-mode)
+  (clojure-mode . lispy-mode)
+  :init
+  :config
+  (lispy-define-key lispy-mode-map "e" 'eval-last-sexp))
+
+(use-package lispyville
+  :after lispy
+  :hook (lispy-mode . lispyville-mode)
+  :config
+  (lispyville-set-key-theme '(operators c-w additional prettify)))
 
 (require 'init-lisp)
 (require 'init-javascript)

@@ -1,27 +1,6 @@
 ;;; package --- Summary -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
-
-(use-package lispy
-  :hook
-  (emacs-lisp-mode . lispy-mode)
-  (clojure-mode . lispy-mode)
-  :init
-  :config
-  (lispy-define-key lispy-mode-map "e" 'eval-last-sexp)
-  :general
-  (:keymaps 'lispy-mode-map :states 'insert
-			"(" 'lispy-parens
-			"\"" 'lispy-quotes
-			"{" 'lispy-braces
-			"[" 'lispy-brackets))
-
-(use-package lispyville
-  :after lispy
-  :hook (lispy-mode . lispyville-mode)
-  :config
-  (lispyville-set-key-theme '(operators c-w additional prettify)))
-
 (use-package macrostep
   :ensure t
   )
