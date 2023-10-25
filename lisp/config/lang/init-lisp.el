@@ -3,15 +3,14 @@
 ;;; Code:
 
 (use-package lispy
-  :ensure t
   :hook
   (emacs-lisp-mode . lispy-mode)
+  (clojure-mode . lispy-mode)
   :init
   :config
   (lispy-define-key lispy-mode-map "e" 'eval-last-sexp))
 
 (use-package lispyville
-  :ensure t
   :after lispy
   :hook (lispy-mode . lispyville-mode))
 

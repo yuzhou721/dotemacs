@@ -148,3 +148,9 @@
 [submodule "lisp/extensions/emacs-immersive-translate"]
 	path = lisp/extensions/emacs-immersive-translate
 	url = https://github.com/Elilif/emacs-immersive-translate.git
+[submodule "lisp/extensions/lispy"]
+	path = lisp/extensions/lispy
+	url = git@github.com:yuzhou721/lispy.git
+[submodule "lisp/extensions/lispyville"]
+	path = lisp/extensions/lispyville
+	url = https://github.com/noctuid/lispyville.git
