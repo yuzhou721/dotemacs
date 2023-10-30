@@ -52,6 +52,11 @@
   :config
   (lispyville-set-key-theme '(operators c-w additional prettify)))
 
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
+
 (require 'init-lisp)
 (require 'init-javascript)
 (require 'init-tree-sitter)
