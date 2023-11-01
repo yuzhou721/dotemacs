@@ -15,6 +15,18 @@
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
 
+(defun local/lsp-bridge-get-single-lang-server-by-project (project-path filepath)
+  (let* ((json-object-type 'plist)
+		 (custom-dir (expand-file-name ".cache/lsp-bridge/pyright" user-emacs-directory))
+		 (custom-config (expand-file-name "pyright.json" custom-dir))
+		 (default-config (json-read-file (expand-file-name "lisp/extensions/lsp-bridge/langserver/pyright.json" user-emacs-directory)))
+		 (settings (plist-get default-config :settings)))
+	(plist-put settings :pythonPath (executable-find "python3"))
+	(make-directory (file-name-directory custom-config) t)
+	(with-temp-file custom-config
+	  (insert (json-encode default-config)))
+	custom-config))
+
 (use-package lsp-bridge
   :hook
   ((java-ts-mode java-mode) . lsp-bridge-mode)
@@ -36,7 +48,7 @@
   (evil-set-initial-state 'lsp-bridge-ref-mode 'emacs)
   ;; evil
   ;; (setq-local evil-goto-definition-functions '(lsp-bridge-jump))
-  ;; 全局启用
+  ;; 全局启用 与 org-roam 有点冲突
   ;; (global-lsp-bridge-mode)
   (setq acm-enable-icon t)
   ;; evil使用 lsp-bridge-jump
@@ -50,31 +62,37 @@
   (setq lsp-bridge-enable-org-babel t)
   ;; python 配置 先安装pyright和ruff
   (setq lsp-bridge-python-command "python3")
+  ;; (setq lsp-bridge-python-lsp-server "pyright")
   (setq lsp-bridge-python-multi-lsp-server "pyright_ruff")
+  ;; python 配置 venv
+  ;; (add-hook 'python-mode-hook (lambda () (setq-local lsp-bridge-get-single-lang-server-by-project 'local/lsp-bridge-get-single-lang-server-by-project)))
+  ;; (add-hook 'python-ts-mode-hook (lambda () (setq-local lsp-bridge-get-single-lang-server-by-project 'local/lsp-bridge-get-single-lang-server-by-project)))
+  ;; (add-hook 'pyvenv-post-activate-hooks (lambda () (lsp-bridge-restart-process)))
+
   :general
   (:states 'normal :keymaps 'lsp-bridge-mode-map
-	   "gi" 'lsp-bridge-find-impl
-	   "gh" 'lsp-bridge-popup-documentation
-	   "gn" 'lsp-bridge-diagnostic-jump-next
-	   "gp" 'lsp-bridge-diagnostic-jump-prev
-	   "ga" 'lsp-bridge-code-action
-	   "ge" 'lsp-bridge-diagnostic-list)
+		   "gi" 'lsp-bridge-find-impl
+		   "gh" 'lsp-bridge-popup-documentation
+		   "gn" 'lsp-bridge-diagnostic-jump-next
+		   "gp" 'lsp-bridge-diagnostic-jump-prev
+		   "ga" 'lsp-bridge-code-action
+		   "ge" 'lsp-bridge-diagnostic-list)
   (:states 'motion :keymaps 'lsp-bridge-mode-map
-	   "gR" 'lsp-bridge-rename
-	   "gr" 'lsp-bridge-find-references
-	   "gd" 'lsp-bridge-find-def)
+		   "gR" 'lsp-bridge-rename
+		   "gr" 'lsp-bridge-find-references
+		   "gd" 'lsp-bridge-find-def)
   (:keymaps 'acm-mode-map
-	    "C-j" 'acm-select-next
-	    "C-k" 'acm-select-prev)
+			"C-j" 'acm-select-next
+			"C-k" 'acm-select-prev)
   (:keymaps 'lsp-bridge-mode-map
-	    "S-j" 'lsp-bridge-popup-documentation-scroll-down
-	    "S-k" 'lsp-bridge-popup-documentation-scroll-up)
+			"S-j" 'lsp-bridge-popup-documentation-scroll-down
+			"S-k" 'lsp-bridge-popup-documentation-scroll-up)
   ;; 设置按键
   (global-leader 'lsp-bridge-mode-map
-      "a" 'lsp-bridge-code-action
-      "d" 'lsp-bridge-find-def
-      "p" 'lsp-bridge-peek
-      "r" 'lsp-bridge-restart-process))
+	"a" 'lsp-bridge-code-action
+	"d" 'lsp-bridge-find-def
+	"p" 'lsp-bridge-peek
+	"r" 'lsp-bridge-restart-process))
 
 ;; 融合 `lsp-bridge' `find-function' 以及 `dumb-jump' 的智能跳转
 ;; (defun lsp-bridge-jump ()

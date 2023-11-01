@@ -133,6 +133,8 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   (require 'ob-clojure)
   (setq org-babel-clojure-backend 'cider)
   (require 'cider)
+  ;; 支持 python
+  (setq org-babel-python-command "python3")
   :general
   (global-leader 'org-mode-map
 	"#" 'org-update-statistics-cookies
@@ -254,6 +256,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 						("elisp" . emacs-lisp)
 						("ocaml" . tuareg)
 						("shell" . sh)
+						("python" . python)
 						("java" . java)))
   )
 
