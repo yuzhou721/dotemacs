@@ -107,13 +107,26 @@
 ;;    (t
 ;;     (require 'dumb-jump)
 ;;     (dumb-jump-go))))
-;; (use-package eglot
-;;   :bind
-;;   (:map eglot-mode-map
-;;   ("gR" . #'eglot-rename)
-;;   ("gr" . #'xref-find-references)
-;;   ("gi" . #'eglot-find-implementation)
-;;   ("gh" . #'eldoc)
-;;   ("ga" . #'eglot-code-actions)))
+(use-package eglot
+  :hook
+  (clojure-mode . eglot-ensure)
+  (clojurescript-mode . eglot-ensure)
+  :config
+  (setq eglot-connect-timeout 60)
+  (setq eglot-send-changes-idle-time 0.2)
+  (add-to-list 'eglot-server-programs '(clojure-mode "clojure-lsp"))
+  (add-to-list 'eglot-server-programs '(clojurescript-mode "clojure-lsp"))
+  :general
+  (:keymaps 'eglot-mode-map :states 'normal
+  "gR" 'eglot-rename
+  "gr" 'xref-find-references
+  "gi" 'eglot-find-implementation
+  "gh" 'eldoc
+  "ga" 'eglot-code-actions))
+
+(use-package eldoc-box
+  :ensure t
+  :config
+  (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t))
 
 (provide 'init-lsp)

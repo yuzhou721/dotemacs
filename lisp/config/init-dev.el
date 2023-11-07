@@ -57,9 +57,22 @@
   :config
   (exec-path-from-shell-initialize))
 
+(use-package dape
+  :config
+  (add-to-list 'dape-configs
+			   `(debugpy
+				 modes (python-ts-mode python-mode)
+				 command "python3"
+				 command-args ("-m" "debugpy.adapter")
+				 :type "executable"
+				 :request "launch"
+				 :cwd dape-cwd-fn
+				 :program dape-find-file-buffer-default)))
+
 (require 'init-lisp)
 (require 'init-javascript)
 (require 'init-tree-sitter)
 (require 'init-dart)
 (require 'init-clojure)
+(require 'init-common-lisp)
 (provide 'init-dev)

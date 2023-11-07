@@ -104,4 +104,7 @@
 			"r" 'cider-repl-history-search-backward
 			"U" 'cider-repl-history-undo-other-window))
 
+(use-package clj-deps-new
+  :ensure t)
+
 (provide 'init-clojure)
