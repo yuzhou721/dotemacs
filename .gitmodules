@@ -154,3 +154,6 @@
 [submodule "lisp/extensions/lispyville"]
 	path = lisp/extensions/lispyville
 	url = https://github.com/noctuid/lispyville.git
+[submodule "lisp/extensions/dape"]
+	path = lisp/extensions/dape
+	url = https://github.com/svaante/dape.git
