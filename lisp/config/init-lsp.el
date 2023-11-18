@@ -31,6 +31,7 @@
   :hook
   ((java-ts-mode java-mode) . lsp-bridge-mode)
   ((python-ts-mode python-mode) . lsp-bridge-mode)
+  (web-mode . lsp-bridge-mode)
   ;; 启用 lsp-bridge 时候 关闭 corfu
   (lsp-bridge-mode . (lambda () (corfu-mode -1)))
   ;; (python-ts-mode . lsp-bridge-mode)
@@ -68,7 +69,8 @@
   ;; (add-hook 'python-mode-hook (lambda () (setq-local lsp-bridge-get-single-lang-server-by-project 'local/lsp-bridge-get-single-lang-server-by-project)))
   ;; (add-hook 'python-ts-mode-hook (lambda () (setq-local lsp-bridge-get-single-lang-server-by-project 'local/lsp-bridge-get-single-lang-server-by-project)))
   ;; (add-hook 'pyvenv-post-activate-hooks (lambda () (lsp-bridge-restart-process)))
-
+  ;; user lsp-config
+  (setq lsp-bridge-user-langserver-dir (expand-file-name "lsp/langserver" user-emacs-directory))
   :general
   (:states 'normal :keymaps 'lsp-bridge-mode-map
 		   "gi" 'lsp-bridge-find-impl
@@ -113,9 +115,11 @@
   (clojurescript-mode . eglot-ensure)
   :config
   (setq eglot-connect-timeout 60)
+  (setq eglot-autoshutdown t)
   (setq eglot-send-changes-idle-time 0.2)
   (add-to-list 'eglot-server-programs '(clojure-mode "clojure-lsp"))
   (add-to-list 'eglot-server-programs '(clojurescript-mode "clojure-lsp"))
+  (add-to-list 'eglot-ignored-server-capabilites :hoverProvider)
   :general
   (:keymaps 'eglot-mode-map :states 'normal
   "gR" 'eglot-rename
@@ -124,9 +128,9 @@
   "gh" 'eldoc
   "ga" 'eglot-code-actions))
 
-(use-package eldoc-box
-  :ensure t
-  :config
-  (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t))
+;; (use-package eldoc-box
+;;   :ensure t
+;;   :config
+;;   (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t))
 
 (provide 'init-lsp)
