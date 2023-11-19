@@ -69,6 +69,18 @@
 				 :cwd dape-cwd-fn
 				 :program dape-find-file-buffer-default)))
 
+(use-package smartparens
+  :ensure t
+  :init
+  (smartparens-global-mode t)
+  (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+  (sp-local-pair 'emacs-lisp-mode "`" nil :actions nil)
+  (sp-local-pair 'lisp-interaction-mode "'" nil :actions nil)
+  :config
+    (sp-with-modes
+        '(c++-mode objc-mode c-mode)
+      (sp-local-pair "{" nil :post-handlers '(:add ("||\n[i]" "RET")))))
+
 (require 'init-lisp)
 (require 'init-javascript)
 (require 'init-tree-sitter)
