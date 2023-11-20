@@ -6,7 +6,8 @@
   (setq rime-disable-predicates
       '(rime-predicate-evil-mode-p
         rime-predicate-after-alphabet-char-p
-        rime-predicate-prog-in-code-p))
+        ;; rime-predicate-prog-in-code-p
+		))
   ;;; support shift-l, shift-r, control-l, control-r 测试
   (setq rime-inline-ascii-trigger 'shift-l)
   )

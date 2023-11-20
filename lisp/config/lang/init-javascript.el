@@ -51,6 +51,7 @@
 
 (use-package web-mode
   :ensure t
+  :mode "\\.vue\\'"
   :init
   (setq web-mode-content-types-alist '(("vue" . "\\.vue\\'"))
 		web-mode-css-indent-offset 2 ;; CSS 默认缩进 2 空格：包含 HTML 的 CSS 部分以及纯 CSS/LESS/SASS 文件等
@@ -58,7 +59,9 @@
 		web-mode-markup-indent-offset 2 ;; HTML 默认缩进 2 空格：包含 HTML 文件以及 Vue 文件的 TEMPLATE 部分
 		web-mode-enable-css-colorization t ;; 开启 CSS 部分色值的展示：展示的时候会有光标显示位置异常
 		web-mode-enable-auto-indentation nil ;; 禁止粘贴时格式化代码
-		web-mode-enable-current-column-highlight nil))
+		web-mode-enable-current-column-highlight nil)
+	:config
+	(setq-local tab-width 4))
 
 (provide 'init-javascript)
 
