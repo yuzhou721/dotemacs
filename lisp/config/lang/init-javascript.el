@@ -61,7 +61,7 @@
 		web-mode-enable-auto-indentation nil ;; 禁止粘贴时格式化代码
 		web-mode-enable-current-column-highlight nil)
 	:config
-	(setq-local tab-width 4))
+	(setq tab-width 2))
 
 (provide 'init-javascript)
 

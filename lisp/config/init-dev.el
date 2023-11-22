@@ -79,6 +79,8 @@
   (sp-local-pair 'clojure-mode "`" nil :actions nil)
   (sp-local-pair 'clojurescript-mode "'" nil :actions nil)
   (sp-local-pair 'clojurescript-mode "`" nil :actions nil)
+  (sp-local-pair 'cider-repl-mode "'" nil :actions nil)
+  (sp-local-pair 'cider-repl-mode "`" nil :actions nil)
   (sp-local-pair 'lisp-interaction-mode "'" nil :actions nil)
   :config
     (sp-with-modes
