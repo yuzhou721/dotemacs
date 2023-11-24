@@ -34,8 +34,12 @@
 (setq select-enable-primary t
       select-enable-clipboard t)
 
+;; indent 设置
 ;; tab-width
 (setq-default tab-width 4)
+;; 使用空格而不是 tab 缩进
+(setq-default indent-tabs-mode nil)
+(setq-default electric-indent-mode t)
 
 ;;设置
 (fset 'yes-or-no-p 'y-or-n-p)           ;以 y/n代表 yes/no
@@ -295,5 +299,7 @@ Else, call `comment-or-uncomment-region' on the current line."
 
 (with-eval-after-load 'dired
   (setq dired-dwim-target t))
+
+()
 
 (provide 'init-better-defaults)
