@@ -157,3 +157,6 @@
 [submodule "lisp/extensions/dape"]
 	path = lisp/extensions/dape
 	url = https://github.com/svaante/dape.git
+[submodule "lisp/extensions/insert-translated-name"]
+	path = lisp/extensions/insert-translated-name
+	url = https://github.com/manateelazycat/insert-translated-name.git
