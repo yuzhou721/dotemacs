@@ -134,4 +134,9 @@
   :config
   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
+(use-package corfu-terminal
+  :ensure t
+  :if (not (display-graphic-p))
+  :config (corfu-terminal-mode +1))
+
 (provide 'init-completion)

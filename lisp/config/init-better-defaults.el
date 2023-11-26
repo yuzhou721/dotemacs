@@ -300,6 +300,22 @@ Else, call `comment-or-uncomment-region' on the current line."
 (with-eval-after-load 'dired
   (setq dired-dwim-target t))
 
-()
+;; tramp
+(setq tramp-default-method "ssh")
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+(setq tramp-verbose 10)
+(setq recentf-exclude `(,tramp-file-name-regexp
+                        "COMMIT_EDITMSG")
+      tramp-auto-save-directory temporary-file-directory
+      backup-directory-alist (list (cons tramp-file-name-regexp nil)))
+
+(defun my/project-remember-advice (fn pr &optional no-write)
+  (let* ((remote? (file-remote-p (project-root pr)))
+         (no-write (if remote? t no-write)))
+    (funcall fn pr no-write)))
+
+(advice-add 'project-remember-project :around
+            'my/project-remember-advice)
+
 
 (provide 'init-better-defaults)
