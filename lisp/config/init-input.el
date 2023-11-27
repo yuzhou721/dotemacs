@@ -22,7 +22,8 @@
   ;; ((text-mode prog-mode) . sis-inline-mode)
   ;; )
   ;; chrome os 里的输入发会冲突
-  :if (not (string= "penguin" system-name))
+  :if (and (display-graphic-p)
+          (not (string= "penguin" system-name)))
   :custom
   (sis-default-cursor-color "white")
   :config

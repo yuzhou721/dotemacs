@@ -37,7 +37,7 @@ Main data structure of the dispatcher with the form:
   :defines opper-echo-dispatch-actions
   :commands popper-group-by-directory
   :bind (:map popper-mode-map
-			  ("C-`" . popper-toggle-latest)
+			  ("M-+" . popper-toggle-latest)
 			  ;; ("s-o" . popper-cycle)
 			  ;; ("M-`" . popper-toggle-type)
 			  )

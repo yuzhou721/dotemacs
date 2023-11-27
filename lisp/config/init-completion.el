@@ -136,7 +136,8 @@
 
 (use-package corfu-terminal
   :ensure t
-  :if (not (display-graphic-p))
-  :config (corfu-terminal-mode +1))
+  :config
+  (unless (display-graphic-p)
+    (add-hook 'corfu-mode-hook  #'corfu-terminal-mode)))
 
 (provide 'init-completion)
