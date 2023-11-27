@@ -72,6 +72,9 @@
   ;; (add-hook 'pyvenv-post-activate-hooks (lambda () (lsp-bridge-restart-process)))
   ;; user lsp-config
   (setq lsp-bridge-user-langserver-dir (expand-file-name "lsp/langserver" user-emacs-directory))
+  (unless (display-graphic-p)
+              (with-eval-after-load 'acm
+                (require 'acm-terminal)))
   :general
   (:states 'normal :keymaps 'lsp-bridge-mode-map
 		   "gi" 'lsp-bridge-find-impl
