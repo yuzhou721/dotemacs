@@ -89,8 +89,12 @@
 
 (use-package prettier
   :ensure t
-  :config
-  (add-hook 'after-init-hook #'global-prettier-mode))
+  :hook
+  ((java-ts-mode java-mode) . prettier-mode)
+  ((python-ts-mode python-mode) . prettier-mode)
+  (web-mode . prettier-mod)
+  ((typescript-mode typescript-ts-mode tsx-ts-mode) . prettier-mode)
+  ((js-ts-mode) . prettier-mode))
 
 (require 'init-lisp)
 (require 'init-javascript)
