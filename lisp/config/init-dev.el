@@ -92,7 +92,7 @@
   :hook
   ((java-ts-mode java-mode) . prettier-mode)
   ((python-ts-mode python-mode) . prettier-mode)
-  (web-mode . prettier-mod)
+  (web-mode . prettier-mode)
   ((typescript-mode typescript-ts-mode tsx-ts-mode) . prettier-mode)
   ((js-ts-mode) . prettier-mode))
 

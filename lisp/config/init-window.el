@@ -38,6 +38,7 @@ Main data structure of the dispatcher with the form:
   :commands popper-group-by-directory
   :bind (:map popper-mode-map
 			  ("M-=" . popper-toggle-latest)
+			  ("C-`" . popper-toggle-latest)
 			  ;; ("s-o" . popper-cycle)
 			  ;; ("M-`" . popper-toggle-type)
 			  )
