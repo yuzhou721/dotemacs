@@ -1,0 +1,17 @@
+# key: vue-template
+# name: vue-template
+# --
+
+<template>
+
+</template>
+
+<script>
+export default {
+  $0
+}
+</script>
+
+<style lang="scss" scope>
+
+</style>
