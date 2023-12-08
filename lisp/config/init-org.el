@@ -135,49 +135,14 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   (require 'cider)
   ;; 支持 python
   (setq org-babel-python-command "python3")
-  :general
-  (global-leader 'org-mode-map
-	"#" 'org-update-statistics-cookies
-	"'" 'org-edit-special
-	"*" 'org-ctrl-c-star
-	"+" 'org-ctrl-c-minus
-	"," 'org-switchb
-	"." 'org-goto
-	"@" 'org-cite-insert
-	"." 'consult-org-heading
-	"/" 'consult-org-agenda
-	"A" 'org-archive-subtree
-	"e" 'org-export-dispatch
-	"f" 'org-footnote-action
-	"h" 'org-toggle-heading
-	"i" 'org-toggle-item
-	"I" 'org-id-get-create
-	"k" 'org-babel-remove-result
-	"n" 'org-store-link
-	"o" 'org-set-property
-	"q" 'org-set-tags-command
-	"t" 'org-todo
-	"T" 'org-todo-list
-	"x" 'org-toggle-checkbox
-	"a" '(:ignore t :wk "attachments")
-	"aa" 'org-attach
-	"ad" 'org-attach-delete-one
-	"aD" 'org-attach-delete-all
-	"an" 'org-attach-new
-	"ao" 'org-attach-open
-	"aO" 'org-attach-open-in-emacs
-	"ar" 'org-attach-reveal
-	"aR" 'org-attach-reveal-in-emacs
-	"au" 'org-attach-url
-	"as" 'org-attach-set-directory
-	"aS" 'org-attach-sync)
   :bind (:map org-mode-map
 			  ("C-RET" . org-insert-subheading)
 			  ("C-M-RET" . org-insert-todo-subheading)))
 
 (defun org-apperance-evil-hack ()
   (add-hook 'evil-insert-state-entry-hook #'org-appear-manual-start nil t)
-  (add-hook 'evil-insert-state-exit-hook #'org-appear-manual-stop nil t))
+  (add-
+   hook 'evil-insert-state-exit-hook #'org-appear-manual-stop nil t))
 
 ;; 显示自动隐藏的元素
 (use-package org-appear
@@ -430,6 +395,65 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   :config
   (add-hook 'org-mode-hook (lambda ()
 							 (setq pangu-spacing-real-insert-separtor t))))
+
+(use-package org-download
+  :ensure t
+  :demand t
+  :after org
+  :hook
+  ((org-mode dired-mode) . org-download-enable)
+  :config
+  (add-hook 'dired-mode-hook 'org-download-enable)
+  (setq org-download-method 'directory)
+  (setq-default org-download-heading-lvl nil
+                org-download-image-dir "./img"
+                org-download-screenshot-method "flameshot gui"
+                ;; org-download-link-format "[[download:%s]]\n"
+                org-download-screenshot-file (expand-file-name "screenshot.jpg" temporary-file-directory)))
+
+(global-leader 'org-mode-map
+	"#" 'org-update-statistics-cookies
+	"'" 'org-edit-special
+	"*" 'org-ctrl-c-star
+	"+" 'org-ctrl-c-minus
+	"," 'org-switchb
+	"." 'org-goto
+	"@" 'org-cite-insert
+	"." 'consult-org-heading
+	"/" 'consult-org-agenda
+	"A" 'org-archive-subtree
+	"e" 'org-export-dispatch
+	"f" 'org-footnote-action
+	"h" 'org-toggle-heading
+	"i" 'org-toggle-item
+	"I" 'org-id-get-create
+	"k" 'org-babel-remove-result
+	"n" 'org-store-link
+	"o" 'org-set-property
+	"q" 'org-set-tags-command
+	"t" 'org-todo
+	"T" 'org-todo-list
+	"x" 'org-toggle-checkbox
+	"a" '(:ignore t :wk "attachments")
+	"aa" 'org-attach
+	"ad" 'org-attach-delete-one
+	"aD" 'org-attach-delete-all
+	"an" 'org-attach-new
+	"ao" 'org-attach-open
+	"aO" 'org-attach-open-in-emacs
+	"ar" 'org-attach-reveal
+	"aR" 'org-attach-reveal-in-emacs
+	"au" 'org-attach-url
+	"as" 'org-attach-set-directory
+	"aS" 'org-attach-sync
+    "d" '(:ignore t :wk "download")
+    "dy" 'org-download-yank
+    "dd" 'org-download-delete
+    "dc" 'org-download-clipboard
+    "de" 'org-download-edit
+    "ds" 'org-download-screenshot
+    "dr" 'org-download-rename-at-point)
+
 
 (provide 'init-org)
 ;;; init-org.el ends here
