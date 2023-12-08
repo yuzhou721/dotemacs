@@ -27,6 +27,7 @@
 	  (insert (json-encode default-config)))
 	custom-config))
 
+;; 手动开关acm Terminal
 (defun +desmond/acm-terminal-require ()
   "Enable the acm terminal."
   (if (featurep 'acm-terminal)

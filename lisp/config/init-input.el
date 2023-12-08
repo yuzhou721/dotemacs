@@ -21,6 +21,21 @@
   (:keymaps 'rime-mode-map
             "M-j" 'rime-force-enable))
 
+(defun +desmond/sis-mode-set (status)
+  "sis mode set."
+  (with-no-warnings
+    (sis-global-cursor-color-mode status)
+    ;; (sis-global-respect-mode status)
+    (sis-global-context-mode status)
+    (sis-global-inline-mode status)))
+
+(defun +desmond/sis-mode-swich ()
+  "sis swicher."
+  (interactive)
+  (with-no-warnings
+    (if (sis-global-context-mode)
+        (+desmond/sis-mode-set nil)
+      (+desmond/sis-mode-set t))))
 ;;输入法自动切换
 (use-package sis
   ;; :disabled (string= (getenv "GTK_IM_MODULE") "ibus")
@@ -43,13 +58,5 @@
 		 (sis-ism-lazyman-config "1" "2" 'fcitx))
 		((string= (getenv "GTK_IM_MODULE") "fcitx5")
 		 (sis-ism-lazyman-config "1" "2" 'fcitx5)))
-
-  ;; enable the /cursor color/ mode
-  (sis-global-cursor-color-mode t)
-  ;; enable the /respect/ mode
-  (sis-global-respect-mode t)
-
-  (sis-global-context-mode t)
-  ;; enable the /inline english/ mode for all buffers
-  (sis-global-inline-mode t))
+  (+desmond/sis-mode-set t))
 (provide 'init-input)
