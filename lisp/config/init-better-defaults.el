@@ -317,5 +317,10 @@ Else, call `comment-or-uncomment-region' on the current line."
 (advice-add 'project-remember-project :around
             'my/project-remember-advice)
 
+;; dired nerd font
+(use-package nerd-icons-dired
+  :ensure t
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
 
 (provide 'init-better-defaults)

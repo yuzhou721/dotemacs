@@ -31,7 +31,7 @@
   (setq cape-dabbrev-min-length 3)
   ;; Add `completion-at-point-functions', used by `completion-at-point'.
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  ;; (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-file)
   ;; (add-to-list 'completion-at-point-functions #'cape-dict)
   )
 
@@ -136,7 +136,8 @@
 
 (use-package corfu-terminal
   :ensure t
-  :if (not (display-graphic-p))
-  :config (corfu-terminal-mode +1))
+  :config
+  (unless (display-graphic-p)
+    (add-hook 'corfu-mode-hook  #'corfu-terminal-mode)))
 
 (provide 'init-completion)

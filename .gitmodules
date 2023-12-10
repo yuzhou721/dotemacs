@@ -160,3 +160,9 @@
 [submodule "lisp/extensions/insert-translated-name"]
 	path = lisp/extensions/insert-translated-name
 	url = https://github.com/manateelazycat/insert-translated-name.git
+[submodule "lisp/extensions/acm-terminal"]
+	path = lisp/extensions/acm-terminal
+	url = https://github.com/twlz0ne/acm-terminal.git
+[submodule "lisp/extensions/emacs-popon"]
+	path = lisp/extensions/emacs-popon
+	url = https://codeberg.org/akib/emacs-popon.git

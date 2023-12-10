@@ -37,6 +37,7 @@ Main data structure of the dispatcher with the form:
   :defines opper-echo-dispatch-actions
   :commands popper-group-by-directory
   :bind (:map popper-mode-map
+			  ("M-=" . popper-toggle-latest)
 			  ("C-`" . popper-toggle-latest)
 			  ;; ("s-o" . popper-cycle)
 			  ;; ("M-`" . popper-toggle-type)
@@ -163,5 +164,6 @@ Main data structure of the dispatcher with the form:
   "L" 'buf-move-right
   "J" 'buf-move-down
   "K" 'buf-move-up)
+
 
 (provide 'init-window)

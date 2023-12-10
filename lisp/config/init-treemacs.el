@@ -117,4 +117,10 @@
   :ensure nil
   :config (treemacs-set-scope-type 'Tabs))
 
+(use-package treemacs-nerd-icons
+  :ensure t
+  :after treemacs
+  :config
+  (treemacs-load-theme "nerd-icons"))
+
 (provide 'init-treemacs)
