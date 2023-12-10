@@ -248,6 +248,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   (org-src-tab-acts-natively t)
   (org-src-preserve-indentation t)
   (org-src-window-setup 'other-window)
+  (org-edit-src-content-indentation 0)
   (org-src-lang-modes '(("C" . c)
 						("C++" . c++)
 						("bash" . sh)
