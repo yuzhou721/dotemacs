@@ -22,32 +22,32 @@
             "M-j" 'rime-force-enable))
 
 (defun +desmond/sis-mode-set (status)
-  "sis mode set."
+  "Sis mode set. STATUS is status code ."
   (with-no-warnings
     (sis-global-cursor-color-mode status)
-    ;; (sis-global-respect-mode status)
+    (when (display-graphic-p)
+      (sis-global-respect-mode status))
     (sis-global-context-mode status)
     (sis-global-inline-mode status)))
 
+(defun +desmond/sis-clear-hook ()
+  "Remove sis hook."
+  (dolist (buf (buffer-list))
+    (with-current-buffer buf
+      (dolist (hook sis-context-hooks)
+        (remove-hook hook #'sis-context t)))))
+
 (defun +desmond/sis-mode-swich ()
-  "sis swicher."
+  "Sis swicher."
   (interactive)
   (with-no-warnings
-    (if (sis-global-context-mode)
-        (+desmond/sis-mode-set nil)
+    (if sis-global-context-mode
+        (progn  (+desmond/sis-mode-set -1)
+            (+desmond/sis-clear-hook))
       (+desmond/sis-mode-set t))))
+
 ;;输入法自动切换
 (use-package sis
-  ;; :disabled (string= (getenv "GTK_IM_MODULE") "ibus")
-  ;; :hook
-  ;; ;; enable the /follow context/ and /inline region/ mode for specific buffers
-  ;; (
-  ;; ((text-mode prog-mode) . sis-context-mode)
-  ;; ((text-mode prog-mode) . sis-inline-mode)
-  ;; )
-  ;; chrome os 里的输入发会冲突
-  ;; :if (and (display-graphic-p)
-  ;;         (not (string= "penguin" system-name)))
   :custom
   (sis-default-cursor-color "white")
   :config
