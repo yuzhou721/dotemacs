@@ -13,7 +13,7 @@
           rime-predicate-hydra-p
           ;; rime-predicate-in-code-string-p
           rime-predicate-prog-in-code-p))
-;;; support shift-l, shift-r, control-l, control-r 测试
+;;; support shift-l, shift-r, control-l, control-r
   (setq rime-inline-ascii-trigger 'shift-l)
   :general
   (:keymaps 'rime-active-mode-map

@@ -141,8 +141,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 
 (defun org-apperance-evil-hack ()
   (add-hook 'evil-insert-state-entry-hook #'org-appear-manual-start nil t)
-  (add-
-   hook 'evil-insert-state-exit-hook #'org-appear-manual-stop nil t))
+  (add-hook 'evil-insert-state-exit-hook #'org-appear-manual-stop nil t))
 
 ;; 显示自动隐藏的元素
 (use-package org-appear
