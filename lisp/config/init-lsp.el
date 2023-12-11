@@ -27,50 +27,11 @@
 	  (insert (json-encode default-config)))
 	custom-config))
 
-;; 手动开关acm Terminal
-(defun +desmond/acm-terminal-require ()
-  "Enable the acm terminal."
-  (if (featurep 'acm-terminal)
-      (+desmond/lsp-bridge-terminal-enable)
-    (require 'acm-terminal)))
-
-(defun +desmond/acm-enable ()
+(defun +desmond/acm-auto-enable ()
   "Request terminal environment package."
   (if (display-graphic-p)
-      (+desmond/lsp-bridge-gui-enable)
-    (+desmond/acm-terminal-require)))
-
-(defun +desmond/lsp-bridge-gui-enable ()
-  "Disable acm-terminal And remove advice."
-  (interactive)
-  (with-eval-after-load 'acm-terminal
-    (advice-remove 'acm-frame-init-colors #'acm-terminal-init-colors)
-    (advice-remove 'acm-hide #'acm-terminal-hide)
-    (advice-remove 'acm-update #'acm-terminal-update)
-    (advice-remove 'acm-doc-try-show  #'acm-terminal-doc-try-show)
-    (advice-remove 'acm-doc-hide #'acm-terminal-doc-hide)
-    (advice-remove 'acm-doc-scroll-up  #'acm-terminal-doc-scroll-up)
-    (advice-remove 'acm-doc-scroll-down  #'acm-terminal-doc-scroll-down)
-    (advice-remove 'acm-menu-max-length #'acm-terminal-max-length)
-    (advice-remove 'acm-menu-render  #'acm-terminal-menu-render)
-    (advice-remove 'acm-menu-render-items  #'acm-terminal-menu-render-items)
-    (advice-remove 'acm-markdown-render-content  #'acm-terminal-markdown-render-content)))
-
-(defun +desmond/lsp-bridge-terminal-enable ()
-  "Enable acm-terminal ."
-  (interactive)
-  (with-eval-after-load 'acm-terminal
-    (advice-add 'acm-frame-init-colors :override 'acm-terminal-init-colors)
-    (advice-add 'acm-hide :override #'acm-terminal-hide)
-    (advice-add 'acm-update :override #'acm-terminal-update)
-    (advice-add 'acm-doc-try-show :override #'acm-terminal-doc-try-show)
-    (advice-add 'acm-doc-hide :override #'acm-terminal-doc-hide)
-    (advice-add 'acm-doc-scroll-up :override #'acm-terminal-doc-scroll-up)
-    (advice-add 'acm-doc-scroll-down :override #'acm-terminal-doc-scroll-down)
-    (advice-add 'acm-menu-max-length :filter-return #'acm-terminal-max-length)
-    (advice-add 'acm-menu-render :override #'acm-terminal-menu-render)
-    (advice-add 'acm-menu-render-items :override #'acm-terminal-menu-render-items)
-    (advice-add 'acm-markdown-render-content :around #'acm-terminal-markdown-render-content)))
+      (acm-terminal-deactive)
+    (acm-terminal-active)))
 
 (use-package lsp-bridge
   :hook
@@ -85,9 +46,9 @@
   :init
   (require 'lsp-bridge-jdtls) ;; 根据项目自动生成自定义配置，添加必要的启动参数
   ;; 通过daemon启动时候也能正确加载terminal相关包
-  (if (daemonp)
-      (add-hook 'server-after-make-frame-hook #'+desmond/acm-enable)
-    (+desmond/acm-enable))
+  (require 'acm-terminal)
+  (when (daemonp)
+      (add-hook 'server-after-make-frame-hook #'+desmond/acm-auto-enable))
   :config
   ;; Output server logs to `*lsp-bridge*' buffer, required restarting the process
   (setq lsp-bridge-enable-log nil)
@@ -122,6 +83,7 @@
   ;; (add-hook 'pyvenv-post-activate-hooks (lambda () (lsp-bridge-restart-process)))
   ;; user lsp-config
   (setq lsp-bridge-user-langserver-dir (expand-file-name "lsp/langserver" user-emacs-directory))
+  ;; (+desmond/acm-auto-enable)
   :general
   (:states 'normal :keymaps 'lsp-bridge-mode-map
            "gi" 'lsp-bridge-find-impl
@@ -133,7 +95,7 @@
   (:states 'motion :keymaps 'lsp-bridge-mode-map
            "gR" 'lsp-bridge-rename
            "gr" 'lsp-bridge-find-references
-           "gd" 'lsp-bridge-find-def)
+           "gd" 'lsp-bridge-find-def)
   (:keymaps 'acm-mode-map
             "C-j" 'acm-select-next
             "C-k" 'acm-select-prev)
