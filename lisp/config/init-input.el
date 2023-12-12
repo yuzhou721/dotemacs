@@ -4,9 +4,7 @@
   :init
   (setq default-input-method "rime")
   :config
-  (if (display-graphic-p)
-      (setq rime-show-candidate 'posframe)
-    (setq rime-show-candidate 'minibuffer))
+  (setq rime-show-candidate 'posframe)
   (setq rime-disable-predicates
         '(rime-predicate-evil-mode-p
           rime-predicate-after-alphabet-char-p
