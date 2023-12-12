@@ -35,7 +35,9 @@
 
 (use-package dashboard
   :ensure t
-  :init
+  :hook ((after-init . dashboard-setup-startup-hook)
+         (dashboard-mode . (lambda ()
+                             (setq-local global-hl-line-mode nil))))
   ;;Format: "(icon title help action face prefix suffix)"
   ;; (setq dashboard-navigator-buttons `(((,(if (fboundp 'all-the-icons-octicon) (all-the-icons-octicon "mark-github"      :height 1.0 :v-adjust  0.0) "★")
   ;;                                       "GitHub" "Browse" (lambda (&rest _) (browse-url homepage-url)))
@@ -45,16 +47,18 @@
   ;;                                       "Issue" "Report issue" (lambda (&rest _) (browse-url issue-url)) warning)
   ;;                                      (,(if (fboundp 'all-the-icons-material) (all-the-icons-material "update"         :height 1.1 :v-adjust -0.2) "♺")
   ;;                                       "Update" "Update packages synchronously" (lambda (&rest _) (package-update-all nil)) success))))
+  :init
   ;; 设置首页
-  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+  (if (daemonp)
+      (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*"))))
   (setq dashboard-projects-backend 'project-el)
   (setq dashboard-display-icons-p t) ;; display icons on both GUI and terminal
   (setq dashboard-icon-type 'nerd-icons) ;; use `nerd-icons' package
   (setq dashboard-week-agenda t)
   ;; (setq dashboard-filter-agenda-entry 'dashboard-no-filter-agenda)
-  :hook ((after-init . dashboard-setup-startup-hook)
-	 (dashboard-mode . (lambda ()
-			     (setq-local global-hl-line-mode nil))))
+  ;; set center
+  (setq dashboard-center-content t)
+  (setq dashboard-banner-logo-title "Desmond Emacs")
   ;; :config
   ;; (defconst homepage-url "https://github.com/condy0919/.emacs.d")
   ;; (defconst stars-url (concat homepage-url "/stargazers"))
@@ -66,10 +70,10 @@
   (dashboard-set-init-info t)
   (dashboard-set-navigator t)
   (dashboard-items '(
-		     (projects . 5)
-		     (agenda . 5)
-		     (recents . 5)
-		     (bookmarks . 5))))
+                     (projects . 5)
+                     (agenda . 5)
+                     (recents . 5)
+                     (bookmarks . 5))))
 
 
 ;; chinese font set
@@ -87,7 +91,9 @@
   ;; Enable traditional ligature support in eww-mode, if the
   ;; `variable-pitch' face supports it
   (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
-  ;; Enable all Cascadia and Fira Code ligatures in programming modes
+  ;; Enable all Cascadia and
+
+  Fira Code ligatures in programming modes
   (ligature-set-ligatures 'prog-mode
                         '(;; == === ==== => =| =>>=>=|=>==>> ==< =/=//=// =~
                           ;; =:= =!=
