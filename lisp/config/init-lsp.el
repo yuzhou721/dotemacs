@@ -29,6 +29,7 @@
 
 (defun +desmond/acm-auto-enable ()
   "Request terminal environment package."
+  (interactive)
   (if (display-graphic-p)
       (acm-terminal-deactive)
     (acm-terminal-active)))
