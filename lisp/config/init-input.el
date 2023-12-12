@@ -25,8 +25,7 @@
   "Sis mode set. STATUS is status code ."
   (with-no-warnings
     (sis-global-cursor-color-mode status)
-    (when (display-graphic-p)
-      (sis-global-respect-mode status))
+    (sis-global-respect-mode status)
     (sis-global-context-mode status)
     (sis-global-inline-mode status)))
 
