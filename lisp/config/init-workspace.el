@@ -49,13 +49,11 @@
   :commands (tabspaces-switch-or-create-workspace
 	     tabspaces-open-or-create-project-and-workspace)
   :config
-  (setq tab-bar-new-tab-choice "*dashboard*")
   (setq tabspaces-use-filtered-buffers-as-default t)
-  (setq tabspaces-default-tab "Default")
+  ;; (setq tabspaces-default-tab "Default")
   (setq tabspaces-remove-to-default t)
   (setq tabspaces-include-buffers '("*scratch*" "*dashboard*"))
   (setq tabspaces-initialize-project-with-todo nil)
-  ;; (tabspaces-todo-file-name "project-todo.org")
   ;; maybe slow
   (setq tabspaces-session t)
   ;; (tabspaces-session-auto-restore t)
@@ -84,12 +82,13 @@
   "L" 'tabspaces-restore-session
   "p" 'tabspaces-open-or-create-project-and-workspace
   "f" 'tabspaces-project-switch-project-open-file
-  "s" 'tabspaces-save-session
+  "S" 'tabspaces-save-session
+  "s" 'tabspace-save-current-project-session
   "B" 'tabspaces-switch-buffer-and-tab
   "b" 'tabspaces-switch-to-buffer
   "R" 'tab-rename
   "TAB" 'tab-bar-switch-to-recent-tab
   "r" 'tabspaces-remove-current-buffer
-  "k" 'tabspaces-close-workspace)
+  "q" 'tabspaces-close-workspace)
 
 (provide 'init-workspace)
