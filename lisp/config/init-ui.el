@@ -49,8 +49,7 @@
   ;;                                       "Update" "Update packages synchronously" (lambda (&rest _) (package-update-all nil)) success))))
   :init
   ;; 设置首页
-  (if (daemonp)
-      (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*"))))
+  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
   (setq dashboard-projects-backend 'project-el)
   (setq dashboard-display-icons-p t) ;; display icons on both GUI and terminal
   (setq dashboard-icon-type 'nerd-icons) ;; use `nerd-icons' package
@@ -93,7 +92,7 @@
   (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
   ;; Enable all Cascadia and
 
-  Fira Code ligatures in programming modes
+  ;;Fira Code ligatures in programming modes
   (ligature-set-ligatures 'prog-mode
                         '(;; == === ==== => =| =>>=>=|=>==>> ==< =/=//=// =~
                           ;; =:= =!=
