@@ -97,6 +97,7 @@ Main data structure of the dispatcher with the form:
 		  "\\*General Keybindings\\*"
 		  "^\\*elfeed-entry\\*$"
 		  "^\\*macro expansion\\**"
+          "\\*sly-mrepl*"
 
 		  "\\*Agenda Commands\\*" "\\*Org Select\\*" "\\*Capture\\*" "^CAPTURE-.*\\.org*"
 		  "\\*Gofmt Errors\\*$" "\\*Go Test\\*$" godoc-mode

@@ -42,6 +42,7 @@
   :hook
   (emacs-lisp-mode . lispy-mode)
   (clojure-mode . lispy-mode)
+  (lisp-mode . lispy-mode)
   :init
   :config
   (lispy-define-key lispy-mode-map "e" 'eval-last-sexp))
@@ -82,6 +83,10 @@
   (sp-local-pair 'cider-repl-mode "'" nil :actions nil)
   (sp-local-pair 'cider-repl-mode "`" nil :actions nil)
   (sp-local-pair 'lisp-interaction-mode "'" nil :actions nil)
+  (sp-local-pair 'lisp-mode "'" nil :actions nil)
+  (sp-local-pair 'lisp-mode "`" nil :actions nil)
+  (sp-local-pair 'sly-mrepl-mode "'" nil :actions nil)
+  (sp-local-pair 'sly-mrepl-mode "`" nil :actions nil)
   :config
     (sp-with-modes
         '(c++-mode objc-mode c-mode javascript-mode)

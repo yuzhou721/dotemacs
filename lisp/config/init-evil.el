@@ -41,7 +41,7 @@
   :after evil
   :custom
   (evil-collection-setup-minibuffer t)
-  (evil-collection-setup-debugger-keys nil)
+  (evil-collection-setup-debugger-keys t)
   (evil-collection-calendar-want-org-bindings t)
   (evil-collection-unimpaired-want-repeat-mode-integration t)
   :config

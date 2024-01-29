@@ -121,6 +121,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 		org-outline-path-complete-in-steps nil)
   ;; 周一作为每周开始
   (setq org-agenda-start-on-weekday 1)
+  ;; org-babel 
   (setq org-babel-load-languages '((C . t)
 							  (dot . t)
 							  (emacs-lisp . t)
@@ -128,13 +129,17 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 							  (python . t)
 							  (shell . t)
 							  (java . t)
-							  (clojure . t)))
+							  (clojure . t)
+                              (lisp . t)))
   ;; 支持clojure
   (require 'ob-clojure)
   (setq org-babel-clojure-backend 'cider)
   (require 'cider)
   ;; 支持 python
   (setq org-babel-python-command "python3")
+  ;; support common-lisp
+  (require 'ob-lisp)
+  (setq org-babel-lisp-eval-fn 'sly-eval)
   :bind (:map org-mode-map
 			  ("C-RET" . org-insert-subheading)
 			  ("C-M-RET" . org-insert-todo-subheading)))
