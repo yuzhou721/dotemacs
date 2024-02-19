@@ -17,7 +17,8 @@
   (:keymaps 'rime-active-mode-map
             "<tab>" 'rime-inline-ascii)
   (:keymaps 'rime-mode-map
-            "M-j" 'rime-force-enable))
+            "M-j" 'rime-force-enable
+            "M-k" 'rime-inline-ascii))
 
 (defun +desmond/sis-mode-set (status)
   "Sis mode set. STATUS is status code ."
