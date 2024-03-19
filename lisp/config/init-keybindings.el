@@ -66,6 +66,7 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
    "oa" 'org-agenda
    "ot" 'treemacs
    "oo" 'olivetti-mode
+   "om" 'toggle-frame-maximized
    "q" '(:ignore t :wk "quit")
    "qr" 'restart-emacs
    "qq" 'evil-quit-all
