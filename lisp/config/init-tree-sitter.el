@@ -11,26 +11,8 @@
   :demand t
   :config
   (global-treesit-auto-mode)
+  (treesit-auto-add-to-auto-mode-alist 'all)
   (setq treesit-auto-install 'prompt))
-
-(use-package combobulate
-    :preface
-    ;; You can customize Combobulate's key prefix here.
-    ;; Note that you may have to restart Emacs for this to take effect!
-    (setq combobulate-key-prefix "C-c o")
-
-    ;; Optional, but recommended.
-    ;;
-    ;; You can manually enable Combobulate with `M-x
-    ;; combobulate-mode'.
-    :hook ((python-ts-mode . combobulate-mode)
-           (js-ts-mode . combobulate-mode)
-           (css-ts-mode . combobulate-mode)
-           (yaml-ts-mode . combobulate-mode)
-           (typescript-ts-mode . combobulate-mode)
-           (java-ts-mode . combobulate-mode)
-           (tsx-ts-mode . combobulate-mode))
-    )
 
 (use-package fingertip
   :hook

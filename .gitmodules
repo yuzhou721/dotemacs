@@ -94,9 +94,6 @@
 [submodule "lisp/extensions/popup-el"]
 	path = lisp/extensions/popup-el
 	url = https://github.com/auto-complete/popup-el.git
-[submodule "lisp/extensions/combobulate"]
-	path = lisp/extensions/combobulate
-	url = https://github.com/mickeynp/combobulate.git
 [submodule "lisp/extensions/general"]
 	path = lisp/extensions/general
 	url = https://github.com/noctuid/general.el.git
