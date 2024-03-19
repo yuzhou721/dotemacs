@@ -10,8 +10,9 @@
   (global-display-line-numbers-mode)
     (global-linum-mode 1)
     )
+(setq display-line-numbers-width-start t)
 
-;;开启像素滚动 pgtk 
+;;开启像素滚动 pgtk
 ;;(pixel-scroll-mode 1)
 
 
