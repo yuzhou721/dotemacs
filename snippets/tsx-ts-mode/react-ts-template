@@ -1,0 +1,10 @@
+# key: react-ts
+# name: react-ts-template
+# --
+import React from 'react';
+
+const $1: React.FC = () => {
+  $2
+};
+
+export default $1;
