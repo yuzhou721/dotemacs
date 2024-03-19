@@ -12,6 +12,40 @@
   :config
   (global-treesit-auto-mode)
   (treesit-auto-add-to-auto-mode-alist 'all)
+  (defvar genehack/tsx-treesit-auto-recipe
+    (make-treesit-auto-recipe
+     :lang 'tsx
+     :ts-mode 'tsx-ts-mode
+     :remap '(typescript-tsx-mode)
+     :requires 'typescript
+     :url "https://github.com/tree-sitter/tree-sitter-typescript"
+     :revision "v0.20.3"
+     :source-dir "tsx/src"
+     :ext "\\.tsx\\'")
+    "Recipe for libtree-sitter-tsx.dylib")
+  (add-to-list 'treesit-auto-recipe-list genehack/tsx-treesit-auto-recipe)
+  (defvar genehack/typescript-treesit-auto-recipe
+    (make-treesit-auto-recipe
+     :lang 'typescript
+     :ts-mode 'typescript-ts-mode
+     :remap 'typescript-mode
+     :requires 'tsx
+     :url "https://github.com/tree-sitter/tree-sitter-typescript"
+     :revision "v0.20.3"
+     :source-dir "typescript/src"
+     :ext "\\.ts\\'")
+    "Recipe for libtree-sitter-typescript.dylib")
+  (add-to-list 'treesit-auto-recipe-list genehack/typescript-treesit-auto-recipe)
+  (defvar genehack/javascript-treesit-auto-recipe
+    (make-treesit-auto-recipe
+      :lang 'javascript
+      :ts-mode 'js-ts-mode
+      :remap '(js-mode javascript-mode js2-mode)
+      :url "https://github.com/tree-sitter/tree-sitter-javascript"
+      :revision "v0.20.1"
+      :source-dir "src"
+      :ext "\\.js\\'"))
+  (add-to-list 'treesit-auto-recipe-list genehack/javascript-treesit-auto-recipe)
   (setq treesit-auto-install 'prompt))
 
 (use-package fingertip
