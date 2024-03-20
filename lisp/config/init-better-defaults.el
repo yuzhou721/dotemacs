@@ -35,6 +35,15 @@
 (setq select-enable-primary t
       select-enable-clipboard t)
 
+;; shell 默认使用 zsh
+(setq explicit-shell-file-name "/bin/zsh")
+(setq explicit-zsh-args '("--interactive" "--login"))
+
+;; 修复最大化问题
+(when (string= (window-system) "mac")
+  (setq ns-auto-hide-menu-bar t)
+  (setq ns-auto-hide-dock t))
+
 ;; indent 设置
 ;; tab-width
 (setq-default tab-width 4)

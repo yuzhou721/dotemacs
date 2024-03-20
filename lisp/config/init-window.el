@@ -162,6 +162,8 @@ Main data structure of the dispatcher with the form:
           ("\\*corfu.*\\*"       :regexp t :ignore t)
           ("*eshell*"                    :select t                          :size 0.4  :align t     :popup t)
           (eshell-mode                    :select t                          :size 0.4  :align t     :popup t)
+          ("*shell*"                    :select t                          :size 0.4  :align t     :popup t)
+          (shell-mode                    :select t                          :size 0.4  :align t     :popup t)
           (helpful-mode                  :select t                          :size 0.6  :align right :popup t)
           ("*Messages*"                  :select t                          :size 0.4  :align t     :popup t)
           ("*Calendar*"                  :select t                          :size 0.3  :align t     :popup t)
