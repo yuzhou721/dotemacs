@@ -92,6 +92,11 @@
         '(c++-mode objc-mode c-mode javascript-mode)
       (sp-local-pair "{" nil :post-handlers '(:add ("||\n[i]" "RET")))))
 
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
 (use-package prettier
   :ensure t)
 
