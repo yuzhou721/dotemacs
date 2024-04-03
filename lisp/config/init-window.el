@@ -169,6 +169,7 @@ Main data structure of the dispatcher with the form:
           (magit-status-mode             :select t   :inhibit-window-quit t                         :same t)
           (magit-log-mode                :select t   :inhibit-window-quit t                         :same t)
           (cider-repl-mode               :select nil                          :size 0.4  :align t     :popup t)
+          ("\\*sly-macroexpansion\\*" :select nil :inhibit-window-quit t :size 0.4 :align t :same t)
           ))
   )
 

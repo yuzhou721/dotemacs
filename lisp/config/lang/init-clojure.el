@@ -20,7 +20,7 @@
   :ensure t
   :pin melpa
   :config
-  (cider-debug-evil-hack)
+  ;; (cider-debug-evil-hack)
   ;; Repl-mode evil initial state
   ;; (evil-set-initial-state 'cider-repl-mode 'emacs)
   (setq cider-repl-history-file (expand-file-name "cider-repl-history" emacs-extension-cache-dir)

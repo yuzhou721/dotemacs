@@ -107,4 +107,5 @@
 (require 'init-dart)
 (require 'init-clojure)
 (require 'init-common-lisp)
+(require 'init-golang)
 (provide 'init-dev)
