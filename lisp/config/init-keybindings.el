@@ -57,7 +57,7 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
    "bk" 'previous-buffer
    "bj" 'next-buffer
    "bz" 'bury-buffer
-   "bd" 'kill-current-buffer
+   "bq" 'kill-current-buffer
    "bi" 'ibuffer
    "bR" 'rename-buffer
    "bk" 'kill-buffer
@@ -66,6 +66,11 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
    "oa" 'org-agenda
    "ot" 'treemacs
    "oo" 'olivetti-mode
+   "om" 'toggle-frame-maximized
+   "of" 'toggle-frame-fullscreen
+   "oc" 'gptel
+   "p" '(:ignore t :wk "project")
+   "ps" 'project-shell
    "q" '(:ignore t :wk "quit")
    "qr" 'restart-emacs
    "qq" 'evil-quit-all
@@ -74,7 +79,10 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
    "hp" 'desmond/open-config-dir
    "X" 'org-capture
    "x" 'scratch-buffer
-   ";" 'dashboard-open)
+   ";" 'dashboard-open
+   "a" '(:ignore t :wk "AI")
+   "am" 'gptel-menu
+   "as" 'gptel-send)
 
   (general-define-key :states 'insert
 	"C-;" 'rime-inline-ascii))

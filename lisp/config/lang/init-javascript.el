@@ -27,34 +27,34 @@
 		js2-highlight-level 3
 		js2-idle-timer-delay 0.15))
 
-(use-package rjsx-mode
-  :ensure nil
-  :mode "\\.[mc]?js\\'"
-  :mode "\\.es6\\'"
-  :mode "\\.pac\\'"
-  :requires js2-mode
-  :interpreter "node"
-  :hook (rjsx-mode . js2-minor-mode)
-  :init
-  ;; Parse node stack traces in the compilation buffer
-  ;; (with-eval-after-load compilation
-  ;;   (add-to-list 'compilation-error-regexp-alist 'node)
-  ;;   (add-to-list 'compilation-error-regexp-alist-alist
-  ;;                '(node "^[[:blank:]]*at \\(.*(\\|\\)\\(.+?\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\)"
-  ;;                       2 3 4)))
-  )
+;; (use-package rjsx-mode
+;;   :ensure nil
+;;   :mode "\\.[mc]?js\\'"
+;;   :mode "\\.es6\\'"
+;;   :mode "\\.pac\\'"
+;;   :requires js2-mode
+;;   :interpreter "node"
+;;   :hook (rjsx-mode . js2-minor-mode)
+;;   :init
+;;   ;; Parse node stack traces in the compilation buffer
+;;   ;; (with-eval-after-load compilation
+;;   ;;   (add-to-list 'compilation-error-regexp-alist 'node)
+;;   ;;   (add-to-list 'compilation-error-regexp-alist-alist
+;;   ;;                '(node "^[[:blank:]]*at \\(.*(\\|\\)\\(.+?\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\)"
+;;   ;;                       2 3 4)))
+;;   )
 
 (use-package typescript-mode
-  :ensure nil
+  :ensure t
   :mode "\\.ts\\'"
   :mode "\\.tsx\\'"
-  :hook (typescript-mode . js2-minor-mode)
-  :hook (typescript-tsx-mode . js2-minor-mode)
-  )
+  :config
+  (setq typescript-indent-level 2))
 
 (use-package web-mode
   :ensure t
   :mode "\\.vue\\'"
+  :mode "\\.wxml\\'"
   :init
   (setq web-mode-content-types-alist '(("vue" . "\\.vue\\'"))
 		web-mode-css-indent-offset 2 ;; CSS 默认缩进 2 空格：包含 HTML 的 CSS 部分以及纯 CSS/LESS/SASS 文件等

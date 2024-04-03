@@ -49,7 +49,7 @@
   :custom
   (sis-default-cursor-color "white")
   :config
-  ;; For MacOS
+  ;; For Linux“
   (cond ((string= (getenv "GTK_IM_MODULE") "ibus")
 		 (sis-ism-lazyman-config "xkb:us::eng" "libpinyin" 'ibus))
 		((string= (getenv "GTK_IM_MODULE") "fcitx")

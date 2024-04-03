@@ -14,5 +14,6 @@
 (require 'init-workspace)
 (require 'init-treemacs)
 (require 'init-translation)
+(require 'init-ai)
 
 (provide 'init)

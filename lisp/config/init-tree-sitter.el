@@ -11,26 +11,42 @@
   :demand t
   :config
   (global-treesit-auto-mode)
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (defvar genehack/tsx-treesit-auto-recipe
+    (make-treesit-auto-recipe
+     :lang 'tsx
+     :ts-mode 'tsx-ts-mode
+     :remap '(typescript-tsx-mode)
+     :requires 'typescript
+     :url "https://github.com/tree-sitter/tree-sitter-typescript"
+     :revision "v0.20.3"
+     :source-dir "tsx/src"
+     :ext "\\.tsx\\'")
+    "Recipe for libtree-sitter-tsx.dylib")
+  (add-to-list 'treesit-auto-recipe-list genehack/tsx-treesit-auto-recipe)
+  (defvar genehack/typescript-treesit-auto-recipe
+    (make-treesit-auto-recipe
+     :lang 'typescript
+     :ts-mode 'typescript-ts-mode
+     :remap 'typescript-mode
+     :requires 'tsx
+     :url "https://github.com/tree-sitter/tree-sitter-typescript"
+     :revision "v0.20.3"
+     :source-dir "typescript/src"
+     :ext "\\.ts\\'")
+    "Recipe for libtree-sitter-typescript.dylib")
+  (add-to-list 'treesit-auto-recipe-list genehack/typescript-treesit-auto-recipe)
+  (defvar genehack/javascript-treesit-auto-recipe
+    (make-treesit-auto-recipe
+      :lang 'javascript
+      :ts-mode 'js-ts-mode
+      :remap '(js-mode javascript-mode js2-mode)
+      :url "https://github.com/tree-sitter/tree-sitter-javascript"
+      :revision "v0.20.1"
+      :source-dir "src"
+      :ext "\\.js\\'"))
+  (add-to-list 'treesit-auto-recipe-list genehack/javascript-treesit-auto-recipe)
   (setq treesit-auto-install 'prompt))
-
-(use-package combobulate
-    :preface
-    ;; You can customize Combobulate's key prefix here.
-    ;; Note that you may have to restart Emacs for this to take effect!
-    (setq combobulate-key-prefix "C-c o")
-
-    ;; Optional, but recommended.
-    ;;
-    ;; You can manually enable Combobulate with `M-x
-    ;; combobulate-mode'.
-    :hook ((python-ts-mode . combobulate-mode)
-           (js-ts-mode . combobulate-mode)
-           (css-ts-mode . combobulate-mode)
-           (yaml-ts-mode . combobulate-mode)
-           (typescript-ts-mode . combobulate-mode)
-           (java-ts-mode . combobulate-mode)
-           (tsx-ts-mode . combobulate-mode))
-    )
 
 (use-package fingertip
   :hook

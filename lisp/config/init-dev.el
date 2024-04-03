@@ -92,14 +92,13 @@
         '(c++-mode objc-mode c-mode javascript-mode)
       (sp-local-pair "{" nil :post-handlers '(:add ("||\n[i]" "RET")))))
 
-(use-package prettier
+(use-package editorconfig
   :ensure t
-  :hook
-  ((java-ts-mode java-mode) . prettier-mode)
-  ((python-ts-mode python-mode) . prettier-mode)
-  (web-mode . prettier-mode)
-  ((typescript-mode typescript-ts-mode tsx-ts-mode) . prettier-mode)
-  ((js-ts-mode) . prettier-mode))
+  :config
+  (editorconfig-mode 1))
+
+(use-package prettier
+  :ensure t)
 
 (require 'init-lisp)
 (require 'init-javascript)
