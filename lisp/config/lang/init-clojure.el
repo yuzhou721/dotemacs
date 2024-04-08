@@ -22,7 +22,7 @@
   :init
   (add-hook 'cider-mode-hook (lambda () (setq-local completion-at-point-functions (list (cape-super-capf #'yasnippet-capf #'cider-complete-at-point #'eglot-completion-at-point )))))
   :config
-  (cider-debug-evil-hack)
+  ;; (cider-debug-evil-hack)
   ;; Repl-mode evil initial state
   ;; (evil-set-initial-state 'cider-repl-mode 'emacs)
   (setq cider-repl-history-file (expand-file-name "cider-repl-history" emacs-extension-cache-dir)
