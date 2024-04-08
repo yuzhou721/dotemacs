@@ -103,13 +103,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 		org-capture-templates
 		'(("t" "Personal todo" entry
 		   (file+headline +org-capture-todo-file "Inbox")
-		   "* TODO %?\n%i\n%a" :prepend t)
-		  ("n" "Personal notes" entry
-		   (file+headline +org-capture-notes-file "Inbox")
-		   "* %u %?\n%i\n%a" :prepend t)
-		  ("j" "Journal" entry
-		   (file+olp+datetree +org-capture-journal-file)
-		   "* %U %?\n%i\n%a" :prepend t)))
+		   "* TODO %?\n%i\n%a" :prepend t)))
   (setq org-refile-targets
 		'((nil :maxlevel . 3)
 		  (org-agenda-files :maxlevel . 3))
