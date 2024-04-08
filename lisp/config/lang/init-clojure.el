@@ -10,7 +10,7 @@
   )
 
 (defun cider-debug-evil-hack ()
- "处理 debug 时候 evil 按键冲突问题"
+ "'cider-debug-evil-hack' 处理 debug 时候 evil 按键冲突问题."
   (with-eval-after-load 'evil
 	(add-hook 'cider--debug-mode (lambda ()
 								   (evil-make-overriding-map cider--debug-mode-map 'normal)
@@ -19,12 +19,16 @@
 (use-package cider
   :ensure t
   :pin melpa
+  :init
+  (add-hook 'cider-mode-hook (lambda () (setq-local completion-at-point-functions (list (cape-super-capf #'yasnippet-capf #'cider-complete-at-point #'eglot-completion-at-point )))))
   :config
   (cider-debug-evil-hack)
   ;; Repl-mode evil initial state
   ;; (evil-set-initial-state 'cider-repl-mode 'emacs)
   (setq cider-repl-history-file (expand-file-name "cider-repl-history" emacs-extension-cache-dir)
         cider-repl-pop-to-buffer-on-connect 'display-only)
+  ;; classpath
+  (setq cider-enrich-classpath t)
   :general
   (global-leader 'clojure-mode-map
     "'" 'cider-jack-in-clj
