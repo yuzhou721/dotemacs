@@ -29,6 +29,8 @@
         cider-repl-pop-to-buffer-on-connect 'display-only)
   ;; classpath
   (setq cider-enrich-classpath t)
+  ;; cider 的xref跳转找不到java源码，改用eglot的xref后端
+  (setq cider-use-xref nil)
   :general
   (global-leader 'clojure-mode-map
     "'" 'cider-jack-in-clj
