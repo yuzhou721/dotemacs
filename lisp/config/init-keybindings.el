@@ -71,6 +71,9 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
    "oc" 'gptel
    "p" '(:ignore t :wk "project")
    "ps" 'project-shell
+   "pf" 'project-find-file
+   "pr" 'project-find-regexp
+   "pd" 'project-dired
    "q" '(:ignore t :wk "quit")
    "qr" 'restart-emacs
    "qq" 'evil-quit-all
