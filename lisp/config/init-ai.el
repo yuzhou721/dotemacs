@@ -26,11 +26,6 @@
           '(("code" . (make-llm-ollama
                        :chat-model "codegemma:code"
                        :embedding-model "nomic-embed-text"))
-            ("kimi" . (make-llm-openai-compatible
-                       :url "https://api.moonshot.cn/v1"
-                       :key "sk-ND4ltq5jHTMjlbG2R9OXQWAJiDs6Awrln9huWzDEeZQGdyqC"
-                       :chat-model "moonshot-v1-32k"
-                       :embedding-model "moonshot-v1-32k"))
             ("llama2-chinese" .  (make-llm-ollama
                                   ;; this model should be pulled to use it
                                   ;; value should be the same as you print in terminal during pull
