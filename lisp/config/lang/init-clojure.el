@@ -52,7 +52,7 @@
     "eu" 'cider-undef
     "g" '(:ignore t :wk "goto")
     "gb" 'cider-pop-back
-    "gg" 'cider-find-var
+    "gd" 'cider-find-var
     "gn" 'cider-find-ns
     "h" '(:ignore t :wk "help")
     "hn" 'cider-find-ns
