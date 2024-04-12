@@ -30,13 +30,7 @@
                                   ;; this model should be pulled to use it
                                   ;; value should be the same as you print in terminal during pull
                                   :chat-model "llama2-chinese"
-                                  :embedding-model "nomic-embed-text"))))
-  ; Naming new sessions with llm
-  (setopt ellama-naming-provider
-          (make-llm-ollama
-           :chat-model "llama2-chinese"
-           :embedding-model "nomic-embed-text"))
-  (setopt ellama-naming-scheme 'ellama-generate-name-by-llm))
+                                  :embedding-model "nomic-embed-text")))))
 
 (use-package codeium
   :ensure nil
