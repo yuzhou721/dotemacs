@@ -163,3 +163,6 @@
 [submodule "lisp/extensions/emacs-popon"]
 	path = lisp/extensions/emacs-popon
 	url = https://codeberg.org/akib/emacs-popon.git
+[submodule "lisp/extensions/codeium.el"]
+	path = lisp/extensions/codeium.el
+	url = https://github.com/Exafunction/codeium.el.git

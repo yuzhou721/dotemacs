@@ -39,6 +39,7 @@
 
 ;; 类 lisp 语言结构编辑
 (use-package lispy
+  :ensure nil
   :hook
   (emacs-lisp-mode . lispy-mode)
   (clojure-mode . lispy-mode)
@@ -48,6 +49,7 @@
   (lispy-define-key lispy-mode-map "e" 'eval-last-sexp))
 
 (use-package lispyville
+  :ensure nil
   :after lispy
   :hook (lispy-mode . lispyville-mode)
   :config
@@ -99,6 +101,11 @@
 
 (use-package prettier
   :ensure t)
+
+(use-package insert-translated-name
+  :config
+  ;; Set translation engine
+  (setq insert-translated-name-program "ollama"))
 
 (require 'init-lisp)
 (require 'init-javascript)

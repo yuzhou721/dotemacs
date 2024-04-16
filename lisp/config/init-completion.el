@@ -6,7 +6,7 @@
   (setq corfu-auto t)                 ;; Enable auto completion
   (setq corfu-quit-at-boundary t)
   (setq corfu-quit-no-match t)
-  (setq corfu-preview-current nil)
+  ;; (setq corfu-preview-current nil)
   (setq corfu-min-width 80)
   (setq corfu-max-width 130)
   (setq corfu-auto-delay 0.2)
