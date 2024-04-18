@@ -433,6 +433,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 	"t" 'org-todo
 	"T" 'org-todo-list
 	"x" 'org-toggle-checkbox
+    "R" 'org-refile
 	"a" '(:ignore t :wk "attachments")
 	"aa" 'org-attach
 	"ad" 'org-attach-delete-one
