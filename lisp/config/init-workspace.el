@@ -49,9 +49,10 @@
   :commands (tabspaces-switch-or-create-workspace
 	     tabspaces-open-or-create-project-and-workspace)
   :config
+  (tab-bar-rename-tab tabspaces-default-tab)
   (setq tabspaces-use-filtered-buffers-as-default t)
   ;; (setq tabspaces-default-tab "Default")
-  (setq tabspaces-remove-to-default t)
+  ;; (setq tabspaces-remove-to-default t)
   (setq tabspaces-include-buffers '("*scratch*" "*dashboard*"))
   (setq tabspaces-initialize-project-with-todo nil)
   ;; maybe slow

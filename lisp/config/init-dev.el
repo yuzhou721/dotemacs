@@ -102,6 +102,11 @@
 (use-package prettier
   :ensure t)
 
+(use-package insert-translated-name
+  :config
+  ;; Set translation engine
+  (setq insert-translated-name-program "ollama"))
+
 (require 'init-lisp)
 (require 'init-javascript)
 (require 'init-tree-sitter)
