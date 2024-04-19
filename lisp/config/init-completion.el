@@ -4,9 +4,9 @@
   :init
   (setq corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (setq corfu-auto t)                 ;; Enable auto completion
-  (setq corfu-quit-at-boundary t)
+  ;; (setq corfu-quit-at-boundary nil)
   (setq corfu-quit-no-match t)
-  ;; (setq corfu-preview-current nil)
+  (setq corfu-preview-current 'insert)
   (setq corfu-min-width 80)
   (setq corfu-max-width 130)
   (setq corfu-auto-delay 0.2)
@@ -17,8 +17,7 @@
   ;; This is recommended since Dabbrev can be used globally (M-/).
   ;; See also `corfu-excluded-modes'.
   :config
-  (global-corfu-mode)
-  )
+  (global-corfu-mode))
 
 (use-package nerd-icons-corfu
   :ensure t
