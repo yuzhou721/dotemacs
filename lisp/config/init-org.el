@@ -345,45 +345,31 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 (use-package org-super-agenda
   :ensure t
   :config
+  (setq org-agenda-span 'day)
   (setq org-super-agenda-groups
-		'(;; Each group has an implicit boolean OR operator between its selectors.
-		  (:name "Today"		  ; Optionally specify section name
-				 :time-grid t	  ; Items that appear on the time grid
-				 :anything
-				 (:scheduled "today" :deadline "today")
-				 )
-		  (:name "Important"
-				 ;; Single arguments given alone
-				 ;; :tag "bills"
-				 :priority "A")
-		  ;; Set order of multiple groups at once
-		  ;; (:order-multi (2 (:name "Shopping in town"
-		  ;; 						  ;; Boolean AND group matches items that match all subgroups
-		  ;; 						  :and (:tag "shopping" :tag "@town"))
-		  ;; 				   (:name "Food-related"
-		  ;; 						  ;; Multiple args given in list with implicit OR
-		  ;; 						  :tag ("food" "dinner"))
-		  ;; 				   (:name "Personal"
-		  ;; 						  :habit t
-		  ;; 						  :tag "personal")
-		  ;; 				   (:name "Space-related (non-moon-or-planet-related)"
-		  ;; 						  ;; Regexps match case-insensitively on the entire entry
-		  ;; 						  :and (:regexp ("space" "NASA")
-		  ;; 										;; Boolean NOT also has implicit OR between selectors
-		  ;; 										:not (:regexp "moon" :tag "planet")))))
-		  (:name "Running" :todo ("STRT" "[-]"))
-		  ;; Groups supply their own section names when none are given
-		  (:name "等待" :todo ("WAIT" "HOLD") :order 8)	; Set order of this section
-		  (:priority<= "B"
-					   ;; Show this section after "Today" and "Important", because
-					   ;; their order is unspecified, defaulting to 0. Sections
-					   ;; are displayed lowest-number-first.
-					   :order 1)
-		  ;; After the last group, the agenda will display items that didn't
-		  ;; match any of these groups, with the default order position of 99
-		  ;; (org-agenda nil "a")
-		  )
-		)
+        '(;; Each group has an implicit boolean OR operator between its selectors.
+          (:name "Today"          ; Optionally specify section name
+                 :time-grid t     ; Items that appear on the time grid
+                 :scheduled today)
+          (:habit t)
+          (:name "Due today"
+                 :deadline today)
+          (:name "Overdue"
+                 :deadline pass)
+          (:name "Due soon"
+                 :deadline future)
+          (:name "Important"
+                 :priority "A")
+          (:name "Running" :todo ("STRT" "[-]"))
+          ;; Groups supply their own section names when none are given
+          (:name "Waiting" :todo ("WAIT" "HOLD")) ; Set order of this section
+          (:priority<= "B"
+                       ;; Show this section after "Today" and "Important", because
+                       ;; their order is unspecified, defaulting to 0. Sections
+                       ;; are displayed lowest-number-first.
+                       :order 1)
+          (:name "Scheduled earlier"
+                 :scheduled pass)))
   (org-super-agenda-mode)
   ;; Fix agenda header keymap error
   (setq org-super-agenda-header-map nil))
