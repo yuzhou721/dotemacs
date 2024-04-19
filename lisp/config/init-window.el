@@ -166,7 +166,7 @@ Main data structure of the dispatcher with the form:
           ("\\*shell*"                    :select t                          :size 0.4  :align t     :popup t)
           (shell-mode                    :select t                          :size 0.4  :align t     :popup t)
           ("*Moonshot*"                  :select t                          :size 0.4  :align t     :popup t)
-          (helpful-mode                  :select t                          :size 0.6  :align right :popup t)
+          (helpful-mode                  :select t                          :size 0.6  :align 'right :popup t)
           ("*Messages*"                  :select t                          :size 0.4  :align t     :popup t)
           ("*Calendar*"                  :select t                          :size 0.3  :align t     :popup t)
           ("*info*"                      :select t                                                  :same t)
@@ -174,6 +174,7 @@ Main data structure of the dispatcher with the form:
           (magit-log-mode                :select t   :inhibit-window-quit t                         :same t)
           (cider-repl-mode               :select nil                          :size 0.4  :align t     :popup t)
           ("\\*sly-macroexpansion\\*" :select nil :inhibit-window-quit t :size 0.4 :align t :same t)
+          ("\\*org-roam\\*"              :select nil                        :size 0.3   :align 'right :same t)
           ))
   )
 
