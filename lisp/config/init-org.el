@@ -43,18 +43,18 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 
 (defun org-hide-properties ()
   "Hide all 'org-mode' headline property drawers in buffer. Could be slow if it has a lot of overlays."
+  (add-to-invisibility-spec 'org-hide-properties)
   (save-excursion
 	(goto-char (point-min))
 	(while (re-search-forward
 			"^ *:properties:\n\\( *:.+?:.*\n\\)+ *:end:\n" nil t)
 	  (let ((ov_this (make-overlay (match-beginning 0) (match-end 0))))
-		(overlay-put ov_this 'display "")
-		(overlay-put ov_this 'hidden-prop-drawer t))))
+		(overlay-put ov_this 'invisible 'org-hide-properties))))
   (put 'org-toggle-properties-hide-state 'state 'hidden))
 
 (defun org-show-properties ()
   "Show all 'org-mode' property drawers hidden by org-hide-properties."
-  (remove-overlays (point-min) (point-max) 'hidden-prop-drawer t)
+  (remove-from-invisibility-spec 'org-hide-properties)
   (put 'org-toggle-properties-hide-state 'state 'shown))
 
 (defun org-toggle-properties ()
@@ -422,6 +422,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 	"t" 'org-todo
 	"T" 'org-todo-list
 	"x" 'org-toggle-checkbox
+    "R" 'org-refile
 	"a" '(:ignore t :wk "attachments")
 	"aa" 'org-attach
 	"ad" 'org-attach-delete-one

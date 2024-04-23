@@ -15,6 +15,7 @@
 (use-package ellama
   :ensure t
   :config
+  (setq ellama-auto-scroll t)
   ;; setup key bindings
   (setopt ellama-keymap-prefix "C-c e")
   ;; language you want ellama to translate to
