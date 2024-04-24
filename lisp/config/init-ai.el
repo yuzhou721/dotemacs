@@ -2,7 +2,7 @@
 (use-package gptel
   :ensure t
   :config
-  (setq gptel-model "moonshot-v1-8k")
+  (setq gptel-model "moonshot-v1-32k")
   (setq gptel-default-mode 'org-mode)
   (setq gptel-backend
         (gptel-make-openai "Moonshot"
@@ -10,6 +10,7 @@
           :models '("moonshot-v1-8k"
                     "moonshot-v1-32k"
                     "moonshot-v1-128k")
+          :stream t
           :host "api.moonshot.cn")))
 
 (use-package ellama
