@@ -37,7 +37,7 @@
   :ensure nil
   :init
   ;; use globally
-  (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
+  (add-to-list 'completion-at-point-functions #'codeium-completion-at-point t)
   :config
   (setq use-dialog-box nil)
   ;; get codeium status in the modeline
