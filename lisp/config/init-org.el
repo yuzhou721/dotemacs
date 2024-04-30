@@ -21,13 +21,16 @@ target file.
 Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 `org-capture-templates'.")
 
-(defvar +org-capture-journal-file "journal.org"
+(defvar +org-capture-work-file "work.org"
   "Default target for storing timestamped journal entries.
 
 Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 `org-capture-templates'.")
 
 (defvar +org-capture-projects-file "projects.org"
+  "Default, centralized target for org-capture templates.")
+
+(defvar +org-capture-inbox-file "inbox.org"
   "Default, centralized target for org-capture templates.")
 
 (defun org-make-logbooks-read-only ()
@@ -96,13 +99,13 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 		(expand-file-name +org-capture-notes-file org-directory)
 		+org-capture-todo-file
 		(expand-file-name +org-capture-todo-file org-directory)
-		+org-capture-notes-file
-		(expand-file-name +org-capture-notes-file org-directory)
-		+org-capture-journal-file
-		(expand-file-name +org-capture-journal-file org-directory)
+		+org-capture-index-file
+		(expand-file-name +org-capture-inbox-file org-directory)
+		+org-capture-work-file
+		(expand-file-name +org-capture-work-file org-directory)
 		org-capture-templates
-		'(("t" "Personal todo" entry
-		   (file+headline +org-capture-todo-file "Inbox")
+		'(("i" "Inbox" entry
+		   (file +org-capture-inbox-file)
 		   "* TODO %?\n%i\n%a" :prepend t)))
   (setq org-refile-targets
 		'((nil :maxlevel . 3)
@@ -115,7 +118,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 		org-outline-path-complete-in-steps nil)
   ;; 周一作为每周开始
   (setq org-agenda-start-on-weekday 1)
-  ;; org-babel 
+  ;; org-babel
   (setq org-babel-load-languages '((C . t)
 							  (dot . t)
 							  (emacs-lisp . t)

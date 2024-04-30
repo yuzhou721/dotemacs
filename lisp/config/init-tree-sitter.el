@@ -46,6 +46,14 @@
       :source-dir "src"
       :ext "\\.js\\'"))
   (add-to-list 'treesit-auto-recipe-list genehack/javascript-treesit-auto-recipe)
+  (add-to-list 'treesit-auto-recipe-list (make-treesit-auto-recipe
+      :lang 'go
+      :ts-mode 'go-ts-mode
+      :remap 'go-mode
+      :requires 'gomod
+      :url "https://github.com/tree-sitter/tree-sitter-go"
+      :revision "v0.20.0"
+      :ext "\\.go\\'"))
   (setq treesit-auto-install 'prompt))
 
 (use-package fingertip
