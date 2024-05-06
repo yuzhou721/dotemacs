@@ -2,7 +2,7 @@
 (use-package gptel
   :ensure t
   :config
-  (setq gptel-model "moonshot-v1-8k")
+  (setq gptel-model "moonshot-v1-32k")
   (setq gptel-default-mode 'org-mode)
   (setq gptel-backend
         (gptel-make-openai "Moonshot"
