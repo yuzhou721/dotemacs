@@ -10,28 +10,8 @@
           :models '("moonshot-v1-8k"
                     "moonshot-v1-32k"
                     "moonshot-v1-128k")
+          :stream t
           :host "api.moonshot.cn")))
-
-(use-package ellama
-  :ensure t
-  :config
-  (setq ellama-auto-scroll t)
-  ;; setup key bindings
-  (setopt ellama-keymap-prefix "C-c e")
-  ;; language you want ellama to translate to
-  (setopt ellama-language "Chinese")
-  ;; could be llm-openai for example
-  (require 'llm-ollama)
-  (require 'llm-openai)
-  (setopt ellama-providers
-          '(("code" . (make-llm-ollama
-                       :chat-model "codegemma:code"
-                       :embedding-model "nomic-embed-text"))
-            ("llama2-chinese" .  (make-llm-ollama
-                                  ;; this model should be pulled to use it
-                                  ;; value should be the same as you print in terminal during pull
-                                  :chat-model "llama2-chinese"
-                                  :embedding-model "nomic-embed-text")))))
 
 (use-package codeium
   :ensure nil
