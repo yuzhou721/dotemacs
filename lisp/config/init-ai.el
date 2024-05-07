@@ -10,7 +10,6 @@
           :models '("moonshot-v1-8k"
                     "moonshot-v1-32k"
                     "moonshot-v1-128k")
-          :stream t
           :host "api.moonshot.cn")))
 
 (defun +desmond/codeium ()
