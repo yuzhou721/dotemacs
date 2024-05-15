@@ -105,7 +105,18 @@
 (use-package insert-translated-name
   :config
   ;; Set translation engine
-  (setq insert-translated-name-program "ollama"))
+  (setq insert-translated-name-program "llm")
+  (require 'llm-openai)
+  (setq llm-warn-on-nonfree nil)
+  (setq insert-translated-name-llm-provider (make-llm-openai-compatible
+                                             :key (insert-translated-name-api-key-from-auth-source "api.deepseek.com")
+                                             :chat-model "deepseek-chat"
+                                             :url "https://api.deepseek.com/v1")))
+(use-package diff-hl
+  :ensure t
+  :init
+  (add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
+  (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode))
 
 (require 'init-lisp)
 (require 'init-javascript)
