@@ -20,7 +20,7 @@
   :ensure t
   :pin melpa
   :init
-  (add-hook 'cider-mode-hook (lambda () (setq-local completion-at-point-functions (list (cape-super-capf #'yasnippet-capf #'cider-complete-at-point #'eglot-completion-at-point )))))
+  (add-hook 'cider-mode-hook (lambda () (setq-local completion-at-point-functions (list (cape-capf-super #'yasnippet-capf #'cider-complete-at-point #'eglot-completion-at-point)))))
   :config
   ;; (cider-debug-evil-hack)
   ;; Repl-mode evil initial state
