@@ -100,7 +100,9 @@
   (editorconfig-mode 1))
 
 (use-package prettier
-  :ensure t)
+  :ensure t
+  :config
+  (setq prettier-pre-warm 'some))
 
 (use-package insert-translated-name
   :config
