@@ -134,7 +134,7 @@
   (setq eglot-send-changes-idle-time 0.2)
   (add-to-list 'eglot-server-programs '(clojure-mode "clojure-lsp"))
   (add-to-list 'eglot-server-programs '(clojurescript-mode "clojure-lsp"))
-  ;; (add-to-list 'eglot-ignored-server-capabilites :hoverProvider)
+  (add-to-list 'eglot-ignored-server-capabilites :hoverProvider)
   ;; 手动显示eldoc文档
   (eldoc-mode -1)
   :general

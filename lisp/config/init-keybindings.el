@@ -69,6 +69,7 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
    "om" 'toggle-frame-maximized
    "of" 'toggle-frame-fullscreen
    "oc" 'gptel
+   "os" 'shell
    "p" '(:ignore t :wk "project")
    "ps" 'project-shell
    "pf" 'project-find-file
