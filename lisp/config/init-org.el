@@ -99,7 +99,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 		(expand-file-name +org-capture-notes-file org-directory)
 		+org-capture-todo-file
 		(expand-file-name +org-capture-todo-file org-directory)
-		+org-capture-index-file
+		+org-capture-inbox-file
 		(expand-file-name +org-capture-inbox-file org-directory)
 		+org-capture-work-file
 		(expand-file-name +org-capture-work-file org-directory)
