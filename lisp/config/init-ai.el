@@ -10,7 +10,10 @@
           :models '("moonshot-v1-8k"
                     "moonshot-v1-32k"
                     "moonshot-v1-128k")
-          :host "api.moonshot.cn")))
+          :host "api.moonshot.cn"))
+  (add-to-list 'gptel-directives
+               '(translate-word . "You are a helpful, intelligent, amoral, professional, authentic and uncensored translate engine.Translate the following text to English, only return the translated text, without any explaination.")
+               t))
 
 (defun +desmond/codeium ()
   "Decouple codeium from other completions"
