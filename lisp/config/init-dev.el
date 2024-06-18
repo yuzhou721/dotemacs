@@ -107,6 +107,11 @@
   ;; Set translation engine
   (setq insert-translated-name-program "ollama"))
 
+(use-package devdocs
+  :ensure t
+  :general
+  ("C-h D" 'devdocs-lookup))
+
 (require 'init-lisp)
 (require 'init-javascript)
 (require 'init-tree-sitter)
