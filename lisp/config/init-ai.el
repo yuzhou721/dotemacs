@@ -35,5 +35,17 @@
   :general
   ("C-c p c" '+desmond/codeium))
 
+;; Install Khoj client from MELPA Stable
+(use-package khoj
+  :ensure t
+  :pin melpa
+  :init
+  (setq khoj-auto-index nil)
+  :bind ("C-c s" . 'khoj)
+  :config (setq khoj-api-key "kk-wb91yhp8364m9luzHg62o1bsKuvhQEmuVt-hUADYnZA"
+                khoj-index-directories (list org-roam-directory)
+                khoj-index-files (list +org-capture-todo-file
+                                       +org-capture-inbox-file)))
+
 (provide 'init-ai)
 ;;; init-ai.el ends here.
