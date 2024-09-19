@@ -1,8 +1,8 @@
 ;; -*- lexical-binding: t -*-
 (use-package rime
   :demand t
-  :init
-  (setq default-input-method "rime")
+  ;; :init
+  ;; (setq default-input-method "rime")
   :config
   (setq rime-show-candidate 'posframe)
   (setq rime-disable-predicates
