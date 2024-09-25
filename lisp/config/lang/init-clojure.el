@@ -16,11 +16,15 @@
 								   (evil-make-overriding-map cider--debug-mode-map 'normal)
 								   (evil-normalize-keymaps)))))
 
+(defun cider-completion-with-eglot ()
+  "同时使用eglot和cider补全"
+  ;; cider 的xref跳转找不到java源码，改用eglot的xref后端
+  (setq cider-use-xref nil)
+  (add-hook 'cider-mode-hook (lambda () (setq-local completion-at-point-functions (list (cape-capf-super #'yasnippet-capf #'cider-complete-at-point #'eglot-completion-at-point))))))
+
 (use-package cider
   :ensure t
   :pin melpa
-  :init
-  (add-hook 'cider-mode-hook (lambda () (setq-local completion-at-point-functions (list (cape-capf-super #'yasnippet-capf #'cider-complete-at-point #'eglot-completion-at-point)))))
   :config
   ;; (cider-debug-evil-hack)
   ;; Repl-mode evil initial state
@@ -29,8 +33,6 @@
         cider-repl-pop-to-buffer-on-connect 'display-only)
   ;; classpath
   (setq cider-enrich-classpath t)
-  ;; cider 的xref跳转找不到java源码，改用eglot的xref后端
-  (setq cider-use-xref nil)
   :general
   (global-leader 'clojure-mode-map
     "'" 'cider-jack-in-clj
@@ -61,6 +63,7 @@
     "hd" 'cider-doc
     "hj" 'cider-javadoc
     "hw" 'cider-clojuredocs-web
+    "hC" 'cider-completion-with-eglot
     "i" '(:ignore t :wk "inspect")
     "ie" 'cider-enlighten-mode
     "ii" 'cider-inspect
