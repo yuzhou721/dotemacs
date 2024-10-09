@@ -172,3 +172,6 @@
 [submodule "lisp/extensions/zoutline"]
 	path = lisp/extensions/zoutline
 	url = https://github.com/abo-abo/zoutline.git
+[submodule "lisp/extensions/aider.el"]
+	path = lisp/extensions/aider.el
+	url = https://github.com/tninja/aider.el.git

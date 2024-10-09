@@ -2,6 +2,22 @@
 (use-package llm
   :ensure t)
 
+(defun api-key-from-auth-source (&optional host user)
+  "Lookup api key in the auth source.
+By default, the LLM host for the active backend is used as HOST,
+and \"apikey\" as USER."
+  (if-let ((secret
+            (plist-get
+             (car (auth-source-search
+                   :host (or host "api.deepseek.com")
+                   :user (or user "apikey")
+                   :require '(:secret)))
+                              :secret)))
+      (if (functionp secret)
+          (encode-coding-string (funcall secret) 'utf-8)
+        secret)
+    (user-error "No `api-key' found in the auth source")))
+
 (use-package gptel
   :ensure t
   :config
@@ -45,10 +61,18 @@
   :init
   (setq khoj-auto-index nil)
   :bind ("C-c s" . 'khoj)
-  :config (setq khoj-api-key "kk-wb91yhp8364m9luzHg62o1bsKuvhQEmuVt-hUADYnZA"
+  :config (setq khoj-api-key (api-key-from-auth-source "app.khoj.dev")
                 khoj-index-directories (list org-roam-directory)
                 khoj-index-files (list +org-capture-todo-file
                                        +org-capture-inbox-file)))
+
+(use-package aider
+  :ensure nil
+  :config
+  (setq aider-args '("--model" "deepseek/deepseek-coder"))
+  (setenv "DEEPSEEK_API_KEY" (api-key-from-auth-source "api.deepseek.com"))
+  ;; Optional: Set a key binding for the transient menu
+  (global-set-key (kbd "C-c a") 'aider-transient-menu))
 
 (provide 'init-ai)
 ;;; init-ai.el ends here.
