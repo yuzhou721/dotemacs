@@ -15,6 +15,4 @@
   (setq immersive-translate-backend 'baidu
       immersive-translate-baidu-appid "20211214001027891"))
 
-(use-package insert-translated-name)
-
 (provide 'init-translation)

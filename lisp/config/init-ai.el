@@ -1,4 +1,7 @@
 ;; -*- lexical-binding: t -*-
+(use-package llm
+  :ensure t)
+
 (use-package gptel
   :ensure t
   :config

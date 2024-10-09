@@ -166,3 +166,9 @@
 [submodule "lisp/extensions/codeium.el"]
 	path = lisp/extensions/codeium.el
 	url = https://github.com/Exafunction/codeium.el.git
+[submodule "lisp/extensions/iedit"]
+	path = lisp/extensions/iedit
+	url = https://github.com/victorhge/iedit.git
+[submodule "lisp/extensions/zoutline"]
+	path = lisp/extensions/zoutline
+	url = https://github.com/abo-abo/zoutline.git
