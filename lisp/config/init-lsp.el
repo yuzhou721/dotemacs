@@ -42,6 +42,7 @@
   ((typescript-mode typescript-ts-mode tsx-ts-mode) . lsp-bridge-mode)
   ((js-ts-mode) . lsp-bridge-mode)
   ((go-mode go-ts-mode) . lsp-bridge-mode)
+  ((css-mode css-ts-mode) . lsp-bridge-mode)
   ;; 启用 lsp-bridge 时候 关闭 corfu
   (lsp-bridge-mode . (lambda () (corfu-mode -1)))
   ;; (python-ts-mode . lsp-bridge-mode)

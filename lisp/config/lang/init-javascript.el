@@ -6,7 +6,8 @@
   :mode "\\.jsx\\'"
   :mode "\\.js\\'"
   :init
-  (setq-default js-indent-level 2))
+  (setq-default js-indent-level 2)
+  (setq-local tab-width 2))
 
 (use-package js2-mode
   :ensure nil
@@ -25,7 +26,8 @@
 		js2-strict-missing-semi-warning nil
 		;; maximum fontification
 		js2-highlight-level 3
-		js2-idle-timer-delay 0.15))
+		js2-idle-timer-delay 0.15
+        tab-width 2))
 
 ;; (use-package rjsx-mode
 ;;   :ensure nil
@@ -43,6 +45,10 @@
 ;;   ;;                '(node "^[[:blank:]]*at \\(.*(\\|\\)\\(.+?\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\)"
 ;;   ;;                       2 3 4)))
 ;;   )
+
+(use-package css-mode
+  :config
+  (setq css-indent-offset 2))
 
 (use-package typescript-mode
   :ensure t
