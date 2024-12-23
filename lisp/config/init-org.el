@@ -106,7 +106,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 		org-capture-templates
 		'(("i" "Inbox" entry
 		   (file +org-capture-inbox-file)
-		   "* TODO %?\n%i\n%a" :prepend t)))
+		   "* TODO [#B] %?\n%i\n%a" :prepend t)))
   (setq org-refile-targets
 		'((nil :maxlevel . 3)
 		  (org-agenda-files :maxlevel . 3))

@@ -110,7 +110,8 @@
     "a" 'lsp-bridge-code-action
     "d" 'lsp-bridge-find-def
     "p" 'lsp-bridge-peek
-    "r" 'lsp-bridge-restart-process))
+    "r" 'lsp-bridge-restart-process
+    "f" 'lsp-bridge-code-format))
 
 ;; 融合 `lsp-bridge' `find-function' 以及 `dumb-jump' 的智能跳转
 ;; (defun lsp-bridge-jump ()
