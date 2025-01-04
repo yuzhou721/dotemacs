@@ -85,4 +85,13 @@
   ;; bind `function.inner`(function block without name and args) to `f` for use in things like `vif`, `yif`
   (define-key evil-inner-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.inner"))
   )
+
+(use-package treesit-fold
+  :config
+  (global-treesit-fold-mode 1))
+
+(use-package treesit-fold-indicators
+  :config
+  (global-treesit-fold-indicators-mode 1))
+
 (provide 'init-tree-sitter)

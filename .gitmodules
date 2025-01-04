@@ -175,3 +175,6 @@
 [submodule "lisp/extensions/aider.el"]
 	path = lisp/extensions/aider.el
 	url = https://github.com/tninja/aider.el.git
+[submodule "lisp/extensions/treesit-fold"]
+	path = lisp/extensions/treesit-fold
+	url = https://github.com/emacs-tree-sitter/treesit-fold
