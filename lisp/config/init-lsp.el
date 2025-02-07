@@ -87,6 +87,9 @@
   ;; user lsp-config
   (setq lsp-bridge-user-langserver-dir (expand-file-name "lsp/langserver" user-emacs-directory))
   ;; (+desmond/acm-auto-enable)
+  (setq acm-enable-codeium t)
+  ;; (setq acm-backend-lsp-show-progress nil)
+  (setq acm-enable-preview t)
   :general
   (:states 'normal :keymaps 'lsp-bridge-mode-map
            "gi" 'lsp-bridge-find-impl
