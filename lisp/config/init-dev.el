@@ -125,6 +125,13 @@
   :general
   ("C-h D" 'devdocs-lookup))
 
+(defun open-emacs-proxy ()
+  "Open emacs proxy"
+  (interactive)
+  (setq url-proxy-services
+        '(("http" . "127.0.0.1:7890")
+          ("https" . "127.0.0.1:7890"))))
+
 (require 'init-lisp)
 (require 'init-javascript)
 (require 'init-tree-sitter)
