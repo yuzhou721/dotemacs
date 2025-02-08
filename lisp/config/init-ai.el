@@ -69,8 +69,11 @@ and \"apikey\" as USER."
 (use-package aider
   :ensure nil
   :config
-  (setq aider-args '("--model" "deepseek/deepseek-coder"))
-  (setenv "DEEPSEEK_API_KEY" (api-key-from-auth-source "api.deepseek.com"))
+  ;; (setq aider-args '("--model" "deepseek/deepseek-coder"))
+  ;; (setenv "DEEPSEEK_API_KEY" (api-key-from-auth-source "api.deepseek.com"))
+  (setq aider-args '("--model" "openai/qwen-max-2025-01-25"))
+  (setenv "OPENAI_API_BASE" "https://dashscope.aliyuncs.com/compatible-mode/v1")
+  (setenv "OPENAI_API_KEY" "sk-19f11ce5cb5743448be8a41823969bdf")
   ;; Optional: Set a key binding for the transient menu
   (global-set-key (kbd "C-c a") 'aider-transient-menu))
 
