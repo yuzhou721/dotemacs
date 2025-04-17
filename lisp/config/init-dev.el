@@ -139,4 +139,5 @@
 (require 'init-clojure)
 (require 'init-common-lisp)
 (require 'init-golang)
+(require 'init-php)
 (provide 'init-dev)
