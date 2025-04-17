@@ -66,16 +66,29 @@ and \"apikey\" as USER."
                 khoj-index-files (list +org-capture-todo-file
                                        +org-capture-inbox-file)))
 
-(use-package aider
-  :ensure nil
+;; (use-package aider
+;;   :ensure nil
+;;   :config
+;;   (setq aider-args '("--model" "deepseek/deepseek-coder"))
+;;   (setenv "DEEPSEEK_API_KEY" (api-key-from-auth-source "api.deepseek.com"))
+;;   ;; (setq aider-args '("--model" "openai/qwen-max-2025-01-25"))
+;;   ;; (setenv "OPENAI_API_BASE" "https://dashscope.aliyuncs.com/compatible-mode/v1")
+;;   ;; (setenv "OPENAI_API_KEY" (api-key-from-auth-source "openai.aliyun.com"))
+;;   ;; Optional: Set a key binding for the transient menu
+;;   (global-set-key (kbd "C-c a") 'aider-transient-menu))
+
+(use-package aidermacs
+  :ensure t
+  :bind (("C-c a" . aidermacs-transient-menu))
   :config
-  (setq aider-args '("--model" "deepseek/deepseek-coder"))
   (setenv "DEEPSEEK_API_KEY" (api-key-from-auth-source "api.deepseek.com"))
-  ;; (setq aider-args '("--model" "openai/qwen-max-2025-01-25"))
-  ;; (setenv "OPENAI_API_BASE" "https://dashscope.aliyuncs.com/compatible-mode/v1")
-  ;; (setenv "OPENAI_API_KEY" (api-key-from-auth-source "openai.aliyun.com"))
-  ;; Optional: Set a key binding for the transient menu
-  (global-set-key (kbd "C-c a") 'aider-transient-menu))
+  :custom
+  (aidermacs-use-architect-mode t)
+  ;; Optional: Set specific model for architect reasoning
+  (aidermacs-architect-model "deepseek/deepseek-reasoner")
+  ;; Optional: Set specific model for code generation
+  (aidermacs-editor-model "deepseek/deepseek-chat")
+  (aidermacs-default-model "deepseek/deepseek-chat"))
 
 (provide 'init-ai)
 ;;; init-ai.el ends here.
