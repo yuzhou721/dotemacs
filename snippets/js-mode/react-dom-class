@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: react-dom-class
+# key: clsn
+# --
+className={}
