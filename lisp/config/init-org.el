@@ -128,6 +128,8 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 							  (java . t)
 							  (clojure . t)
                               (lisp . t)))
+  ;; src补全
+  (require 'org-tempo)
   ;; 支持clojure
   (require 'ob-clojure)
   (setq org-babel-clojure-backend 'cider)
