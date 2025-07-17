@@ -140,4 +140,5 @@
 (require 'init-common-lisp)
 (require 'init-golang)
 (require 'init-php)
+(require 'init-ruby)
 (provide 'init-dev)
