@@ -1,8 +1,10 @@
 ;; -*- lexical-binding: t -*-
 (require 'package)
+;; 国内源
 (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
 			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")
 			 ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+;; 国外源
 ;; (setq package-archives
 ;;       '(("melpa"  . "https://melpa.org/packages/")
 ;;         ("gnu"    . "https://elpa.gnu.org/packages/")

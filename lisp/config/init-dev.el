@@ -40,6 +40,7 @@
 ;; 类 lisp 语言结构编辑
 (use-package lispy
   :ensure nil
+  :after iedit
   :hook
   (emacs-lisp-mode . lispy-mode)
   (clojure-mode . lispy-mode)
@@ -74,25 +75,9 @@
 
 (use-package smartparens
   :ensure t
-  :init
-  (smartparens-global-mode t)
-  (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
-  (sp-local-pair 'emacs-lisp-mode "`" nil :actions nil)
-  (sp-local-pair 'clojure-mode "'" nil :actions nil)
-  (sp-local-pair 'clojure-mode "`" nil :actions nil)
-  (sp-local-pair 'clojurescript-mode "'" nil :actions nil)
-  (sp-local-pair 'clojurescript-mode "`" nil :actions nil)
-  (sp-local-pair 'cider-repl-mode "'" nil :actions nil)
-  (sp-local-pair 'cider-repl-mode "`" nil :actions nil)
-  (sp-local-pair 'lisp-interaction-mode "'" nil :actions nil)
-  (sp-local-pair 'lisp-mode "'" nil :actions nil)
-  (sp-local-pair 'lisp-mode "`" nil :actions nil)
-  (sp-local-pair 'sly-mrepl-mode "'" nil :actions nil)
-  (sp-local-pair 'sly-mrepl-mode "`" nil :actions nil)
+  :hook (prog-mode text-mode markdown-mode)
   :config
-    (sp-with-modes
-        '(c++-mode objc-mode c-mode javascript-mode)
-      (sp-local-pair "{" nil :post-handlers '(:add ("||\n[i]" "RET")))))
+  (require 'smartparens-config))
 
 (use-package editorconfig
   :ensure t
@@ -114,11 +99,11 @@
                                              :key (insert-translated-name-api-key-from-auth-source "api.deepseek.com")
                                              :chat-model "deepseek-chat"
                                              :url "https://api.deepseek.com/v1")))
+
 (use-package diff-hl
   :ensure t
-  :init
-  (add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
-  (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode))
+  :config
+  (global-diff-hl-mode))
 
 (use-package devdocs
   :ensure t

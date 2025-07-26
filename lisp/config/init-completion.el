@@ -82,8 +82,7 @@
 (use-package marginalia
   :ensure t
   :init
-  (marginalia-mode t)
-  )
+  (marginalia-mode t))
 
 (use-package embark
   :ensure t
