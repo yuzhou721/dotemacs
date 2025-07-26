@@ -35,6 +35,7 @@
     (acm-terminal-active)))
 
 (use-package lsp-bridge
+  :after markdown-mode
   :hook
   ((java-ts-mode java-mode) . lsp-bridge-mode)
   ((python-ts-mode python-mode) . lsp-bridge-mode)
