@@ -10,9 +10,6 @@
 [submodule "lisp/extensions/lsp-bridge"]
 	path = lisp/extensions/lsp-bridge
 	url = https://github.com/manateelazycat/lsp-bridge.git
-[submodule "lisp/extensions/yasnippet"]
-	path = lisp/extensions/yasnippet
-	url = https://github.com/joaotavora/yasnippet
 [submodule "lisp/extensions/org-roam"]
 	path = lisp/extensions/org-roam
 	url = https://github.com/org-roam/org-roam.git
@@ -61,9 +58,6 @@
 [submodule "lisp/extensions/web-mode"]
 	path = lisp/extensions/web-mode
 	url = https://github.com/fxbois/web-mode.git
-[submodule "lisp/extensions/js2-mode"]
-	path = lisp/extensions/js2-mode
-	url = https://github.com/mooz/js2-mode.git
 [submodule "lisp/extensions/s"]
 	path = lisp/extensions/s
 	url = https://github.com/magnars/s.el.git
@@ -127,12 +121,6 @@
 [submodule "lisp/extensions/fingertip"]
 	path = lisp/extensions/fingertip
 	url = https://github.com/manateelazycat/fingertip.git
-[submodule "lisp/extensions/yasnippet-capf"]
-	path = lisp/extensions/yasnippet-capf
-	url = https://github.com/elken/yasnippet-capf.git
-[submodule "lisp/extensions/yasnippet-snippets"]
-	path = lisp/extensions/yasnippet-snippets
-	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
 [submodule "lisp/extensions/evil-collection"]
 	path = lisp/extensions/evil-collection
 	url = https://github.com/emacs-evil/evil-collection.git
@@ -166,9 +154,6 @@
 [submodule "lisp/extensions/codeium.el"]
 	path = lisp/extensions/codeium.el
 	url = https://github.com/Exafunction/codeium.el.git
-[submodule "lisp/extensions/iedit"]
-	path = lisp/extensions/iedit
-	url = https://github.com/victorhge/iedit.git
 [submodule "lisp/extensions/zoutline"]
 	path = lisp/extensions/zoutline
 	url = https://github.com/abo-abo/zoutline.git
