@@ -106,6 +106,7 @@ Main data structure of the dispatcher with the form:
 		  "\\*rustfmt\\*$" rustic-compilation-mode rustic-cargo-clippy-mode
 		  rustic-cargo-outdated-mode rustic-cargo-test-moed
 		  cider-repl-mode
+          aidermacs-comint-mode
           "\\*Moonshot\\*"))
 
   (when (display-grayscale-p)
@@ -175,6 +176,7 @@ Main data structure of the dispatcher with the form:
           (cider-repl-mode               :select nil                          :size 0.4  :align t     :popup t)
           ("\\*sly-macroexpansion\\*" :select nil :inhibit-window-quit t :size 0.4 :align t :same t)
           ("\\*org-roam\\*"              :select nil                        :size 0.3   :align 'right :same t)
+          (aidermacs-comint-mode              :select nil                        :size 0.3   :align 'right :same t)
           ))
   )
 
