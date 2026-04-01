@@ -20,6 +20,21 @@ and \"apikey\" as USER."
 
 (use-package gptel
   :ensure t
+  :bind
+  (("C-c g g" . gptel)                     ; 打开/切换 gptel 会话
+   ("C-c g s" . gptel-send)                ; 发送消息
+   ("C-c g k" . gptel-kill-session)        ; 关闭当前会话
+   ("C-c g c" . gptel-clear)               ; 清除当前会话
+   ("C-c g r" . gptel-restore-response)    ; 恢复上次响应
+   ("C-c g m" . gptel-menu)                ; 打开菜单
+   ("C-c g a" . gptel-ask)                 ; 快速提问
+   ("C-c g l" . gptel-load-session)        ; 加载会话
+   ("C-c g w" . gptel-save-session)        ; 保存会话
+   ("C-c g d" . gptel-change-destination)  ; 切换后端
+   ("C-c g t" . gptel-change-topic)        ; 切换主题
+   ("C-c g R" . my/gptel-send-region)      ; 发送选中区域
+   ("C-c g q" . my/gptel-quick-query)      ; 快速提问
+   ("C-c g T" . my/gptel-translate-region)) ; 翻译选中区域
   :config
   (setq gptel-model "moonshot-v1-8k")
   (setq gptel-default-mode 'org-mode)
@@ -28,7 +43,8 @@ and \"apikey\" as USER."
           :key 'gptel-api-key
           :models '("moonshot-v1-8k"
                     "moonshot-v1-32k"
-                    "moonshot-v1-128k")
+                    "moonshot-v1-128k"
+                    "kimi-k2-thinking")
           :host "api.moonshot.cn"
           :stream t))
   (add-to-list 'gptel-directives
