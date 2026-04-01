@@ -106,7 +106,8 @@ Main data structure of the dispatcher with the form:
 		  "\\*rustfmt\\*$" rustic-compilation-mode rustic-cargo-clippy-mode
 		  rustic-cargo-outdated-mode rustic-cargo-test-moed
 		  cider-repl-mode
-          "\\*Moonshot\\*"))
+          "\\*Moonshot\\*"
+          "\\*aidermacs*\\*"))
 
   (when (display-grayscale-p)
 	(setq popper-mode-line

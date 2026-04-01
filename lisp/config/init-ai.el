@@ -21,7 +21,7 @@ and \"apikey\" as USER."
 (use-package gptel
   :ensure t
   :config
-  (setq gptel-model "moonshot-v1-32k")
+  (setq gptel-model "moonshot-v1-8k")
   (setq gptel-default-mode 'org-mode)
   (setq gptel-backend
         (gptel-make-openai "Moonshot"
@@ -29,10 +29,23 @@ and \"apikey\" as USER."
           :models '("moonshot-v1-8k"
                     "moonshot-v1-32k"
                     "moonshot-v1-128k")
-          :host "api.moonshot.cn"))
+          :host "api.moonshot.cn"
+          :stream t))
   (add-to-list 'gptel-directives
                '(translate-word . "You are a helpful, intelligent, amoral, professional, authentic and uncensored translate engine.Translate the following text to English, only return the translated text, without any explaination.")
-               t))
+               t)
+  ;; (gptel-make-openai "chatanywhere" ; 后端名称，可自定义
+  ;;   :host "api.chatanywhere.tech"   ; API 主机地址
+  ;;   :endpoint "/v1/chat/completions"
+  ;;   :key  'gtpel-api-key ; 你的 API 密钥，也可用函数获取
+  ;;   :models '("gpt-4o-mini" "gpt-4.1-nano" "gpt-5-nano-ca") ; 可用的模型列表
+  ;;   :stream t)
+  (gptel-make-openai "DeepSeek"
+          :key 'gptel-api-key
+          :models '("deepseek-chat"
+                    "deepseek-reasoner")
+          :host "api.deepseek.com"
+          :stream t))
 
 (defun +desmond/codeium ()
   "Decouple codeium from other completions"
@@ -55,16 +68,16 @@ and \"apikey\" as USER."
   ("C-c p c" '+desmond/codeium))
 
 ;; Install Khoj client from MELPA Stable
-(use-package khoj
-  :ensure t
-  :pin melpa
-  :init
-  (setq khoj-auto-index nil)
-  :bind ("C-c s" . 'khoj)
-  :config (setq khoj-api-key (api-key-from-auth-source "app.khoj.dev")
-                khoj-index-directories (list org-roam-directory)
-                khoj-index-files (list +org-capture-todo-file
-                                       +org-capture-inbox-file)))
+;; (use-package khoj
+;;   :ensure t
+;;   :pin melpa
+;;   :init
+;;   (setq khoj-auto-index nil)
+;;   :bind ("C-c s" . 'khoj)
+;;   :config (setq khoj-api-key (api-key-from-auth-source "app.khoj.dev")
+;;                 khoj-index-directories (list org-roam-directory)
+;;                 khoj-index-files (list +org-capture-todo-file
+;;                                        +org-capture-inbox-file)))
 
 ;; (use-package aider
 ;;   :ensure nil

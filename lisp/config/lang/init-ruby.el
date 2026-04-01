@@ -11,7 +11,7 @@
 (use-package ruby-mode
   :mode "\\.\\(?:a?rb\\|aslsx\\)\\'"
   :mode "/\\(?:Brew\\|Fast\\)file\\'"
-  :config
+  :init
   (global-leader 'ruby-mode-map
     "[" 'ruby-toggle-block
     "{" 'ruby-toggle-block))
@@ -35,7 +35,7 @@
 (use-package rubocop
   :ensure t
   :hook (ruby-mode . rubocop-mode)
-  :config
+  :init
   (global-leader 'ruby-mode-map
     "f" 'rubocop-check-current-file
     "F" 'rubocop-autocorrect-current-file
@@ -57,19 +57,19 @@
 
 (use-package bundler
   :ensure t
-  :config
+  :init
   (global-leader 'ruby-mode-map
     "b" '(:ignore t :wk "bunder")
-    "bc" #'bundle-check
-    "bC" #'bundle-console
-    "bi" #'bundle-install
-    "bu" #'bundle-update
-    "be" #'bundle-exec
-    "bo" #'bundle-open))
+    "bc" 'bundle-check
+    "bC" 'bundle-console
+    "bi" 'bundle-install
+    "bu" 'bundle-update
+    "be" 'bundle-exec
+    "bo" 'bundle-open))
 
 (use-package rake
   :ensure t
-  :config
+  :init
   (global-leader 'ruby-mode-map
     "k" '(:ignore t :wk "rack")
     "kr" 'rake-rerun
