@@ -120,5 +120,40 @@ and \"apikey\" as USER."
   (aidermacs-editor-model "deepseek/deepseek-chat")
   (aidermacs-default-model "deepseek/deepseek-chat"))
 
+;; =================== GPTel 辅助函数 ===================
+
+(defun my/gptel-send-region (start end)
+  "Send selected region to gptel."
+  (interactive "r")
+  (if (use-region-p)
+      (let ((text (buffer-substring start end)))
+        (gptel-request text))
+    (gptel-send)))
+
+(defun my/gptel-quick-query (query)
+  "Quickly send a query to gptel."
+  (interactive "sQuery: ")
+  (gptel-request query))
+
+(defun my/gptel-translate-region (start end)
+  "Translate selected region using gptel translate directive."
+  (interactive "r")
+  (if (use-region-p)
+      (let ((text (buffer-substring start end)))
+        (gptel-request text 'translate-word))
+    (message "No region selected")))
+
+(defun my/gptel-send-buffer ()
+  "Send entire buffer content to gptel."
+  (interactive)
+  (gptel-request (buffer-string)))
+
+;; 绑定到快捷键（可选）
+(general-define-key
+ :prefix "C-c g"
+ "b" 'my/gptel-send-buffer)
+
+;; =====================================================
+
 (provide 'init-ai)
 ;;; init-ai.el ends here.
