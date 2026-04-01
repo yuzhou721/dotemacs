@@ -97,7 +97,7 @@ and \"apikey\" as USER."
   (setenv "DEEPSEEK_API_KEY" (api-key-from-auth-source "api.deepseek.com"))
   :custom
   (aidermacs-extra-args '("--chat-language" "chinese" "--commit-language" "chinese"))
-  (aidermacs-use-architect-mode t)
+  (aidermacs-default-chat-mode 'architect)
   ;; Optional: Set specific model for architect reasoning
   (aidermacs-architect-model "deepseek/deepseek-reasoner")
   ;; Optional: Set specific model for code generation
