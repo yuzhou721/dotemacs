@@ -26,13 +26,13 @@
   (load-theme 'doom-dark+ t)
   (doom-themes-org-config))
 
-(use-package circadian
-  :ensure t
-  :config
-  (setq circadian-themes '(("8:00" . doom-material)
-                           ("19:30" . doom-material-dark)))
-  (add-hook 'emacs-startup-hook #'circadian-setup)
-  (circadian-setup))
+;; (use-package circadian
+;;   :ensure t
+;;   :config
+;;   (setq circadian-themes '(("8:00" . doom-material)
+;;                            ("19:30" . doom-material-dark)))
+;;   (add-hook 'emacs-startup-hook #'circadian-setup)
+;;   (circadian-setup))
 
 ;; (use-package emacs
 ;;   :ensure nil

@@ -113,6 +113,7 @@
   (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package pyim
+  :ensure t
   :after orderless
   :config
   (require 'pyim-cregexp-utils)
@@ -136,15 +137,17 @@
   )
 
 (use-package yasnippet
-  :ensure nil
+  :ensure t
   :config
   (yas-global-mode 1)
   )
 
 (use-package yasnippet-snippets
+  :ensure t
   :after yasnippet)
 
 (use-package yasnippet-capf
+  :ensure t
   :after cape
   :config
   (add-to-list 'completion-at-point-functions #'yasnippet-capf))

@@ -35,7 +35,6 @@
     (acm-terminal-active)))
 
 (use-package lsp-bridge
-  :after markdown-mode
   :hook
   ((java-ts-mode java-mode) . lsp-bridge-mode)
   ((python-ts-mode python-mode) . lsp-bridge-mode)
@@ -55,7 +54,7 @@
       (add-hook 'server-after-make-frame-hook #'+desmond/acm-auto-enable))
   :config
   ;; Output server logs to `*lsp-bridge*' buffer, required restarting the process
-  (setq lsp-bridge-enable-log nil)
+  (setq lsp-bridge-log-level 'default)
   (setq lsp-bridge-enable-debug nil)
   ;; Show tooltip when cursor under a diagnostic overlay
   (setq lsp-bridge-enable-hover-diagnostic t)
@@ -89,7 +88,7 @@
   (setq lsp-bridge-user-langserver-dir (expand-file-name "lsp/langserver" user-emacs-directory))
   ;; (+desmond/acm-auto-enable)
   (setq acm-enable-codeium t)
-  ;; (setq acm-backend-lsp-show-progress nil)
+  (setq acm-backend-lsp-show-progress nil)
   (setq acm-enable-preview t)
   :general
   (:states 'normal :keymaps 'lsp-bridge-mode-map

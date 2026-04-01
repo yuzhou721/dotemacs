@@ -10,7 +10,7 @@
   (setq-local tab-width 2))
 
 (use-package js2-mode
-  :ensure nil
+  :ensure t
   :hook (js2-minor-mode . js-mode)
   :config
   (setq js-chain-indent t
