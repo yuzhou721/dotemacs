@@ -155,5 +155,45 @@ and \"apikey\" as USER."
 
 ;; =====================================================
 
+;; =================== Claude Code IDE 集成 ===================
+(use-package claude-code-ide
+  ;; 使用 :vc 安装（Emacs 30+）
+  :vc (:url "https://github.com/manzaltu/claude-code-ide.el" :rev :newest)
+  ;; 若使用 straight.el，注释上面行并取消下面注释：
+  ;; :straight (:type git :host github :repo "manzaltu/claude-code-ide.el")
+
+  :bind
+  ("C-c C-'" . claude-code-ide-menu)
+
+  :config
+  ;; -------------------------------------------------------
+  ;; 使用 DeepSeek 的 Anthropic 兼容 API（官方集成方式）
+  ;; -------------------------------------------------------
+  (setenv "ANTHROPIC_BASE_URL" "https://api.deepseek.com/anthropic")
+  (setenv "ANTHROPIC_AUTH_TOKEN"
+          (api-key-from-auth-source "api.deepseek.com"))
+  (setenv "ANTHROPIC_MODEL" "deepseek-v4-pro")
+  (setenv "ANTHROPIC_DEFAULT_OPUS_MODEL" "deepseek-v4-pro")
+  (setenv "ANTHROPIC_DEFAULT_SONNET_MODEL" "deepseek-v4-pro")
+  (setenv "ANTHROPIC_DEFAULT_HAIKU_MODEL" "deepseek-v4-flash")
+  (setenv "CLAUDE_CODE_SUBAGENT_MODEL" "deepseek-v4-flash")
+  (setenv "CLAUDE_CODE_EFFORT_LEVEL" "max")
+
+  ;; -------------------------------------------------------
+  ;; 常规配置（按需调整）
+  ;; -------------------------------------------------------
+  (setq claude-code-ide-use-side-window t)   ;; 侧边窗口
+  (setq claude-code-ide-window-side 'right)
+  (setq claude-code-ide-window-width 100)
+  (setq claude-code-ide-focus-on-open t)
+  (setq claude-code-ide-use-ide-diff t)      ;; 使用 ediff 查看差异
+
+  ;; 若需自定义系统提示，取消下面注释：
+  ;; (setq claude-code-ide-system-prompt "Your custom prompt")
+
+  ;; 启用 Emacs MCP 工具（可选，需要 xref、tree-sitter 等支持）
+  ;; (claude-code-ide-emacs-tools-setup)
+  )
+
 (provide 'init-ai)
 ;;; init-ai.el ends here.
