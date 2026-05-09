@@ -155,10 +155,16 @@ and \"apikey\" as USER."
 
 ;; =====================================================
 
+(use-package eat
+  :ensure t
+  :init
+  (evil-set-initial-state 'eat-mode 'emacs))
+  
+
 ;; =================== Claude Code IDE 集成 ===================
 (use-package claude-code-ide
   ;; 使用 :vc 安装（Emacs 30+）
-  :vc (:url "https://github.com/manzaltu/claude-code-ide.el" :rev :newest)
+  ;; :vc (:url "https://github.com/manzaltu/claude-code-ide.el" :rev :newest)
   ;; 若使用 straight.el，注释上面行并取消下面注释：
   ;; :straight (:type git :host github :repo "manzaltu/claude-code-ide.el")
 
@@ -172,9 +178,9 @@ and \"apikey\" as USER."
   (setenv "ANTHROPIC_BASE_URL" "https://api.deepseek.com/anthropic")
   (setenv "ANTHROPIC_AUTH_TOKEN"
           (api-key-from-auth-source "api.deepseek.com"))
-  (setenv "ANTHROPIC_MODEL" "deepseek-v4-pro")
-  (setenv "ANTHROPIC_DEFAULT_OPUS_MODEL" "deepseek-v4-pro")
-  (setenv "ANTHROPIC_DEFAULT_SONNET_MODEL" "deepseek-v4-pro")
+  (setenv "ANTHROPIC_MODEL" "deepseek-v4-pro[1m]")
+  (setenv "ANTHROPIC_DEFAULT_OPUS_MODEL" "deepseek-v4-pro[1m]")
+  (setenv "ANTHROPIC_DEFAULT_SONNET_MODEL" "deepseek-v4-pro[1m]")
   (setenv "ANTHROPIC_DEFAULT_HAIKU_MODEL" "deepseek-v4-flash")
   (setenv "CLAUDE_CODE_SUBAGENT_MODEL" "deepseek-v4-flash")
   (setenv "CLAUDE_CODE_EFFORT_LEVEL" "max")
@@ -183,11 +189,12 @@ and \"apikey\" as USER."
   ;; 常规配置（按需调整）
   ;; -------------------------------------------------------
   (setq claude-code-ide-use-side-window t)   ;; 侧边窗口
-  (setq claude-code-ide-window-side 'right)
-  (setq claude-code-ide-window-width 100)
+  (setq claude-code-ide-window-side 'bottom)
+  (setq claude-code-ide-window-height 30)
   (setq claude-code-ide-focus-on-open t)
   (setq claude-code-ide-use-ide-diff t)      ;; 使用 ediff 查看差异
-
+  (setq claude-code-ide-terminal-backend 'eat)
+  (claude-code-ide-emacs-tools-setup)
   ;; 若需自定义系统提示，取消下面注释：
   ;; (setq claude-code-ide-system-prompt "Your custom prompt")
 

@@ -163,3 +163,6 @@
 [submodule "lisp/extensions/treesit-fold"]
 	path = lisp/extensions/treesit-fold
 	url = https://github.com/emacs-tree-sitter/treesit-fold
+[submodule "lisp/extensions/claude-code-ide"]
+	path = lisp/extensions/claude-code-ide
+	url = https://github.com/manzaltu/claude-code-ide.el
