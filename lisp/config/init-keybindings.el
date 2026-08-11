@@ -84,22 +84,7 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
    "hp" 'desmond/open-config-dir
    "X" 'org-capture
    "x" 'scratch-buffer
-   ";" 'dashboard-open
-   "a" '(:ignore t :wk "AI")
-   "am" 'gptel-menu
-   "as" 'gptel-send
-   "ak" 'gptel-kill-session
-   "ac" 'gptel-clear
-   "ar" 'gptel-restore-response
-   "at" 'gptel-change-topic
-   "ad" 'gptel-change-destination
-   "al" 'gptel-load-session
-   "aw" 'gptel-save-session
-   "ag" 'gptel                           ; 快速打开 gptel
-   "aq" 'my/gptel-quick-query           ; 快速提问
-   "aR" 'my/gptel-send-region           ; 发送选中区域
-   "aT" 'my/gptel-translate-region)      ; 翻译选中区域
-
+   ";" 'dashboard-open)
   (general-define-key :states 'insert
 	"C-;" 'rime-inline-ascii))
 
@@ -109,19 +94,5 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
 
 (defun desmond/open-config-dir ()
     "Open config dired")
-
-;; =================== GPTel 模式专用快捷键 ===================
-
-(with-eval-after-load 'gptel
-  (define-key gptel-mode-map (kbd "C-c C-c") 'gptel-send)
-  (define-key gptel-mode-map (kbd "C-c C-k") 'gptel-kill-session)
-  (define-key gptel-mode-map (kbd "C-c C-r") 'gptel-restore-response)
-  (define-key gptel-mode-map (kbd "C-c C-c") 'gptel-clear)
-  (define-key gptel-mode-map (kbd "M-p") 'gptel-previous-prompt)
-  (define-key gptel-mode-map (kbd "M-n") 'gptel-next-prompt)
-  (define-key gptel-mode-map (kbd "C-c C-t") 'gptel-change-topic)
-  (define-key gptel-mode-map (kbd "C-c C-d") 'gptel-change-destination))
-
-;; ============================================================
 
 (provide 'init-keybindings)
